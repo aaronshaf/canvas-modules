@@ -7,9 +7,12 @@ requirejs.config
     jquery: 'vendor/jquery/jquery'
     Ember: 'vendor/ember/ember'
     Handlebars: 'vendor/handlebars/handlebars'
+    'jquery.csrf': 'libs/jquery.csrf'
   shim:
     jquery:
       exports: '$'
+    'jquery.csrf':
+      deps: ['jquery']
     Handlebars:
       exports: 'Handlebars'
     Ember:
@@ -22,6 +25,7 @@ require [
   'compiled/ember/modules/config/app'
   'compiled/ember/modules/routes/index_route'
   'jquery'
+  'jquery.csrf'
   # 'compiled/ember/modules/controllers/module_controller'
   'compiled/ember/modules/templates'
   # 'compiled/ember/modules/config/routes',
