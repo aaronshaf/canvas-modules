@@ -23,7 +23,9 @@ module.exports = (grunt) ->
         options:
           sourceMap: true
 
-    handlebars:
+    ember_handlebars:
+      options:
+        amd: true
       compile:
         files:
           "compiled/ember/modules/templates.js": ["app/templates/*.hbs"]
@@ -48,10 +50,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-clean"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-connect"
-  grunt.loadNpmTasks "grunt-contrib-handlebars"
+  grunt.loadNpmTasks "grunt-ember-handlebars"
   grunt.loadNpmTasks "grunt-sass"
   grunt.loadNpmTasks "grunt-contrib-qunit"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-notify"
 
-  grunt.registerTask "default", ["clean", "coffee", "handlebars", "sass", "connect", "watch"]
+  grunt.registerTask "default", ["clean", "coffee", "ember_handlebars", "sass", "connect", "watch"]
