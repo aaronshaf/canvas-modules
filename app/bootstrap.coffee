@@ -1,3 +1,7 @@
+window.ENV = {}
+window.ENV.API_HOST = 'http://localhost:3000'
+window.ENV.COURSE_ID = 1
+
 requirejs.config
   paths:
     jquery: 'vendor/jquery/jquery'
