@@ -12,6 +12,6 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-handlebars": "~0.5.10",
     "grunt-notify": "~0.2.6",
-    "grunt-ember-handlebars": "git://github.com/Chandler/grunt-ember-handlebars.git#37d0afa6d5d2cd5c5361a204dc390e73dd863b7e"
+    "grunt-ember-handlebars": "git://github.com/aaronshaf/grunt-ember-handlebars.git#09d2d717222268b67110b1d776a8dc617d0c34d0"
   }
 }
