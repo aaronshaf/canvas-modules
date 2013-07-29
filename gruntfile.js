@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         expand: true,
         src: ['**/*.coffee'],
         cwd: 'app/',
-        dest: 'compiled/',
+        dest: 'compiled/ember/modules/',
         ext: '.js'
       }
     },
@@ -33,6 +33,13 @@ module.exports = function(grunt) {
         },
         options: {
           sourceMap: true
+        }
+      }
+    },
+    handlebars: {
+      compile: {
+        files: {
+          "compiled/templates.js": ["app/templates/*.hbs"]
         }
       }
     },
@@ -63,9 +70,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['clean','coffee','sass','connect','watch']);
+  grunt.registerTask('default', ['clean','coffee','handlebars','sass','connect','watch']);
 };
