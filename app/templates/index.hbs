@@ -1,0 +1,30 @@
+<div class="sortable-modules">
+  {{#each module in controller}}
+    <div class="module" {{bindAttr data-module-id="module.id"}}>
+      <h3>{{module.name}}</h3>
+      <table class="sortable-module-items table table-condensed table-striped table-bordered" style="min-height: 30px;">
+        <tbody {{bindAttr class=":sortable empty"}}>
+          {{#each item in module.items}}
+          <tr {{bindAttr data-module-item-id="item.id"}} class="module-item">
+            <td>
+              [handle]
+            </td>
+            <td>
+              {{item.title}}
+            </td>
+            <td>
+              Due at
+            </td>
+            <td>
+              Available at
+            </td>
+            <td>
+              [Cog]
+            </td>
+          </tr>
+          {{/each}}
+        <tbody>
+      </table>
+    </div>
+  {{/each}}
+</div>
