@@ -39,7 +39,7 @@ module.exports = function(grunt) {
     handlebars: {
       compile: {
         files: {
-          "compiled/templates.js": ["app/templates/*.hbs"]
+          'compiled/ember/modules/templates.js': ["app/templates/*.hbs"]
         }
       }
     },
