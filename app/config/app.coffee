@@ -1,4 +1,6 @@
-define ['Ember'], (Ember) ->
+define [
+  'Ember'
+], (Ember) ->
   Ember.Application.create
     rootElement: '#content'
     LOG_TRANSITIONS: true
