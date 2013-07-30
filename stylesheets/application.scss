@@ -2,6 +2,14 @@ body.environment-development {
 	padding: 24px
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
+.align-right {
+  text-align: right;
+}
+
 .context_modules2 {
   #breadcrumbs {
     border-bottom-color: #b6babf;
@@ -25,10 +33,38 @@ body.environment-development {
     color: #34832b;
     font-size: 14px;
     display: inline-block;
-    padding: 4px 12px;
+    padding-bottom: 3px;
     line-height: 22px;
     vertical-align: middle;
   }
+
+  table {
+    tbody {
+      background-color: white;
+      border: 1px solid #c2c9d1;
+
+      td {
+        width: 10%;
+      }
+
+      td.long {
+        width: auto;
+      }
+
+      td.inherit-width {
+        width: auto;
+      }
+
+      td.compact {
+        width: 1%;
+      }
+
+      th:last-child {
+        padding: 0;
+      }
+    }
+  }
+
   .prereqs {
     font-size: 14px;
     padding: 4px 12px;
