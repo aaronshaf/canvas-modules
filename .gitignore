@@ -3,3 +3,4 @@ vendor/*
 bower_components
 compiled
 libpeerconnection.log
+.sublime-project
