@@ -30,10 +30,26 @@
     vertical-align: middle;
   }
 
+  .module {
+    h3 {
+      font-size: 1.18em;
+      font-weight: bold;
+      line-height: 1em;
+    }
+  }
+
   table {
     tbody {
       background-color: white;
       border: 1px solid #c2c9d1;
+    }
+
+    td:first-of-type, th:first-of-type {
+      text-align: left;
+    }
+
+    td:last-of-type, th:last-of-type {
+      text-align: right;
     }
 
     td,th {
