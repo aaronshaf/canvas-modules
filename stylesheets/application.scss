@@ -1,13 +1,5 @@
-body.environment-development {
-	padding: 24px
-}
-
 .no-wrap {
   white-space: nowrap;
-}
-
-.align-right {
-  text-align: right;
 }
 
 .context_modules2 {
@@ -45,6 +37,11 @@ body.environment-development {
 
       td {
         width: 10%;
+      }
+
+      td.align-right,
+      th.align-right {
+        text-align: right;
       }
 
       td.long {
