@@ -68,9 +68,16 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-connect"
   grunt.loadNpmTasks "grunt-ember-handlebars"
   grunt.loadNpmTasks "grunt-sass"
-  grunt.loadNpmTasks "grunt-contrib-qunit"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-notify"
   grunt.loadNpmTasks "grunt-connect-proxy"
 
-  grunt.registerTask "default", ["clean", "coffee", "ember_handlebars", "sass", "configureProxies", "connect", "watch"]
+  grunt.registerTask "default", [
+    "clean",
+    "coffee",
+    "ember_handlebars",
+    "sass",
+    "configureProxies",
+    "connect",
+    "watch"
+  ]
