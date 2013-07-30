@@ -2,7 +2,7 @@
   "name": "canvas-modules",
   "license": "AGPLv3",
   "scripts": {
-    "test": "testem ci"
+    "test": "test launchers"
   },
   "repository": {
     "type": "git",
