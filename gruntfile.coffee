@@ -43,7 +43,9 @@ module.exports = (grunt) ->
           filename.replace /^.*\/|\.[^.]*$/g, ''
       compile:
         files:
-          'compiled/ember/modules/templates.js': ['app/templates/*.hbs']
+          'compiled/ember/modules/templates.js': [
+            'app/templates/**/*.hbs'
+          ]
     watch:
       scripts:
         files: ['app/**/*.coffee']
