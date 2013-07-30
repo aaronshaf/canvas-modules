@@ -20,7 +20,10 @@
         <thead>
         <tr>
           <th colspan="4">
-            <h3>{{module.name}}</h3>
+            <h3>
+              <i class="icon-mini-arrow-right"></i>
+              {{module.name}}
+            </h3>
           </th>
           <th class="no-wrap align-right">
             <span class="module-published-button no-wrap">
@@ -65,7 +68,7 @@
               Published
             </td>
             <td>
-              [Cog]
+              {{module-item-cog}}
             </td>
           </tr>
           {{/each}}
