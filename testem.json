@@ -2,5 +2,6 @@
   "framework": "qunit",
   "src_files": [
     "tests/**/*Spec.js"
-  ]
+  ],
+  "launch_in_ci": ["Firefox"]
 }
