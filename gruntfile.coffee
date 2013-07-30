@@ -2,7 +2,7 @@ module.exports = (grunt) ->
   proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
 
   grunt.initConfig
-    pkg: grunt.file.readJSON("package.json")
+    pkg: grunt.file.readJSON('package.json')
     connect:
       options:
         host: 'localhost'
@@ -11,27 +11,27 @@ module.exports = (grunt) ->
           proxySnippet # proxy
         ]
       proxies: [
-        context: "/api"
-        host: "localhost"
+        context: '/api'
+        host: 'localhost'
         port: 3000
       ]
 
-    clean: ["compiled/"]
+    clean: ['compiled/']
     coffee:
       compile:
         options:
           join: false
           sourceMap: true
         expand: true
-        src: ["**/*.coffee"]
-        cwd: "app/"
-        dest: "compiled/ember/modules/"
-        ext: ".js"
+        src: ['**/*.coffee']
+        cwd: 'app/'
+        dest: 'compiled/ember/modules/'
+        ext: '.js'
 
     sass:
       dist:
         files:
-          "compiled/application.css": "stylesheets/application.scss"
+          'compiled/application.css': 'stylesheets/application.scss'
         options:
           sourceMap: true
 
@@ -43,41 +43,48 @@ module.exports = (grunt) ->
           filename.replace /^.*\/|\.[^.]*$/g, ''
       compile:
         files:
-          "compiled/ember/modules/templates.js": ["app/templates/*.hbs"]
-
+          'compiled/ember/modules/templates.js': ['app/templates/*.hbs']
     watch:
       scripts:
-        files: ["app/**/*.coffee"]
-        tasks: ["coffee"]
+        files: ['app/**/*.coffee']
+        tasks: ['coffee']
+        options:
+          spawn: false
+          interrupt: true
+          livereload: true
+
+      templates:
+        files: ['app/**/*.hbs']
+        tasks: ['ember_handlebars']
         options:
           spawn: false
           interrupt: true
           livereload: true
 
       sass:
-        files: ["stylesheets/application.scss"]
-        tasks: ["sass"]
+        files: ['stylesheets/application.scss']
+        tasks: ['sass']
         options:
           spawn: false
           interrupt: true
           livereload: true
           
-  grunt.loadNpmTasks "grunt-contrib-clean"
-  grunt.loadNpmTasks "grunt-contrib-coffee"
-  grunt.loadNpmTasks "grunt-contrib-connect"
-  grunt.loadNpmTasks "grunt-ember-handlebars"
-  grunt.loadNpmTasks "grunt-sass"
-  grunt.loadNpmTasks "grunt-contrib-watch"
-  grunt.loadNpmTasks "grunt-notify"
-  grunt.loadNpmTasks "grunt-connect-proxy"
-  grunt.loadNpmTasks "grunt-testem"
+  grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-connect'
+  grunt.loadNpmTasks 'grunt-ember-handlebars'
+  grunt.loadNpmTasks 'grunt-sass'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-notify'
+  grunt.loadNpmTasks 'grunt-connect-proxy'
+  grunt.loadNpmTasks 'grunt-testem'
 
-  grunt.registerTask "default", [
-    "clean",
-    "coffee",
-    "ember_handlebars",
-    "sass",
-    "configureProxies",
-    "connect",
-    "watch"
+  grunt.registerTask 'default', [
+    'clean',
+    'coffee',
+    'ember_handlebars',
+    'sass',
+    'configureProxies',
+    'connect',
+    'watch'
   ]
