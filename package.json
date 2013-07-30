@@ -2,6 +2,7 @@
   "name": "canvas-modules",
   "license": "AGPLv3",
   "scripts": {
+    "start": "grunt",
     "test": "testem ci"
   },
   "repository": {
