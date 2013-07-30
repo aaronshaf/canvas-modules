@@ -22,14 +22,17 @@ requirejs.config
       deps: ['Ember']
 
 require [
+  'Ember'
   'compiled/ember/modules/config/app'
   'compiled/ember/modules/routes/index_route'
   'jquery'
+  'compiled/ember/modules/templates'
   'jquery.csrf'
   # 'compiled/ember/modules/controllers/module_controller'
-  'compiled/ember/modules/templates'
+  
   # 'compiled/ember/modules/config/routes',
-], (App, IndexRoute, $) ->
+], (Ember, App, IndexRoute, $, templates) ->
+  Ember.TEMPLATES = templates
   $(document.body).addClass 'context_modules2'
   App.IndexRoute = IndexRoute
   # App.ModuleController = ModuleController
