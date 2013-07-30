@@ -1,8 +1,24 @@
 module.exports = (grunt) ->
+  proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
+
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
     connect:
-      server: {}
+      options:
+        host: 'localhost'
+        # appendProxies: false
+        middleware: (connect) -> [
+          connect.static(__dirname), #static resources
+          proxySnippet # proxy
+        ]
+      proxies: [
+        context: "/api"
+        host: "localhost"
+        port: 3000
+        # https: false
+        # changeOrigin: false
+        # appendProxies: false
+      ]
 
     clean: ["compiled/"]
     coffee:
@@ -46,7 +62,7 @@ module.exports = (grunt) ->
           spawn: false
           interrupt: true
           livereload: true
-
+          
   grunt.loadNpmTasks "grunt-contrib-clean"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-connect"
@@ -55,5 +71,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-qunit"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-notify"
+  grunt.loadNpmTasks "grunt-connect-proxy"
 
-  grunt.registerTask "default", ["clean", "coffee", "ember_handlebars", "sass", "connect", "watch"]
+  grunt.registerTask "default", ["clean", "coffee", "ember_handlebars", "sass", "configureProxies", "connect", "watch"]
