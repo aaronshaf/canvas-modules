@@ -4,9 +4,9 @@ window.ENV.COURSE_ID = 1
 
 requirejs.config
   paths:
-    jquery: 'vendor/jquery/jquery'
+    jquery: 'vendor/jquery/jquery.min'
     Ember: 'vendor/ember/ember'
-    Handlebars: 'vendor/handlebars/handlebars'
+    Handlebars: 'vendor/handlebars/handlebars.runtime'
     'jquery.csrf': 'libs/jquery.csrf'
   shim:
     jquery:
