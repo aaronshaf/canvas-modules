@@ -1,4 +1,7 @@
 <a class="ig-publish-btn">
-  <i class="icon-unpublished"></i>
-  <i class="icon-publish"></i>
+	{{#if published}}
+  	<i class="icon-unpublished"></i>
+  {{else}}
+	  <i class="icon-publish"></i>
+  {{/if}}
 </a>
