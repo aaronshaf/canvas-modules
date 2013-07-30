@@ -38,6 +38,9 @@ module.exports = (grunt) ->
     ember_handlebars:
       options:
         amd: true
+        # namespace: 'App.TEMPLATES'
+        processName: (filename) ->
+          filename.replace /^.*\/|\.[^.]*$/g, ''
       compile:
         files:
           "compiled/ember/modules/templates.js": ["app/templates/*.hbs"]
