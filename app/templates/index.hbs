@@ -1,6 +1,6 @@
 <div class="sortable-modules">
   {{#each module in controller}}
-    <div class="module" {{bindAttr data-module-id="module.id"}}>
+    <div class="module item-group-condensed" {{bindAttr data-module-id="module.id"}}>
       <h3>{{module.name}}</h3>
       <table class="sortable-module-items table table-condensed table-striped table-bordered" style="min-height: 30px;">
         <tbody {{bindAttr class=":sortable empty"}}>
