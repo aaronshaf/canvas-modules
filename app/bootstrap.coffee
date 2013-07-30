@@ -33,7 +33,6 @@ require [
   # 'compiled/ember/modules/config/routes',
 ], (Ember, App, IndexRoute, $, templates) ->
   Ember.TEMPLATES = templates
-  $(document.body).addClass 'context_modules2'
   App.IndexRoute = IndexRoute
   # App.ModuleController = ModuleController
   window.App = App
