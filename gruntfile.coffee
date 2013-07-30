@@ -71,6 +71,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-notify"
   grunt.loadNpmTasks "grunt-connect-proxy"
+  grunt.loadNpmTasks "grunt-testem"
 
   grunt.registerTask "default", [
     "clean",
