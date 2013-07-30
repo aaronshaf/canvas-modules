@@ -3,5 +3,15 @@
   "src_files": [
     "tests/**/*Spec.js"
   ],
-  "launch_in_ci": ["Firefox"]
+  "launch_in_ci": [
+  	"Firefox",
+  	"Chromium",
+  	"PhantomJS"
+  ],
+  "launch_in_dev": [
+  	"Firefox",
+  	"Chrome",
+  	"Safari",
+  	"PhantomJS"
+  ]
 }
