@@ -19,3 +19,4 @@ grunt
  * proxy
  * sinon
  * dyson
+* Make tests work in either tests/** or in main controller/route/model directories
