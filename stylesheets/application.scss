@@ -34,30 +34,28 @@
     tbody {
       background-color: white;
       border: 1px solid #c2c9d1;
+    }
 
-      td {
-        width: 10%;
-      }
+    td,th {
+      text-align: inherit;
+      width: 10%;
 
-      td.align-right,
-      th.align-right {
+      &.align-right {
         text-align: right;
       }
-
-      td.long {
+      &.long {
+        width: auto;
+      }
+      &.inherit-width {
         width: auto;
       }
 
-      td.inherit-width {
-        width: auto;
-      }
-
-      td.compact {
+      &.compact {
         width: 1%;
       }
 
-      th:last-child {
-        padding: 0;
+      &.no-right-padding {
+        padding-right: 0;
       }
     }
   }
