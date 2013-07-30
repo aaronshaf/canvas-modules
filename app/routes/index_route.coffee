@@ -3,8 +3,11 @@ define [
 ], (Ember) ->
   Ember.Route.extend
     model: ->
-      url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
-      $.getJSON(window.ENV.API_HOST + url)
+      [1,2,3]
+      # url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
+      # window.url2 = window.ENV.API_HOST + url
+      # $.getJSON(url)
+      # window.ENV.API_HOST + 
       # $.getJSON(window.ENV.API_HOST + url).then (modules) ->
       #   # console.log modules
       #   modules = Ember.ArrayProxy.create(content: modules)
