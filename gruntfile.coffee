@@ -6,7 +6,6 @@ module.exports = (grunt) ->
     connect:
       options:
         host: 'localhost'
-        # appendProxies: false
         middleware: (connect) -> [
           connect.static(__dirname), #static resources
           proxySnippet # proxy
@@ -15,9 +14,6 @@ module.exports = (grunt) ->
         context: "/api"
         host: "localhost"
         port: 3000
-        # https: false
-        # changeOrigin: false
-        # appendProxies: false
       ]
 
     clean: ["compiled/"]
