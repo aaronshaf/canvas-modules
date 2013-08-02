@@ -1,7 +1,7 @@
 define [
   'Ember',
   'underscore',
-  'jqueryui/dialog'
+  'jquery.ui.sortable'
 ], (Ember,_) ->
   Ember.ObjectController.extend
     empty: (->
