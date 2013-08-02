@@ -7,7 +7,7 @@ npm install
 ```
 
 ```
-grunt
+npm start
 ```
 
 ## To do
