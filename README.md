@@ -3,7 +3,7 @@
 ## Getting started
 
 ```
-npm install && bower install
+npm install
 ```
 
 ```
