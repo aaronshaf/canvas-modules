@@ -4,23 +4,23 @@ window.ENV.COURSE_ID = 1
 
 requirejs.config
   paths:
-    underscore: 'vendor/lodash/lodash'
-    lodash: 'vendor/lodash/lodash'
-    jquery: 'vendor/jquery/jquery.min'
-    Ember: 'vendor/ember/ember'
-    Handlebars: 'vendor/handlebars/handlebars.runtime'
+    ember: 'vendor/ember/ember'
+    handlebars: 'vendor/handlebars/handlebars.runtime'
     'jquery.csrf': 'libs/jquery.csrf'
-    'jquery.ui.core': 'vendor/jquery.ui//ui/jquery.ui.core'
-    'jquery.ui.mouse': 'vendor/jquery.ui//ui/jquery.ui.mouse'
-    'jquery.ui.widget': 'vendor/jquery.ui//ui/jquery.ui.widget'
-    'jquery.ui.sortable': 'vendor/jquery.ui//ui/jquery.ui.sortable'
+
+  map:
+    '*':
+      'ember': 'ember-1.0.0.rc6'
+      'lodash': 'lodash-private-1.3.1.js'
+      'jquery': 'jquery-private-2.0.3.js'
 
   shim:
-    lodash:
-      exports: '_'
-      init: (lodash) -> this.lodash.noConflict()
     jquery:
       exports: '$'
+      init: ($) ->
+        alert '1'
+        $.ajaxSetup({headers: { Authorization: 'Bearer ' + ''}});
+        $
     'jquery.csrf':
       deps: ['jquery']
     'jquery.ui.sortable':
@@ -46,13 +46,12 @@ require [
   'compiled/ember/modules/config/app'
   'compiled/ember/modules/routes/index_route'
   'compiled/ember/modules/views/index_view'
-  'jquery'
   'compiled/ember/modules/templates'
   'jquery.csrf'
   # 'compiled/ember/modules/controllers/module_controller'
   
   # 'compiled/ember/modules/config/routes',
-], (Ember, App, IndexRoute, IndexView, $, templates) ->
+], (Ember, App, IndexRoute, IndexView, templates) ->
   Ember.TEMPLATES = templates
   App.IndexRoute = IndexRoute
   App.IndexView = IndexView
