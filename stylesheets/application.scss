@@ -47,6 +47,8 @@
   }
 
   table {
+    // table-layout: fixed;
+
     tbody {
       background-color: white;
       border: 1px solid #c2c9d1;
@@ -60,9 +62,12 @@
       text-align: right;
     }
 
+    td {
+      width: 11%;
+    }
+
     td,th {
       text-align: inherit;
-      width: 10%;
 
       &.align-right {
         text-align: right;
@@ -112,6 +117,8 @@
       left: 68px;
     }
   }
+
+  /*
   .editable .item-group-condensed {
     .ig-title {
       right: 600px;
@@ -142,4 +149,20 @@
       padding-right: 7px;
     }
   }
+  */
+}
+
+tbody.sortable tr {
+  display: table-row;
+  width: 100%;
+}
+
+tr.ui-sortable-helper {
+  background-color: white;
+}
+
+tbody.sortable.empty {
+  min-height: 30px;
+  display: block;
+  width: 100%;
 }
