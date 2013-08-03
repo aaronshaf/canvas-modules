@@ -1,8 +1,9 @@
 define [
   'ember',
-  'underscore',
-  'jquery.ui.sortable'
-], (Ember,_) ->
+  'jquery'
+  'lodash',
+  'jquery.ui.sortable',
+], (Ember,$,_) ->
   Ember.ObjectController.extend
     empty: (->
       this.get('items.length') is 0
