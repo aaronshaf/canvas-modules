@@ -3,6 +3,8 @@
 }
 
 .context_modules2 {
+
+
   #breadcrumbs {
     border-bottom-color: #b6babf;
   }
@@ -47,11 +49,22 @@
   }
 
   table {
-    // table-layout: fixed;
+    table-layout: fixed;
+
+    thead {
+      background-color: inherit;
+    }
+
+    tr {
+      cursor: move;
+    }
 
     tbody {
       background-color: white;
       border: 1px solid #c2c9d1;
+      tr:hover {
+        background-color: #F6F8F9;
+      }
     }
 
     td:first-of-type, th:first-of-type {
