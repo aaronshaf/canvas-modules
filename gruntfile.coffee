@@ -50,7 +50,7 @@ module.exports = (grunt) ->
           ]
     watch:
       scripts:
-        files: ['app/**/*.coffee']
+        files: ['app/**/*.coffee','vendor/**/*.js']
         tasks: ['coffee']
         options:
           spawn: false
