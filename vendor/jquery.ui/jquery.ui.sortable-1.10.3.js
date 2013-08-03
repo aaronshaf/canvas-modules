@@ -15,9 +15,9 @@
  */
 define([
 	'jquery',
-	'vendor/jquery.ui.core-1.10.3',
-	'vendor/jquery.ui.mouse-1.10.3',
-	'vendor/jquery.ui.widget-1.10.3'
+	'vendor/jquery.ui/jquery.ui.core-1.10.3',
+	'vendor/jquery.ui/jquery.ui.mouse-1.10.3',
+	'vendor/jquery.ui/jquery.ui.widget-1.10.3'
 ], function ($) {
 
 function isOverAxis( x, reference, size ) {
