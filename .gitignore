@@ -3,3 +3,5 @@ bower_components
 compiled
 libpeerconnection.log
 .sublime-project
+TODO.md
+.DS_Store
