@@ -1,5 +1,5 @@
 define [
-  'Ember',
+  'ember',
   'underscore',
   'jquery.ui.sortable'
 ], (Ember,_) ->

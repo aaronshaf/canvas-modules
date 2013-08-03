@@ -1,6 +1,7 @@
 define [
-  'Ember'
-], (Ember) ->
+  'ember',
+  'jquery'
+], (Ember, $) ->
   Ember.Route.extend
     model: ->
       url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'

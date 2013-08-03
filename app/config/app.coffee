@@ -1,6 +1,7 @@
 define [
-  'Ember'
-], (Ember) ->
+  'ember',
+  'jquery'
+], (Ember,$) ->
   $(document.body).addClass 'context_modules2'
   $(document.body).addClass 'environment-development'
 
