@@ -1,5 +1,6 @@
 define(function() {
   return function($) {
+    var _parseJSON = $.parseJSON;
     $.parseJSON = function() {
       if (arguments[0]) {
         try {
