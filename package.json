@@ -20,7 +20,8 @@
     "grunt-contrib-handlebars": "~0.5.10",
     "grunt-notify": "~0.2.6",
     "grunt-ember-handlebars": "git://github.com/aaronshaf/grunt-ember-handlebars.git#72d14c94304525f48e10faf1563a6c94a063f77b",
-    "grunt-connect-proxy": "~0.1.5",
-    "grunt-testem": "~0.3.6"
+    "grunt-testem": "~0.3.6",
+    "express": "~3.3.4",
+    "http-proxy": "~0.10.3"
   }
 }

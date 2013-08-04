@@ -1,20 +1,28 @@
+server = require './server'
+
 module.exports = (grunt) ->
   proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
+  server(grunt);
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
-    connect:
-      options:
-        host: 'localhost'
-        middleware: (connect) -> [
-          connect.static(__dirname), #static resources
-          proxySnippet # proxy
-        ]
-      proxies: [
-        context: '/api'
-        host: 'localhost'
-        port: 3000
-      ]
+
+    'canvas-data-dev':
+      test: 1
+
+    # connect:
+    #   options:
+    #     host: 'localhost'
+    #     middleware: (connect) -> [
+    #       connect.static(__dirname), #static resources
+    #       # proxySnippet, # proxy
+    #       # mockApi
+    #     ]
+    #   proxies: [
+    #     context: '/api'
+    #     host: 'localhost'
+    #     port: 3000
+    #   ]
 
     clean: ['compiled/']
     coffee:
@@ -79,12 +87,10 @@ module.exports = (grunt) ->
           
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-ember-handlebars'
   grunt.loadNpmTasks 'grunt-sass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-notify'
-  grunt.loadNpmTasks 'grunt-connect-proxy'
   grunt.loadNpmTasks 'grunt-testem'
 
   grunt.registerTask 'default', [
@@ -92,7 +98,6 @@ module.exports = (grunt) ->
     'coffee',
     'ember_handlebars',
     'sass',
-    'configureProxies',
-    'connect',
+    'canvas-data-dev',
     'watch'
   ]
