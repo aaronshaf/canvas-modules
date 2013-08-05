@@ -1,5 +1,5 @@
 define [
-  'ember',
+  'Ember',
   'jquery'
   'underscore',
   'vendor/jqueryui/sortable',
