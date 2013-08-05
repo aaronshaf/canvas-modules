@@ -13,7 +13,7 @@
  */
 define([
 	'jquery',
-	'vendor/jquery.ui/jquery.ui.widget-1.10.3'
+	'vendor/jqueryui/widget-1.10.3'
 ], function ($) {
 
 var mouseHandled = false;

@@ -2,7 +2,7 @@ define [
   'ember',
   'jquery'
   'underscore',
-  'jquery.ui.sortable',
+  'vendor/jqueryui/sortable',
 ], (Ember,$,_) ->
   Ember.ObjectController.extend
     empty: (->

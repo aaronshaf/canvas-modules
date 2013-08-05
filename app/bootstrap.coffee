@@ -14,7 +14,7 @@ requirejs.config
       'Ember': 'vendor/ember/ember-1.0.0-rc6'
       'lodash': 'vendor/lodash/lodash-private-1.3.1'
       'jquery': 'vendor/instructure/jquery.instructure-1.1'
-      'jquery.ui.sortable': 'vendor/jquery.ui/jquery.ui.sortable-1.10.3'
+      'vendor/jqueryui/sortable': 'vendor/jqueryui/sortable-1.10.3'
 
   shim:
     ember:
