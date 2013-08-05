@@ -4,7 +4,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('server', 'Data for Canvas development', function(test) {
     var app = express();
-    app.use(express.bodyParser());
     
     grunt.log.writeln('Starting express server.');
 
@@ -23,6 +22,7 @@ module.exports = function(grunt) {
         });
       });
     } else {
+      app.use(express.bodyParser());
       var canvasMockApi = require('canvas-mock-api');
       canvasMockApi(app);
     }
