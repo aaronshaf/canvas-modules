@@ -14,7 +14,8 @@ module.exports = function(grunt) {
     if(grunt.config('api.host') || grunt.config('api.port')) {
       var proxy = new httpProxy.RoutingProxy();
       app.use(function(req, res) {
-        req.headers['Authorization'] = 'Bearer ' + grunt.config('api.access_token');
+        // req.headers['Authorization'] = 'Bearer ' + grunt.config('api.access_token');
+        req.url = req.url + '?access_token=' + grunt.config('api.access_token');
         proxy.proxyRequest(req, res, {
           pathnameOnly: true,
           host: grunt.config('api.host') || 'localhost',
