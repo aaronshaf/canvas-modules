@@ -15,8 +15,4 @@ npm start
 * Automatically generate main.js (see [Ryan's Rakefile](https://github.com/rpflorence/canvas-client-app/blob/aafa96e50fe529fab35e4c1ed79f73fa3ec7d760/Rakefile#L34-L59))
 * Share canvas-global's CSS
 * Grunt task for export into canvas-global?
-* Configuration file for choosing data strategy:
- * proxy
- * sinon
- * dyson
 * Make tests work in either tests/** or in main controller/route/model directories
