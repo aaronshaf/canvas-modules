@@ -1,5 +1,4 @@
 window.ENV = {}
-window.ENV.API_HOST = 'http://localhost:8000'
 window.ENV.COURSE_ID = 1
 
 requirejs.config

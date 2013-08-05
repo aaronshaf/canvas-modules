@@ -71,7 +71,7 @@ define [
           index = ui.item.parent().find("> tr").index(ui.item)
           url = "/api/v1/courses/" + window.ENV.COURSE_ID + "/modules/" + module_id + "/items/" + module_item_id
           $.ajax
-            url: window.ENV.API_HOST + url
+            url: url
             type: "PUT"
             data:
               module_item:
