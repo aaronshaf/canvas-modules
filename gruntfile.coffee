@@ -1,4 +1,6 @@
 server = require './server'
+fs = require 'fs'
+settings = JSON.parse(fs.readFileSync('./config.json'))
 
 module.exports = (grunt) ->
   proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
@@ -6,9 +8,10 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
-    # api:
-    #   host: 'localhost'
-    #   port: 3000
+    api:
+      host: 'localhost'
+      port: 3000
+      access_token: settings?.access_token
 
     clean: ['compiled/']
 

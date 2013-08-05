@@ -5,3 +5,4 @@ libpeerconnection.log
 .sublime-project
 TODO.md
 .DS_Store
+config.json
