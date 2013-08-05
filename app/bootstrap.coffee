@@ -5,13 +5,13 @@ requirejs.config
   paths:
     'ember': 'vendor/ember/ember'
     'handlebars': 'vendor/handlebars/handlebars.runtime-1.0.0-rc4'
+    'underscore': 'vendor/underscore/underscore-1.4.4'
 
   map:
     '*':
       'Handlebars': 'handlebars'
       'ember': 'vendor/ember/ember-1.0.0-rc6'
       'Ember': 'vendor/ember/ember-1.0.0-rc6'
-      'underscore': 'vendor/lodash/lodash-private-1.3.1'
       'lodash': 'vendor/lodash/lodash-private-1.3.1'
       'jquery': 'vendor/instructure/jquery.instructure-1.1'
       'jquery.ui.sortable': 'vendor/jquery.ui/jquery.ui.sortable-1.10.3'
@@ -23,6 +23,8 @@ requirejs.config
     handlebars:
       deps: ['jquery']
       exports: 'Handlebars'
+    underscore:
+      exports: '_'
 
 require [
   'ember'

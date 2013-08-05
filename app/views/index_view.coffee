@@ -1,7 +1,7 @@
 define [
   'ember',
   'jquery'
-  'lodash',
+  'underscore',
   'jquery.ui.sortable',
 ], (Ember,$,_) ->
   Ember.ObjectController.extend
