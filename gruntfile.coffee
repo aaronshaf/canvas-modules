@@ -2,29 +2,16 @@ server = require './server'
 
 module.exports = (grunt) ->
   proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
-  server(grunt);
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
-    'canvas-data-dev':
-      test: 1
-
-    # connect:
-    #   options:
-    #     host: 'localhost'
-    #     middleware: (connect) -> [
-    #       connect.static(__dirname), #static resources
-    #       # proxySnippet, # proxy
-    #       # mockApi
-    #     ]
-    #   proxies: [
-    #     context: '/api'
-    #     host: 'localhost'
-    #     port: 3000
-    #   ]
+    # api:
+    #   host: 'localhost'
+    #   port: 3000
 
     clean: ['compiled/']
+
     coffee:
       compile:
         options:
@@ -51,11 +38,13 @@ module.exports = (grunt) ->
           filename = filename.replace 'app/templates/', ''
           filename = filename.replace '.handlebars', ''
           filename.replace '.hbs', ''
+
       compile:
         files:
           'compiled/ember/modules/templates.js': [
             'app/templates/**/*.hbs'
           ]
+          
     watch:
       scripts:
         files: [
@@ -84,6 +73,8 @@ module.exports = (grunt) ->
           spawn: false
           interrupt: true
           livereload: true
+  
+  server(grunt);
           
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -98,6 +89,6 @@ module.exports = (grunt) ->
     'coffee',
     'ember_handlebars',
     'sass',
-    'canvas-data-dev',
+    'server',
     'watch'
   ]

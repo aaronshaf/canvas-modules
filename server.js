@@ -2,42 +2,29 @@ module.exports = function(grunt) {
   var express = require('express');
   var httpProxy = require('http-proxy');
 
-  grunt.registerMultiTask('canvas-data-dev', 'Data for Canvas development', function() {
+  grunt.registerTask('server', 'Data for Canvas development', function(test) {
     var app = express();
-    var options = this.options({
-      method: 'mock-api'
-    });
-
+    app.use(express.bodyParser());
+    
     grunt.log.writeln('Starting express server.');
 
     // Static resources
     app.use(express.static(__dirname));
 
-    // Mock API
-    app.get('/api/v1', function(req, res) { ///v1/courses/1/modules
-      res.json('yay!');
-    });
-
-    // Proxy if configured for it
-    var proxy = new httpProxy.HttpProxy({
-      target: {
-        host: 'localhost',
-        port: 8000,
-        context: '/api'
-      }
-    });
+    if(grunt.config('api.host') || grunt.config('api.port')) {
+      var proxy = new httpProxy.RoutingProxy();
+      app.use(function(req, res) {
+        proxy.proxyRequest(req, res, {
+          pathnameOnly: true,
+          host: grunt.config('api.host') || 'localhost',
+          port: grunt.config('api.port') || 3000
+        });
+      });      
+    } else {
+      var canvasMockApi = require('canvas-mock-api');
+      canvasMockApi(app);
+    }
 
     app.listen(8000);
   });
 };
-
-
-
-
-
-// // Mock API
-// // app.get('/api/v1', function(req, res) { ///v1/courses/1/modules
-// //   res.json('yay!');
-// // });
-
-// app.listen(8000);

@@ -22,6 +22,7 @@
     "grunt-ember-handlebars": "git://github.com/aaronshaf/grunt-ember-handlebars.git#72d14c94304525f48e10faf1563a6c94a063f77b",
     "grunt-testem": "~0.3.6",
     "express": "~3.3.4",
-    "http-proxy": "~0.10.3"
+    "http-proxy": "~0.10.3",
+    "canvas-mock-api": "git://github.com/aaronshaf/canvas-mock-api.git"
   }
 }
