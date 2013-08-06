@@ -21,6 +21,10 @@ module.exports = (grunt) ->
     #   access_token: settings?.access_token
 
     clean: ['compiled/']
+    clean: [
+      'compiled/'
+      'libpeerconnection.log'
+    ]
 
     coffee:
       compile:
