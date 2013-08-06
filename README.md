@@ -22,6 +22,10 @@ cp config.example.json config.json
 npm start
 ```
 
+## Mock API, and API proxy
+
+By default a mock API is used. If you would like to test against a running instance of canvas, uncomment the [api line in gruntconf.coffee](https://github.com/aaronshaf/canvas-modules/blob/master/gruntfile.coffee#L17).
+
 ## To do
 
 * Automatically generate main.js (see [Ryan's Rakefile](https://github.com/rpflorence/canvas-client-app/blob/aafa96e50fe529fab35e4c1ed79f73fa3ec7d760/Rakefile#L34-L59))
