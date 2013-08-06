@@ -28,6 +28,8 @@ requirejs.config
     underscore:
       exports: '_'
 
+  urlArgs:"bust=" + (new Date()).getTime()
+
 require [
   'ember'
   # "compiled/ember/#{bundle}/config/app"
