@@ -10,15 +10,15 @@ module.exports = function(grunt) {
     // Static resources
     app.use(express.static(__dirname));
 
-    if(grunt.config('api.host') || grunt.config('api.port')) {
+    if(grunt.config('api.host') && grunt.config('api.port')) {
       var proxy = new httpProxy.RoutingProxy();
       app.use(function(req, res) {
         // req.headers['Authorization'] = 'Bearer ' + grunt.config('api.access_token');
         req.url = req.url + '?access_token=' + grunt.config('api.access_token');
         proxy.proxyRequest(req, res, {
           pathnameOnly: true,
-          host: grunt.config('api.host') || 'localhost',
-          port: grunt.config('api.port') || 3000
+          host: grunt.config('api.host'),
+          port: grunt.config('api.port')
         });
       });
     } else {

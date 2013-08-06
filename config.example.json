@@ -1,4 +1,8 @@
 {
   "bundle": "context_modules2",
-  "access_token": ""
+  "api": {
+  	"host": "localhost",
+  	"port": 3000,
+  	"access_token": ""
+  }
 }

@@ -2,7 +2,7 @@ server = require './server'
 fs = require 'fs'
 
 if !fs.existsSync './config.json'
-  console.log 'config.json not found. Take a look at config.example.json'
+  console.log 'config.json not found. See config.example.json'
   process.exit()
 
 settings = JSON.parse(fs.readFileSync('./config.json'))
@@ -14,13 +14,8 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
+    # api: grunt.file.readJSON('config.json').api
 
-    # api:
-    #   host: 'localhost'
-    #   port: 3000
-    #   access_token: settings?.access_token
-
-    clean: ['compiled/']
     clean: [
       'compiled/'
       'libpeerconnection.log'
@@ -103,7 +98,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-sass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-notify'
-  grunt.loadNpmTasks 'grunt-testem'
 
   grunt.registerTask 'default', [
     'clean',
