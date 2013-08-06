@@ -7,6 +7,10 @@ npm install
 ```
 
 ```
+cp config.example.json config.json
+```
+
+```
 npm start
 ```
 
