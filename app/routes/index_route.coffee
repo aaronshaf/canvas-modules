@@ -6,8 +6,6 @@ define [
     model: ->
       url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
       $.getJSON(url).then success = (modules) ->
-        console.log modules
-        return modules
         modules = Ember.ArrayProxy.create(content: modules)
         modules.map (module) ->
           model = Ember.Object.create(module)
