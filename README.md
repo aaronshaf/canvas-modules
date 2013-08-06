@@ -3,6 +3,14 @@
 ## Getting started
 
 ```
+git clone https://github.com/aaronshaf/canvas-modules.git
+```
+
+```
+cd canvas-modules
+```
+
+```
 npm install
 ```
 
