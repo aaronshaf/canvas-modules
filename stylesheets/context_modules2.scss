@@ -117,18 +117,23 @@
   }
   .item-group-condensed .ig-title {
     left: 20px;
-    &.indent-1 {
-      left: 32px;
-    }
-    &.indent-2 {
-      left: 44px;
-    }
-    &.indent-3 {
-      left: 56px;
-    }
-    &.indent-4 {
-      left: 68px;
-    }
+  }
+
+  .indent-1 {
+    margin-left: 12px;
+  }
+  .indent-2 {
+    margin-left: 24px;
+  }
+  .indent-3 {
+    margin-left: 36px;
+  }
+  .indent-4 {
+    margin-left: 48px;
+  }
+
+  .ig-publish-btn {
+    cursor: pointer;
   }
 
   /*

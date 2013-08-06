@@ -4,6 +4,11 @@ define [
 ], (Ember, $) ->
   Ember.Route.extend
     model: ->
+      ModelItem = Ember.Object.extend
+        indentClass: (->
+          'indent-' + this.get('indent')
+        ).property('indent')
+
       url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
       $.getJSON(url).then success = (modules) ->
         modules = Ember.ArrayProxy.create(content: modules)
