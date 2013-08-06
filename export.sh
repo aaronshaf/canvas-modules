@@ -12,9 +12,10 @@ cp -R app/routes ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R app/templates ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R app/views ../canvas-lms/app/coffeescripts/ember/context_modules2/
 
+# sass
 cp stylesheets/context_modules2.scss ../canvas-lms/app/stylesheets/
 
-# sass
+# tests
 
 # vendor?
 
