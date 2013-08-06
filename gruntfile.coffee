@@ -31,7 +31,7 @@ module.exports = (grunt) ->
     sass:
       dist:
         files:
-          'compiled/application.css': 'stylesheets/application.scss'
+          'compiled/context_modules2.css': 'stylesheets/context_modules2.scss'
         options:
           sourceMap: true
 
