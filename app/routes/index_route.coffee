@@ -17,9 +17,15 @@ define [
           # side effect, fetch items for module
           $.getJSON(url + "/" + module.id + "/items").then (success = (items) ->
             items = items.map((item) ->
-              Ember.Object.create item
+              ModelItem.create item
             )
             items = Ember.ArrayProxy.create(content: items)
             model.set "items", items
           ).bind(this)
           model
+    events:
+      showAddModuleModal: ->
+        this.modelFor('index').unshiftObject(Ember.Object.create(
+          name: '12345'
+        ))
+        # this.controllerFor('reveal').set('model',awefwae)
