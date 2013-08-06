@@ -40,5 +40,5 @@ require [
   Ember.TEMPLATES = templates
   App.IndexRoute = IndexRoute
   App.IndexView = IndexView
-  # # # App.ModuleController = ModuleController
+  # App.ModuleController = ModuleController
   window.App = App

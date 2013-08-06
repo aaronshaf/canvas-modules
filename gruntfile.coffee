@@ -52,7 +52,10 @@ module.exports = (grunt) ->
           
     watch:
       server:
-        files: ['node_modules/canvas-mock-api/*.js','node_modules/canvas-mock-api/**/*.js']
+        files: [
+          'node_modules/canvas-mock-api/*.js',
+          'node_modules/canvas-mock-api/**/*.js'
+        ]
         tasks: ['server']
 
       scripts:
