@@ -10,10 +10,10 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
-    api:
-      host: 'localhost'
-      port: 3000
-      access_token: settings?.access_token
+    # api:
+    #   host: 'localhost'
+    #   port: 3000
+    #   access_token: settings?.access_token
 
     clean: ['compiled/']
 

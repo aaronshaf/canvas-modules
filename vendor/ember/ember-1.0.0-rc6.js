@@ -2,7 +2,8 @@ define(['handlebars', 'jquery'], function(Handlebars, $) {
   Ember = {
     imports: {
       Handlebars: Handlebars,
-      jQuery: $
+      jQuery: $,
+      console: window.console
     }
   };
   // this.jQuery = $;
