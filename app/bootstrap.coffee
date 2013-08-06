@@ -34,10 +34,10 @@ require [
   "compiled/ember/#{bundle}/config/app"
   "compiled/ember/#{bundle}/routes/index_route"
   "compiled/ember/#{bundle}/views/index_view"
+  "compiled/ember/#{bundle}/controllers/module_controller"
   "compiled/templates"
-  # 'compiled/ember/#{bundle}/controllers/module_controller'
   "compiled/ember/#{bundle}/config/routes",
-], (Ember, App, IndexRoute, IndexView, templates) -> # Ember, App, IndexRoute, IndexView, templates, IndexRoute, IndexView, 
+], (Ember, App, IndexRoute, IndexView, ModuleController, templates) -> # Ember, App, IndexRoute, IndexView, templates, IndexRoute, IndexView, 
   Ember.TEMPLATES = templates
   App.IndexRoute = IndexRoute
   App.IndexView = IndexView
@@ -46,7 +46,5 @@ require [
   Ember.LOG_BINDING = true
   Ember.ENV.RAISE_ON_DEPRECATION = true
 
-  # App.ApplicationController
-
-  # App.ModuleController = ModuleController
+  App.ModuleController = ModuleController
   window.App = App
