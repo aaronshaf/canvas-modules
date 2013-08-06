@@ -37,7 +37,7 @@ require [
   "compiled/ember/#{bundle}/controllers/module_controller"
   "compiled/templates"
   "compiled/ember/#{bundle}/config/routes",
-], (Ember, App, IndexRoute, IndexView, ModuleController, templates) -> # Ember, App, IndexRoute, IndexView, templates, IndexRoute, IndexView, 
+], (Ember, App, IndexRoute, IndexView, ModuleController, templates) ->
   Ember.TEMPLATES = templates
   App.IndexRoute = IndexRoute
   App.IndexView = IndexView
