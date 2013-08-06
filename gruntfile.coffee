@@ -3,6 +3,8 @@ fs = require 'fs'
 settings = JSON.parse(fs.readFileSync('./config.json'))
 
 module.exports = (grunt) ->
+  bundle = 'context_modules2'
+
   proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
 
   grunt.initConfig
@@ -23,7 +25,7 @@ module.exports = (grunt) ->
         expand: true
         src: ['**/*.coffee']
         cwd: 'app/'
-        dest: 'compiled/ember/modules/'
+        dest: 'compiled/ember/' + bundle + '/'
         ext: '.js'
 
     sass:
@@ -44,7 +46,7 @@ module.exports = (grunt) ->
 
       compile:
         files:
-          'compiled/ember/modules/templates.js': [
+          'compiled/templates.js': [
             'app/templates/**/*.hbs'
           ]
           

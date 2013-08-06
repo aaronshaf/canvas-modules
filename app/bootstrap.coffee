@@ -1,6 +1,8 @@
 window.ENV = {}
 window.ENV.COURSE_ID = 1
 
+bundle = 'context_modules2'
+
 requirejs.config
   paths:
     'ember': 'vendor/ember/ember'
@@ -28,12 +30,12 @@ requirejs.config
 
 require [
   'ember'
-  'compiled/ember/modules/config/app'
-  'compiled/ember/modules/routes/index_route'
-  'compiled/ember/modules/views/index_view'
-  'compiled/ember/modules/templates'
-  # 'compiled/ember/modules/controllers/module_controller'
-  # 'compiled/ember/modules/config/routes',
+  "compiled/ember/#{bundle}/config/app"
+  "compiled/ember/#{bundle}/routes/index_route"
+  "compiled/ember/#{bundle}/views/index_view"
+  "compiled/templates"
+  # 'compiled/ember/#{bundle}/controllers/module_controller'
+  # 'compiled/ember/#{bundle}/config/routes',
 ], (Ember, App, IndexRoute, IndexView, templates) -> # Ember, App, IndexRoute, IndexView, templates
   Ember.TEMPLATES = templates
   App.IndexRoute = IndexRoute
