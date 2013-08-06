@@ -9,8 +9,10 @@
     <i class="icon-quiz" aria-label="Item type: Quiz"></i>
     <i class="icon-link" aria-label="Item type: Link"></i>
     </span -->
-    <i class="icon-assignment"></i>
-    {{item.title}}
+    <div style="display: inline-block;" {{bindAttr class=item.indentClass}}>
+      <i class="icon-assignment"></i>
+      {{item.title}}
+    </div>
   </td>
   <td>
     Available at
@@ -22,9 +24,9 @@
     -/10 pts
   </td>
   <td class="align-right">
-    {{module-item-publish}}
+    {{canvas-module-item-publish published=item.published}}
   </td>
   <td>
-    {{module-item-cog}}
+    {{canvas-module-item-cog item=item}}
   </td>
 </tr>
