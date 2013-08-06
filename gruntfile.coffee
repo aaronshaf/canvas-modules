@@ -1,5 +1,10 @@
 server = require './server'
 fs = require 'fs'
+
+if !fs.existsSync './config.json'
+  console.log 'config.json not found. Take a look at config.example.json'
+  process.exit()
+
 settings = JSON.parse(fs.readFileSync('./config.json'))
 
 module.exports = (grunt) ->
