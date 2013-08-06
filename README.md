@@ -22,7 +22,7 @@ cp config.example.json config.json
 npm start
 ```
 
-## Mock API, and API proxy
+## Mock API, and proxy API
 
 By default a mock API is used. If you would like to test against a running instance of canvas, uncomment the [api line in gruntconf.coffee](https://github.com/aaronshaf/canvas-modules/blob/master/gruntfile.coffee#L17).
 
