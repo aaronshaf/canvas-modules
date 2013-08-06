@@ -10,7 +10,9 @@
       <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
     </a>
   </div>
-  <input type="search" placeholder="Search for module or item inside module" class="module-search">
+  {{view Ember.TextField valueBinding="searchQuery" type="search" placeholder="Search for module or item inside module"}}
 </div>
+
+{{searchQuery}}
 
 {{outlet}}
