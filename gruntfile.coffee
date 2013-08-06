@@ -83,7 +83,7 @@ module.exports = (grunt) ->
           livereload: true
 
       sass:
-        files: ['stylesheets/application.scss']
+        files: ['stylesheets/*.scss']
         tasks: ['sass']
         options:
           spawn: false
