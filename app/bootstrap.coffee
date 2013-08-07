@@ -49,6 +49,12 @@ require [
   App.ModuleController = ModuleController
 
   App.IndexController = Ember.Controller.extend
+    editable: true
+    togglePreview: ->
+      if this.get 'editable'
+        this.set 'editable', false
+      else
+        this.set 'editable', true
     filterItems: (->
       exp = new RegExp this.searchQuery,'g'
       this.get('model').map (module) ->

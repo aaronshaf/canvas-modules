@@ -1,7 +1,11 @@
 <div class="modules-toolbar">
   <div class="pull-right">
-    <a href="#" class="btn preview-modules-button">
-      Preview
+    <a href="#" class="btn preview-modules-button" {{action 'togglePreview'}}>
+      {{#if editable}}
+        Preview
+      {{else}}
+        Exit preview
+      {{/if}}
     </a>
     <a href="#" class="btn btn-primary add-module-button" {{action 'showAddModuleModal'}}>
       <i class="icon-plus"></i> Module
@@ -15,6 +19,6 @@
 
 <div class="item-group-container sortable-modules">
   {{#each module in model}}
-    {{canvas-module module=module}}
+    {{canvas-module module=module editable=editable}}
   {{/each}}
 </div>

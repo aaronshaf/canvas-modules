@@ -1,6 +1,8 @@
 <tr {{bindAttr data-module-item-id="item.id" class=":module-item item.visible:visible:hidden"}}>
   <td class="long">
-    <img src="img/item-handle.png" style="height: 12px;padding-bottom: 4px;" />
+    {{#if editable}}
+      <img src="img/item-handle.png" style="height: 12px;padding-bottom: 4px;" />
+    {{/if}}
     <!-- span class="type_icon" title="Quiz">
     <i class="icon-document" aria-label="Item type: Document"></i>
     <i class="icon-download" aria-label="Item type: Download"></i>
@@ -23,10 +25,12 @@
   <td class="align-right">
     -/10 pts
   </td>
-  <td class="align-right">
-    {{canvas-module-item-publish published=item.published}}
-  </td>
-  <td>
-    {{canvas-module-item-cog item=item}}
-  </td>
+  {{#if editable}}
+    <td class="align-right">
+      {{canvas-module-item-publish published=item.published}}
+    </td>
+    <td>
+      {{canvas-module-item-cog item=item}}
+    </td>
+  {{/if}}
 </tr>
