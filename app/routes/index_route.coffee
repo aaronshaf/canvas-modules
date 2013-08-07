@@ -17,6 +17,8 @@ define [
         modules = Ember.ArrayProxy.create(content: modules)
         modules.map (module) ->
           model = Ember.Object.create(module)
+          model.set 'expanded', true
+
           # side effect, fetch items for module
           $.getJSON(url + "/" + module.id + "/items").then (success = (items) ->
             items = items.map((item) ->

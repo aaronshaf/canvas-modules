@@ -76,10 +76,17 @@ require [
         module
     ).observes('searchQuery')
 
+  App.CanvasModuleComponent = Ember.Component.extend
+    toggleExpandCollapse: ->
+      if this.get 'module.expanded'
+        this.set 'module.expanded', false
+      else
+        this.set 'module.expanded', true
+
   # TODO: Move these to their own files. Also, if possible, consolidate.
   App.CanvasModulePublishComponent = Ember.Component.extend
     togglePublish: ->
-      if this.get('published')
+      if this.get 'published'
         this.set 'published', false
       else
         this.set 'published', true

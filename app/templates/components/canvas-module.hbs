@@ -7,7 +7,15 @@
             {{#if editable}}
               <img src="img/module-handler.png" style="height: 12px;padding-bottom: 4px;" />
             {{/if}}
-            <i class="icon-mini-arrow-right"></i>
+            {{#if module.items.length}}
+              <a {{action 'toggleExpandCollapse'}}>
+                {{#if module.expanded}}
+                  <i class="icon-mini-arrow-down"></i>
+                {{else}}
+                  <i class="icon-mini-arrow-right"></i>
+                {{/if}}
+              </a>
+            {{/if}}
             {{module.name}}
           </h3>
         </th>
@@ -30,10 +38,12 @@
         {{/if}}
       </tr>
     </thead>
-    <tbody {{bindAttr class=":sortable empty"}}>
-      {{#each item in module.items}}
-        {{canvas-module-item item=item editable=editable}}
-      {{/each}}
-    <tbody>
+    {{#if module.expanded}}
+      <tbody {{bindAttr class=":sortable empty"}}>
+        {{#each item in module.items}}
+          {{canvas-module-item item=item editable=editable}}
+        {{/each}}
+      <tbody>
+    {{/if}}
   </table>
 </div>
