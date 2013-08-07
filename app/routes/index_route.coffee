@@ -26,6 +26,6 @@ define [
     events:
       showAddModuleModal: ->
         this.modelFor('index').unshiftObject(Ember.Object.create(
-          name: '12345'
+          name: 'Unnamed'
         ))
         # this.controllerFor('reveal').set('model',awefwae)

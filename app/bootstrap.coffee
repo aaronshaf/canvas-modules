@@ -47,4 +47,16 @@ require [
   Ember.ENV.RAISE_ON_DEPRECATION = true
 
   App.ModuleController = ModuleController
+
+  App.IndexController = Ember.Controller.extend
+    filterItems: (->
+      exp = new RegExp this.searchQuery,'g'
+      this.get('model').map (module) ->
+        if exp.test module.get('name')
+          module.set 'hidden', false
+        else
+          module.set 'hidden', true
+        module
+    ).observes('searchQuery')
+
   window.App = App
