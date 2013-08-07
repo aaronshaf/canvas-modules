@@ -3,8 +3,16 @@
 }
 
 .context_modules2 {
+  .module-item-title {
+    color: black;
+  }
+
   tr.hidden {
     display: none;
+  }
+
+  .small-text {
+    font-size: .9em;
   }
 
   tr.visible {

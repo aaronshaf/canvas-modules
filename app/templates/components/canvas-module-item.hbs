@@ -9,16 +9,17 @@
         <i {{bindAttr class=item.iconClass}} aria-label="Item type: Assignment"></i>
       </span>
 
-      {{item.title}} ({{item.visible}})
+      <a class="module-item-title" {{bindAttr href=item.url}}>{{item.title}}</a>
+      ({{item.visible}})
     </div>
   </td>
-  <td>
-    Available at
+  <td class="small-text">
+    <strong>Available at</strong> Sep 4, 2013
   </td>
-  <td>
-    Due at
+  <td class="small-text">
+    <strong>Due at</strong> Sep 4, 2013
   </td>
-  <td class="align-right">
+  <td class="align-right small-text">
     -/10 pts
   </td>
   {{#if editable}}
