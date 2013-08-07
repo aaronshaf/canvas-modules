@@ -11,6 +11,11 @@
     display: table-row;
   }
 
+  .ig-publish-btn,
+  .module-published-button {
+    cursor: pointer;
+  }
+
   #breadcrumbs {
     border-bottom-color: #b6babf;
   }
@@ -136,10 +141,6 @@
   }
   .indent-4 {
     margin-left: 48px;
-  }
-
-  .ig-publish-btn {
-    cursor: pointer;
   }
 
   /*

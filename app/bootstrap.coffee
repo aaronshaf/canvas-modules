@@ -70,4 +70,19 @@ require [
         module
     ).observes('searchQuery')
 
+  # TODO: Move these to their own files. Also, if possible, consolidate.
+  App.CanvasModulePublishComponent = Ember.Component.extend
+    togglePublish: ->
+      if this.get('published')
+        this.set 'published', false
+      else
+        this.set 'published', true
+
+  App.CanvasModuleItemPublishComponent = Ember.Component.extend
+    togglePublish: ->
+      if this.get('published')
+        this.set 'published', false
+      else
+        this.set 'published', true
+
   window.App = App
