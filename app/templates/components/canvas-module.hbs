@@ -25,23 +25,17 @@
             <li><strong>Prereq:</strong> <span style="font-weight: normal;">Week 1 Module</span></li>
           </ul>
         </th>
-        {{#if editable}}
-          <th class="no-wrap align-right" style="width: 140px;">
-            {{canvas-module-publish published=module.published}}
-          </th>
-          <th class="no-wrap no-right-padding" style="width: 100px;">
-            <a href="#" class="btn add-item-button">
-              <i class="icon-plus"></i>
-            </a>
-            <a href="#" class="btn module-settings-button">
-              <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
-            </a>
-          </th>
-        {{else}}
-          <td style="padding: 0;width: 40px;">
-            
-          </td>
-        {{/if}}
+        <th class="no-wrap align-right" style="width: 140px;">
+          {{canvas-module-publish published=module.published}}
+        </th>
+        <th class="no-wrap no-right-padding" style="width: 100px;">
+          <a href="#" class="btn add-item-button">
+            <i class="icon-plus"></i>
+          </a>
+          <a href="#" class="btn module-settings-button">
+            <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
+          </a>
+        </th>
       </tr>
     </thead>
     {{#if module.expanded}}

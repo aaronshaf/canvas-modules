@@ -21,17 +21,10 @@
   </td>
   <td class="align-right small-text">
     -/10 pts
+  <td class="align-right">
+    {{canvas-module-item-publish published=item.published}}
   </td>
-  {{#if editable}}
-    <td class="align-right">
-      {{canvas-module-item-publish published=item.published}}
-    </td>
-    <td>
-      {{canvas-module-item-cog item=item}}
-    </td>
-  {{else}}
-    <td style="padding: 0;background-color: #ECF7EB;width: 40px; text-align: center;vertical-align: middle;">
-      <i class="icon-check" style="color: #34832B;"></i>
-    </td>
-  {{/if}}
+  <td>
+    {{canvas-module-item-cog item=item}}
+    </td> 
 </tr>
