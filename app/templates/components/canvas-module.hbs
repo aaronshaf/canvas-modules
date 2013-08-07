@@ -1,34 +1,38 @@
 <div {{bindAttr class=":module :item-group-condensed module.hidden:hidden:visible" data-module-id="module.id"}}>
   <table class="table sortable-module-items" style="min-height: 30px;min-width: 900px;">
     <thead>
-    <tr>
-      <th>
-        <h3>
-          <img src="img/module-handler.png" style="height: 12px;padding-bottom: 4px;" />
-          <i class="icon-mini-arrow-right"></i>
-          {{module.name}}
-        </h3>
-      </th>
-      <th style="width: 140px;"></th>
-      <th class="align-right" style="width: 240px;" colspan="2">
-        [Prereqs]
-      </th>
-      <th class="no-wrap align-right" style="width: 140px;">
-        {{canvas-module-publish published=module.published}}
-      </th>
-      <th class="no-wrap no-right-padding" style="width: 100px;">
-        <a href="#" class="btn add-item-button">
-          <i class="icon-plus"></i>
-        </a>
-        <a href="#" class="btn module-settings-button">
-          <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
-        </a>
-      </th>
-    </tr>
+      <tr>
+        <th>
+          <h3>
+            {{#if editable}}
+              <img src="img/module-handler.png" style="height: 12px;padding-bottom: 4px;" />
+            {{/if}}
+            <i class="icon-mini-arrow-right"></i>
+            {{module.name}}
+          </h3>
+        </th>
+        <th style="width: 140px;"></th>
+        <th class="align-right" style="width: 240px;" colspan="2">
+          [Prereqs]
+        </th>
+        {{#if editable}}
+          <th class="no-wrap align-right" style="width: 140px;">
+            {{canvas-module-publish published=module.published}}
+          </th>
+          <th class="no-wrap no-right-padding" style="width: 100px;">
+            <a href="#" class="btn add-item-button">
+              <i class="icon-plus"></i>
+            </a>
+            <a href="#" class="btn module-settings-button">
+              <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
+            </a>
+          </th>
+        {{/if}}
+      </tr>
     </thead>
     <tbody {{bindAttr class=":sortable empty"}}>
       {{#each item in module.items}}
-        {{canvas-module-item item=item}}
+        {{canvas-module-item item=item editable=editable}}
       {{/each}}
     <tbody>
   </table>
