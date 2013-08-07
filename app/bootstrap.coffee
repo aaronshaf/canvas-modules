@@ -54,8 +54,19 @@ require [
       this.get('model').map (module) ->
         if exp.test module.get('name')
           module.set 'hidden', false
+          module.get('items').map (item) ->
+            item.set 'visible', true
+            item
         else
-          module.set 'hidden', true
+          moduleHidden = true
+          module.get('items').map (item) ->
+            if exp.test item.get('title')
+              item.set 'visible', true
+              moduleHidden = false
+            else
+              item.set 'visible', false
+            item
+          module.set 'hidden', moduleHidden
         module
     ).observes('searchQuery')
 

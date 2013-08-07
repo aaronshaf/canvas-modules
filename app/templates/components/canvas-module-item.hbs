@@ -1,4 +1,4 @@
-<tr {{bindAttr data-module-item-id="item.id"}} class="module-item">
+<tr {{bindAttr data-module-item-id="item.id" class=":module-item item.visible:visible:hidden"}}>
   <td class="long">
     <img src="img/item-handle.png" style="height: 12px;padding-bottom: 4px;" />
     <!-- span class="type_icon" title="Quiz">
@@ -11,7 +11,7 @@
     </span -->
     <div style="display: inline-block;" {{bindAttr class=item.indentClass}}>
       <i class="icon-assignment"></i>
-      {{item.title}}
+      {{item.title}} ({{item.visible}})
     </div>
   </td>
   <td>

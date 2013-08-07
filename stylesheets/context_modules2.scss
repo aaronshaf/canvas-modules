@@ -3,7 +3,13 @@
 }
 
 .context_modules2 {
+  tr.hidden {
+    display: none;
+  }
 
+  tr.visible {
+    display: table-row;
+  }
 
   #breadcrumbs {
     border-bottom-color: #b6babf;

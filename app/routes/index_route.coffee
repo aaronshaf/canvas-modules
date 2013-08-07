@@ -4,10 +4,13 @@ define [
 ], (Ember, $) ->
   Ember.Route.extend
     model: ->
-      ModelItem = Ember.Object.extend
+      ModuleItem = Ember.Object.extend
         indentClass: (->
           'indent-' + this.get('indent')
         ).property('indent')
+        # visibleClass: (->
+        #   this.get('visible') ? 'visible' : 'hidden'
+        # ).property('visible')
 
       url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
       $.getJSON(url).then success = (modules) ->
@@ -17,7 +20,9 @@ define [
           # side effect, fetch items for module
           $.getJSON(url + "/" + module.id + "/items").then (success = (items) ->
             items = items.map((item) ->
-              ModelItem.create item
+              item = ModuleItem.create item
+              item.set 'visible', true
+              item
             )
             items = Ember.ArrayProxy.create(content: items)
             model.set "items", items
