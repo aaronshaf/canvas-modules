@@ -25,5 +25,6 @@
     "http-proxy": "~0.10.3",
     "canvas-mock-api": "git://github.com/aaronshaf/canvas-mock-api.git",
     "grunt-connect-proxy": "~0.1.5"
+    "grunt-open": "~0.2.1"
   }
 }

@@ -20,6 +20,9 @@ module.exports = (grunt) ->
       'compiled/'
       'libpeerconnection.log'
     ]
+    open:
+      server:
+        path: 'http://localhost:8000'
 
     coffee:
       compile:
@@ -105,5 +108,6 @@ module.exports = (grunt) ->
     'ember_handlebars',
     'sass',
     'server',
+    'open:server',
     'watch'
   ]
