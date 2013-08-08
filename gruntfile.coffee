@@ -8,6 +8,7 @@ if !fs.existsSync './config.json'
 settings = JSON.parse(fs.readFileSync('./config.json'))
 
 module.exports = (grunt) ->
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   bundle = 'context_modules2'
 
   proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
@@ -95,12 +96,6 @@ module.exports = (grunt) ->
   
   server(grunt);
           
-  grunt.loadNpmTasks 'grunt-contrib-clean'
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-ember-handlebars'
-  grunt.loadNpmTasks 'grunt-sass'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-notify'
 
   grunt.registerTask 'default', [
     'clean',
