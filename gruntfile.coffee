@@ -67,6 +67,12 @@ module.exports = (grunt) ->
           # 'vendor/**/*.js',
           # '**/*.png'
         ]
+    concurrent:
+      target1: [
+        'coffee',
+        'ember_handlebars',
+        'sass'
+      ]
 
     open:
       server:
@@ -113,9 +119,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'default', [
     'clean',
-    'coffee',
-    'ember_handlebars',
-    'sass',
+    'concurrent:target1',
     'server',
     'open:server',
     'watch'
