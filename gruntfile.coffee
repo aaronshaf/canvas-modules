@@ -21,6 +21,53 @@ module.exports = (grunt) ->
       'compiled/'
       'libpeerconnection.log'
     ]
+          
+    watch:
+      server:
+        files: [
+          'node_modules/canvas-mock-api/*.js',
+          'node_modules/canvas-mock-api/**/*.js'
+        ]
+        tasks: ['server']
+
+      scripts:
+        files: [
+          'app/*.coffee'
+          'app/{,*/}*.coffee'
+        ]
+        tasks: ['coffee']
+        options:
+          # spawn: false
+          interrupt: true
+
+      templates:
+        files: [
+          'app/templates/*.hbs'
+          'app/templates/{,*/}*.hbs'
+        ]
+        tasks: ['ember_handlebars']
+        options:
+          spawn: false
+          interrupt: true
+
+      sass:
+        files: ['stylesheets/*.scss']
+        tasks: ['sass']
+        options:
+        #   spawn: false
+          interrupt: true
+
+      livereload:
+        options:
+          livereload: true
+        files: [
+          'compiled/*.css',
+          # 'compiled/*.js',
+          # 'compiled/**/*.js',
+          # 'vendor/**/*.js',
+          # '**/*.png'
+        ]
+
     open:
       server:
         path: 'http://localhost:8000'
@@ -31,7 +78,10 @@ module.exports = (grunt) ->
           join: false
           sourceMap: true
         expand: true
-        src: ['**/*.coffee']
+        src: [
+          '*.coffee',
+          '{,*/}*.coffee'
+        ]
         cwd: 'app/'
         dest: 'compiled/ember/' + bundle + '/'
         ext: '.js'
@@ -55,47 +105,11 @@ module.exports = (grunt) ->
       compile:
         files:
           'compiled/templates.js': [
-            'app/templates/**/*.hbs'
+            'app/templates/*.hbs',
+            'app/templates/{,*/}*.hbs'
           ]
-          
-    watch:
-      server:
-        files: [
-          'node_modules/canvas-mock-api/*.js',
-          'node_modules/canvas-mock-api/**/*.js'
-        ]
-        tasks: ['server']
 
-      scripts:
-        files: [
-          'app/**/*.coffee',
-          'vendor/**/*.js',
-          '**/*.png'
-        ]
-        tasks: ['coffee']
-        options:
-          spawn: false
-          interrupt: true
-          livereload: true
-
-      templates:
-        files: ['app/**/*.hbs']
-        tasks: ['ember_handlebars']
-        options:
-          spawn: false
-          interrupt: true
-          livereload: true
-
-      sass:
-        files: ['stylesheets/*.scss']
-        tasks: ['sass']
-        options:
-          spawn: false
-          interrupt: true
-          livereload: true
-  
-  server(grunt);
-          
+  server(grunt)
 
   grunt.registerTask 'default', [
     'clean',
