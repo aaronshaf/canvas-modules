@@ -2,6 +2,15 @@
 
 ## Getting started
 
+If you don't already have node & npm, get it [here](http://nodejs.org/) or use [brew](http://brew.sh/):
+```
+brew install node
+```
+
+If you don't already have [grunt](http://gruntjs.com/):
+```
+npm install -g grunt-cli
+```
 ```
 git clone https://github.com/aaronshaf/canvas-modules.git
 ```
