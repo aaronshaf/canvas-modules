@@ -1,20 +1,20 @@
 <div class="modules-toolbar">
   <div class="pull-right">
-    <a href="#" class="btn preview-modules-button" {{action 'togglePreview'}}>
+    <a href="#" class="btn preview-modules-button invisible" {{action 'togglePreview'}}>
       {{#if editable}}
         Preview
       {{else}}
         Exit preview
       {{/if}}
     </a>
-    <a href="#" class="btn btn-primary add-module-button" {{action 'showAddModuleModal'}}>
+    {{#linkTo 'modules.add' class="btn btn-primary add-module-button"}}
       <i class="icon-plus"></i> Module
-    </a>
+    {{/linkTo}}
     <a href="#" class="btn modules-settings-button">
       <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
     </a>
   </div>
-  {{view Ember.TextField valueBinding="searchQuery" type="search" placeholder="Search for module or item inside module"}}
+  {{view Ember.TextField class="invisible" valueBinding="searchQuery" type="search" placeholder="Search for module or item inside module"}}
 </div>
 
 <div class="item-group-container sortable-modules">
@@ -22,3 +22,5 @@
     {{canvas-module module=module editable=editable}}
   {{/each}}
 </div>
+
+{{outlet}}

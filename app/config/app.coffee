@@ -5,6 +5,13 @@ define [
   $(document.body).addClass 'context_modules2'
   $(document.body).addClass 'environment-development'
 
+  # $.subscribeAjax({
+  #   cache: true,
+  #   routes: [
+  #     '/api/v1/courses/*'
+  #   ]
+  # });
+
   Ember.LOG_BINDING = true
   Ember.ENV.RAISE_ON_DEPRECATION = true
   Ember.LOG_STACKTRACE_ON_DEPRECATION = true

@@ -32,70 +32,55 @@ requirejs.config
 require [
   'ember'
   "compiled/ember/#{bundle}/config/app"
-  "compiled/ember/#{bundle}/routes/index_route"
-  "compiled/ember/#{bundle}/views/index_view"
+  "compiled/ember/#{bundle}/routes/modules_route"
+  "compiled/ember/#{bundle}/models/module"
+  "compiled/ember/#{bundle}/models/module_item"
+  "compiled/ember/#{bundle}/views/modules_view"
+  "compiled/ember/#{bundle}/controllers/modules_controller"
   "compiled/ember/#{bundle}/controllers/module_controller"
+  "compiled/ember/#{bundle}/controllers/module_items_add_controller"
+  "compiled/ember/#{bundle}/components/canvas_module_component"
+  "compiled/ember/#{bundle}/components/canvas_module_item_publish_component"
   "compiled/templates"
   "compiled/ember/#{bundle}/config/routes",
-], (Ember, App, IndexRoute, IndexView, ModuleController, templates) ->
+  # 'vendor/jquery.subscribeAjax/jquery.subscribeAjax'
+], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, templates) ->
   Ember.TEMPLATES = templates
-  App.IndexRoute = IndexRoute
-  App.IndexView = IndexView
+  App.CanvasModuleComponent  = CanvasModuleComponent;
+  App.ModulesRoute = ModulesRoute
+  App.ModulesView = ModulesView
+  App.ModuleItemsAddController = ModuleItemsAddController
 
   # Ember.testing = true
   Ember.LOG_BINDING = true
   Ember.ENV.RAISE_ON_DEPRECATION = true
 
+  App.Module = Module
+  App.ModuleItem = ModuleItem
   App.ModuleController = ModuleController
+  App.ModulesController = ModulesController
 
-  App.IndexController = Ember.Controller.extend
-    editable: true
-    togglePreview: ->
-      if this.get 'editable'
-        this.set 'editable', false
-      else
-        this.set 'editable', true
-    filterItems: (->
-      exp = new RegExp this.searchQuery,'g'
-      this.get('model').map (module) ->
-        if exp.test module.get('name')
-          module.set 'hidden', false
-          module.get('items').map (item) ->
-            item.set 'visible', true
-            item
-        else
-          moduleHidden = true
-          module.get('items').map (item) ->
-            if exp.test item.get('title')
-              item.set 'visible', true
-              moduleHidden = false
-            else
-              item.set 'visible', false
-            item
-          module.set 'hidden', moduleHidden
-        module
-    ).observes('searchQuery')
+  App.CanvasDropdownComponent = Ember.Mixin.create
+    open: ->
+      this.$('ul.canvas-dropdown').show()
+      document.body.addEventListener 'click', @close.bind(this), true
+    close: ->
+      # alert 'close'
+      document.body.removeEventListener 'click',@close,true
+      this.$('ul.canvas-dropdown').hide()
 
-  App.CanvasModuleComponent = Ember.Component.extend
-    toggleExpandCollapse: ->
-      if this.get 'module.expanded'
-        this.set 'module.expanded', false
-      else
-        this.set 'module.expanded', true
+  App.CanvasModuleItemCogComponent = Ember.Component.extend App.CanvasDropdownComponent
 
-  # TODO: Move these to their own files. Also, if possible, consolidate.
-  App.CanvasModulePublishComponent = Ember.Component.extend
+  App.CanvasPublishComponent = Ember.Mixin.create
     togglePublish: ->
       if this.get 'published'
         this.set 'published', false
       else
         this.set 'published', true
 
-  App.CanvasModuleItemPublishComponent = Ember.Component.extend
-    togglePublish: ->
-      if this.get('published')
-        this.set 'published', false
-      else
-        this.set 'published', true
+  App.CanvasModulePublishComponent = Ember.Component.extend App.CanvasPublishComponent
+  App.CanvasModuleItemPublishComponent = Ember.Component.extend App.CanvasPublishComponent
+
+  App.CanvasModuleItemPublishComponent = CanvasModuleItemPublishComponent
 
   window.App = App

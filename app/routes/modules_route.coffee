@@ -1,20 +1,11 @@
 define [
   'Ember',
-  'jquery'
-], (Ember, $) ->
+  'jquery',
+  'compiled/ember/context_modules2/models/module',
+  'compiled/ember/context_modules2/models/module_item'
+], (Ember, $, Module, ModuleItem) ->
   Ember.Route.extend
     model: ->
-      ModuleItem = Ember.Object.extend
-        indentClass: (->
-          'indent-' + this.get('indent')
-        ).property('indent')
-        iconClass: (->
-          'icon-' + this.get('type').toLowerCase()
-        ).property('type')
-        # visibleClass: (->
-        #   this.get('visible') ? 'visible' : 'hidden'
-        # ).property('visible')
-
       url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
       $.getJSON(url).then success = (modules) ->
         modules = Ember.ArrayProxy.create(content: modules)

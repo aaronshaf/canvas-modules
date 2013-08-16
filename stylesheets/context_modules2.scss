@@ -3,8 +3,25 @@
 }
 
 .context_modules2 {
+  a.publish-icon .icon-publish {
+    color: #007711;
+  }
+
+  a.publish-icon.transitioning {
+    color: yellow;
+  }
+
+  a.publish-icon.disabled span,
+  a.publish-icon .icon-unpublished {
+    color: #999999;
+  }
+
   .module-item-title {
     color: black;
+  }
+
+  .invisible {
+    visibility: hidden;
   }
 
   tr.hidden {
@@ -142,16 +159,16 @@
   }
 
   .indent-1 {
-    margin-left: 12px;
+    margin-left: 18px;
   }
   .indent-2 {
-    margin-left: 24px;
-  }
-  .indent-3 {
     margin-left: 36px;
   }
+  .indent-3 {
+    margin-left: 54px;
+  }
   .indent-4 {
-    margin-left: 48px;
+    margin-left: 72px;
   }
 
   /*

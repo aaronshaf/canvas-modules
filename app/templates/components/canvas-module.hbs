@@ -29,9 +29,9 @@
           {{canvas-module-publish published=module.published}}
         </th>
         <th class="no-wrap no-right-padding" style="width: 100px;">
-          <a href="#" class="btn add-item-button">
+          {{#linkTo 'module_items.add' module class="btn add-item-button"}}
             <i class="icon-plus"></i>
-          </a>
+          {{/linkTo}}
           <a href="#" class="btn module-settings-button">
             <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
           </a>
