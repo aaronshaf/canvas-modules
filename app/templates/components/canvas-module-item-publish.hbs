@@ -1,35 +1,21 @@
 <a
-    {{bindAttr class=":publish-icon
-      published:publish-icon-published:publish-icon-unpublished
+    {{bindAttr class=":publish-button
+      published:published:unpublished
+      hover:hover:blur
       transitioning"}}
     {{action 'togglePublish'}}
     role="button">
 
-  <i class="icon-publish"></i>
-  <i class="icon-unpublish"></i>
+  {{#if published}}
+    <i {{bindAttr class="hover:icon-unpublish:icon-publish"}}></i>
+  {{else}}
+    <i class="icon-unpublished"></i>
+  {{/if}}
 
-  <span class="publish-text" role="presentation" tabindex="-1">&nbsp;Published</span>
-  <span class="desc screenreader-only">Published. Click to unpublish</span>
+  <!-- span class="publish-text" role="presentation" tabindex="-1">&nbsp;Published</span>
+  <span class="desc screenreader-only">Published. Click to unpublish</span -->
 </a>
 
 <style>
-  .publish-icon {
 
-  }
-
-  .publish-icon.publish-icon-published:hover .icon-publish {
-    display: none;
-  }
-
-  .publish-icon.publish-icon-published .icon-unpublish {
-    display: none;
-  }
-
-  .publish-icon.publish-icon-published:hover .icon-unpublish {
-    display: inline;
-  }
-
-  .publish-icon.publish-icon-published:hover {
-    color: #ee5f5b;
-  }
 </style>

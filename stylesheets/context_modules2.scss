@@ -3,17 +3,31 @@
 }
 
 .context_modules2 {
-  a.publish-icon .icon-publish {
-    color: #007711;
-  }
+  .publish-button {
+    &.published {
+      color: #007711; /* green */
+    }
 
-  a.publish-icon.transitioning {
-    color: yellow;
-  }
+    &.unpublished {
+      color: #999999; /* light grey */
+    }
 
-  a.publish-icon.disabled span,
-  a.publish-icon .icon-unpublished {
-    color: #999999;
+    &.published.hover {
+      color: #db4f4a; /* red */
+    }
+
+    &.transitioning {
+      color: #999999;
+    }
+
+    &.disabled {
+     color: #999999; 
+    }
+
+    &.disabled span,
+    .icon-unpublished {
+      color: #999999;
+    }
   }
 
   .module-item-title {
