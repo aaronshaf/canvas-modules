@@ -9,7 +9,7 @@ brew install node
 
 If you don't already have [grunt](http://gruntjs.com/):
 ```
-npm install -g grunt-cli
+sudo npm install -g grunt-cli
 ```
 ```
 git clone https://github.com/aaronshaf/canvas-modules.git
