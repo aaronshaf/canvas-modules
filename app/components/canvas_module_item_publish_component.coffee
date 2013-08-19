@@ -1,8 +1,7 @@
 define [
-  'Ember',
-  'compiled/ember/context_modules2/config/app'
-], (Ember,App) ->
-  App.CanvasModuleItemPublishComponent = Ember.Component.extend
+  'Ember'
+], (Ember) ->
+  Ember.Component.extend
     mouseEnter: ->
       @set 'hover', true
 

@@ -79,8 +79,8 @@ require [
         this.set 'published', true
 
   App.CanvasModulePublishComponent = Ember.Component.extend App.CanvasPublishComponent
-  App.CanvasModuleItemPublishComponent = Ember.Component.extend App.CanvasPublishComponent
 
+  App.CanvasModuleComponent = CanvasModuleComponent
   App.CanvasModuleItemPublishComponent = CanvasModuleItemPublishComponent
 
   window.App = App
