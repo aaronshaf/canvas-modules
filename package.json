@@ -28,5 +28,8 @@
     "matchdep": "~0.1.2",
     "grunt-open": "~0.2.1",
     "grunt-concurrent": "~0.3.0"
+  },
+  "engines": {
+    "node": ">=0.10.15"
   }
 }
