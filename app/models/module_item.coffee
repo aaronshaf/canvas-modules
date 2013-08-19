@@ -1,6 +1,7 @@
 define [
   'Ember',
-], (Ember) ->
+  './module'
+], (Ember,Module) ->
   Ember.Object.extend
     # find: ->
     indentClass: (->
