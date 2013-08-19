@@ -1,5 +1,5 @@
 define [
-  'compiled/ember/context_modules2/config/app'
+  './app'
 ], (App) ->
 
   # App.ModuleAddRoute = Ember.Route.extend

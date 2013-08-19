@@ -1,8 +1,8 @@
 define [
   'Ember',
   'jquery',
-  'compiled/ember/context_modules2/models/module',
-  'compiled/ember/context_modules2/models/module_item'
+  '../models/module',
+  '../models/module_item'
 ], (Ember, $, Module, ModuleItem) ->
   Ember.Route.extend
     model: ->
