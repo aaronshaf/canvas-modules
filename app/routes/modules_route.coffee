@@ -5,8 +5,7 @@ define [
 ], (Ember, Module, ModuleItem) ->
   Ember.Route.extend
     model: ->
-      url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
-      Module.find()
+      Module.findAll(window.ENV.COURSE_ID)
     events:
       showAddModuleModal: ->
         this.modelFor('index').unshiftObject(Ember.Object.create(

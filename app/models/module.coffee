@@ -1,26 +1,24 @@
+###
+Consult:
+
+https://gist.github.com/rpflorence/6274274
+https://gist.github.com/rpflorence/6274302
+https://gist.github.com/rpflorence/6274317
+###
+
 define [
   'Ember',
   'jquery',
   './module_item'
 ], (Ember,$,ModuleItem) ->
-  Ember.Object.extend({}).reopenClass
-    find: ->
-      url = '/api/v1/courses/' + window.ENV.COURSE_ID + '/modules'
-
-      $.getJSON(url).then success = (modules) ->
-        modules = Ember.ArrayProxy.create(content: modules)
-        modules.map (module) ->
-          model = Ember.Object.create(module)
-          model.set 'expanded', true
-
-          # side effect, fetch items for module
-          $.getJSON(url + "/" + module.id + "/items").then (success = (items) ->
-            items = items.map((item) ->
-              item = ModuleItem.create item
-              item.set 'visible', true
-              item
-            )
-            items = Ember.ArrayProxy.create(content: items)
-            model.set "items", items
-          ).bind(this)
-          model
+  Ember.Object.extend(Ember.Evented).reopenClass
+    findAll: (course_id) ->
+      records = Ember.ArrayProxy.create(content: [])
+      url = '/api/v1/courses/' + course_id + '/modules'
+      $.getJSON url, success = (results) ->
+        records.addObjects results.map (result) ->
+          module = Ember.Object.create(result)
+          module.set 'expanded', true
+          ModuleItem.findAll course_id, module
+          module
+      records
