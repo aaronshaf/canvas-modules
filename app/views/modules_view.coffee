@@ -1,8 +1,8 @@
 define [
-  'Ember',
+  'Ember'
   'jquery'
-  'underscore',
-  'vendor/jqueryui/sortable',
+  'underscore'
+  'vendor/jqueryui/sortable'
 ], (Ember,$,_) ->
   fixHelper = (e, ui) ->
     ui.children().each ->

@@ -7,8 +7,8 @@ https://gist.github.com/rpflorence/6274317
 ###
 
 define [
-  'Ember',
-  'jquery',
+  'Ember'
+  'jquery'
   './module_item'
 ], (Ember,$,ModuleItem) ->
   Ember.Object.extend(Ember.Evented).reopenClass

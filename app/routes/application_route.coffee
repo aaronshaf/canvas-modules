@@ -1,5 +1,5 @@
 define [
-  'Ember',
+  'Ember'
   'jquery'
 ], (Ember, $) ->
   Ember.Route.extend

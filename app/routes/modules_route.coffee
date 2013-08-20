@@ -1,6 +1,6 @@
 define [
-  'Ember',
-  '../models/module',
+  'Ember'
+  '../models/module'
   '../models/module_item'
 ], (Ember, Module, ModuleItem) ->
   Ember.Route.extend

@@ -1,6 +1,6 @@
 define [
-  'Ember',
-  'jquery',
+  'Ember'
+  'jquery'
   './module'
 ], (Ember,$,Module) ->
   ModuleItem = Ember.Object.extend(Ember.Evented,
