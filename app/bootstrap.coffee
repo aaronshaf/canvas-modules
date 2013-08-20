@@ -43,10 +43,11 @@ require [
   "compiled/ember/#{bundle}/components/canvas_module_item_publish_component"
   "compiled/ember/#{bundle}/components/canvas_available_at_component"
   "compiled/ember/#{bundle}/components/canvas_due_at_component"
+  "compiled/ember/#{bundle}/components/canvas_pts_component"
   "compiled/templates"
   "compiled/ember/#{bundle}/config/routes"
   # 'vendor/jquery.subscribeAjax/jquery.subscribeAjax'
-], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasAvailableAtComponent, CanvasDueAtComponent, templates) ->
+], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasAvailableAtComponent, CanvasDueAtComponent, CanvasPtsComponent, templates) ->
   Ember.TEMPLATES = templates
   App.CanvasModuleComponent  = CanvasModuleComponent
   App.ModulesRoute = ModulesRoute
@@ -86,5 +87,6 @@ require [
   App.CanvasModuleItemPublishComponent = CanvasModuleItemPublishComponent
   App.CanvasAvailableAtComponent = CanvasAvailableAtComponent
   App.CanvasDueAtComponent = CanvasDueAtComponent
+  App.CanvasPtsComponent = CanvasPtsComponent
 
   window.App = App
