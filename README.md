@@ -2,6 +2,8 @@
 
 ## Getting started
 
+### Get the latest node & npm
+
 If you don't already have node & npm, get it [here](http://nodejs.org/) or use [brew](http://brew.sh/):
 ```
 brew install node
@@ -20,10 +22,15 @@ node --version
 npm --version
 ```
 
-If you don't already have [grunt](http://gruntjs.com/):
+### Get Grunt
+
+If you don't already have [Grunt](http://gruntjs.com/):
 ```
 sudo npm install -g grunt-cli
 ```
+
+### Set up the repository
+
 ```
 git clone https://github.com/aaronshaf/canvas-modules.git
 ```
@@ -33,16 +40,14 @@ cd canvas-modules
 ```
 
 ```
-cp gruntfile.coffee.example gruntfile.coffee
-```
-
-```
 npm install
 ```
 
 ```
 cp config.example.json config.json
 ```
+
+### Start it up
 
 ```
 npm start
