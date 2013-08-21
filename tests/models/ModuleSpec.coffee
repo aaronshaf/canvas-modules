@@ -1,3 +1,3 @@
 define [], ->
-  test "Blender", ->
+  test "Blender!", ->
     ok true, "will it blend?"
