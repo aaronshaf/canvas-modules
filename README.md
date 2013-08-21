@@ -9,12 +9,6 @@ If you don't already have node & npm, get it [here](http://nodejs.org/) or use [
 brew install node
 ```
 
-If you already have node & npm, upgrade:
-
-```
-brew upgrade node
-```
-
 Make sure you have node >= 0.10.15 and npm >= 1.3.5
 
 ```
@@ -22,9 +16,14 @@ node --version
 npm --version
 ```
 
-### Get Grunt
+If you need to upgrade:
 
-If you don't already have [Grunt](http://gruntjs.com/):
+```
+brew upgrade node
+```
+
+### Get [Grunt](http://gruntjs.com/)
+
 ```
 sudo npm install -g grunt-cli
 ```
