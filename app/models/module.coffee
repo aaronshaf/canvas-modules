@@ -7,12 +7,13 @@ https://gist.github.com/rpflorence/6274317
 ###
 
 define [
-  'Ember',
-  'jquery',
-  'underscore',
-  './module_item',
+  'Ember'
+  'jquery'
+  'underscore'
+  './module_item'
+  '../lib/instructure_adapter'
   'vendor/ember/ember-model'
-], (Ember,$,_,ModuleItem) ->
+], (Ember,$,_,ModuleItem,InstructureAdapter) ->
   attr = Ember.attr
   hasMany = Ember.hasMany
   course_id = window.ENV.COURSE_ID
@@ -34,28 +35,22 @@ define [
   Module = Ember.Model.extend ModuleInterface
 
   PaginatedRecordArray = Ember.RecordArray.extend
-    nextUrl: ''
+    pushObjects: (data) ->
+      @_super this.materializeData(this.get('modelClass'), data)
+      this.notifyLoaded();
     nextPage: ->
-      alert '2'
+      modelClass = this.get('modelClass')
+      modelClass.adapter.findNextPage(modelClass, this)
 
   Module.reopenClass
     findPage: findPage = (params = {}) ->
-      records = PaginatedRecordArray.create()
+      records = PaginatedRecordArray.create(modelClass: this)
       this.adapter.findQuery(this, records, params)
       records
 
   Module.url = '/api/v1/courses/' + course_id + '/modules'
 
-  Ember.InstructureRESTAdapter = Ember.RESTAdapter.extend
-    findQuery: (klass, records, params) ->
-      url = this.buildURL(klass)
-      # self = this
-
-      @ajax(url, params).then (data) ->
-        self.didFindQuery(klass, records, params, data);
-        records
-
-  Module.adapter = Ember.RESTAdapter.create()
+  Module.adapter = InstructureAdapter.create()
   Module
 
   # success: (results, textStatus, jqXHR) =>
@@ -66,19 +61,3 @@ define [
   #     module.set 'expanded', true
   #     ModuleItem.findAll course_id, module
   #     module
-
-# Source: https://github.com/instructure/canvas-lms/blob/stable/app/coffeescripts/collections/PaginatedCollection.coffee
-_parsePageLinks = (xhr) ->
-  nameRegex = /rel="([a-z]+)/
-  linkRegex = /^<([^>]+)/ # Matches the full link, e.g. "/api/v1/accounts/1/users?page=1&per_page=15"
-  pageRegex = /\Wpage=(\d+)/
-  perPageRegex = /\per_page=(\d+)/
-
-  linkHeader = xhr.getResponseHeader('link')?.split(',')
-  linkHeader ?= []
-  _.reduce linkHeader, reduceFn = (links, link) ->
-    key = link.match(nameRegex)[1]
-    val = link.match(linkRegex)[1]
-    links[key] = val
-    links
-  , {}
