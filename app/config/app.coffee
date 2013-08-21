@@ -1,5 +1,5 @@
 define [
-  'Ember',
+  'Ember'
   'jquery'
 ], (Ember,$) ->
   $(document.body).addClass 'context_modules2'

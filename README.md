@@ -33,6 +33,10 @@ cd canvas-modules
 ```
 
 ```
+cp gruntfile.coffee.example gruntfile.coffee
+```
+
+```
 npm install
 ```
 

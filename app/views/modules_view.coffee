@@ -1,9 +1,9 @@
 define [
-  'Ember',
+  'Ember'
   'jquery'
-  'underscore',
-  '../models/module',
-  'vendor/jqueryui/sortable',
+  'underscore'
+  '../models/module'
+  'vendor/jqueryui/sortable'
 ], (Ember,$,_,Module) ->
   fixHelper = (e, ui) ->
     ui.children().each ->

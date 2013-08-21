@@ -1,5 +1,5 @@
 window.ENV = {}
-window.ENV.COURSE_ID = 1
+window.ENV.COURSE_ID = 62
 
 bundle = 'context_modules2'
 
@@ -42,12 +42,15 @@ require [
   "compiled/ember/#{bundle}/controllers/module_items_add_controller"
   "compiled/ember/#{bundle}/components/canvas_module_component"
   "compiled/ember/#{bundle}/components/canvas_module_item_publish_component"
+  "compiled/ember/#{bundle}/components/canvas_available_at_component"
+  "compiled/ember/#{bundle}/components/canvas_due_at_component"
+  "compiled/ember/#{bundle}/components/canvas_pts_component"
   "compiled/templates"
-  "compiled/ember/#{bundle}/config/routes",
+  "compiled/ember/#{bundle}/config/routes"
   # 'vendor/jquery.subscribeAjax/jquery.subscribeAjax'
-], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, templates) ->
+], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasAvailableAtComponent, CanvasDueAtComponent, CanvasPtsComponent, templates) ->
   Ember.TEMPLATES = templates
-  App.CanvasModuleComponent  = CanvasModuleComponent;
+  App.CanvasModuleComponent  = CanvasModuleComponent
   App.ModulesRoute = ModulesRoute
   App.ModulesView = ModulesView
   App.ModuleItemsAddController = ModuleItemsAddController
@@ -83,5 +86,8 @@ require [
 
   App.CanvasModuleComponent = CanvasModuleComponent
   App.CanvasModuleItemPublishComponent = CanvasModuleItemPublishComponent
+  App.CanvasAvailableAtComponent = CanvasAvailableAtComponent
+  App.CanvasDueAtComponent = CanvasDueAtComponent
+  App.CanvasPtsComponent = CanvasPtsComponent
 
   window.App = App

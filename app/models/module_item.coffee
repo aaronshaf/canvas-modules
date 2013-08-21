@@ -1,7 +1,7 @@
 define [
-  'Ember',
-  'jquery',
-  './module',
+  'Ember'
+  'jquery'
+  './module'
   'vendor/ember/ember-model'
 ], (Ember,$,Module) ->
   return

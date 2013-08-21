@@ -13,14 +13,11 @@
       ({{item.visible}})
     </div>
   </td>
-  <td class="small-text">
-    <strong>Available at</strong> Sep 4, 2013
-  </td>
-  <td class="small-text">
-    <strong>Due at</strong> Sep 4, 2013
-  </td>
-  <td class="align-right small-text">
-    -/10 pts
+
+  {{canvas-available-at date="Sep 4, 2055"}}
+  {{canvas-due-at date="Sep 4, 2155"}}
+  {{canvas-pts points=5 possiblePoints=10}}
+
   <td class="align-right">
     {{canvas-module-item-publish published=item.published}}
   </td>

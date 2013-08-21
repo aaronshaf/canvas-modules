@@ -15,7 +15,7 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
-    api: grunt.file.readJSON('config.json').api
+    # api: grunt.file.readJSON('config.json').api
 
     clean: [
       'compiled/'
