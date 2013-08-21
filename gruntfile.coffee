@@ -93,7 +93,7 @@ module.exports = (grunt) ->
           '../tests/{,*/}*.coffee'
         ]
         cwd: 'app/'
-        dest: 'compiled/' + bundle + '/'
+        dest: 'compiled/'
         ext: '.js'
 
     sass:

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "ModuleSpec.js",
+  "sourceRoot": "",
+  "sources": [
+    "ModuleSpec.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,CAAA,CAAW,GAAX,GAAW;CACJ,CAAY,CAAA,CAAjB,KAAiB,CAAjB,CAAA;CACK,CAAH,EAAA,SAAA,GAAA;CADF,IAAiB;CADnB,EAAW;CAAX"
+}

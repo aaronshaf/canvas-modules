@@ -1,7 +1,5 @@
 window.ENV = {}
-window.ENV.COURSE_ID = 1
-
-bundle = 'context_modules2'
+window.ENV.COURSE_ID = 62
 
 requirejs.config
   paths:
@@ -32,21 +30,21 @@ requirejs.config
 
 require [
   'ember'
-  "compiled/#{bundle}/config/app"
-  "compiled/#{bundle}/routes/modules_route"
-  "compiled/#{bundle}/models/module"
-  "compiled/#{bundle}/models/module_item"
-  "compiled/#{bundle}/views/modules_view"
-  "compiled/#{bundle}/controllers/modules_controller"
-  "compiled/#{bundle}/controllers/module_controller"
-  "compiled/#{bundle}/controllers/module_items_add_controller"
-  "compiled/#{bundle}/components/canvas_module_component"
-  "compiled/#{bundle}/components/canvas_module_item_publish_component"
-  "compiled/#{bundle}/components/canvas_available_at_component"
-  "compiled/#{bundle}/components/canvas_due_at_component"
-  "compiled/#{bundle}/components/canvas_pts_component"
+  "compiled/config/app"
+  "compiled/routes/modules_route"
+  "compiled/models/module"
+  "compiled/models/module_item"
+  "compiled/views/modules_view"
+  "compiled/controllers/modules_controller"
+  "compiled/controllers/module_controller"
+  "compiled/controllers/module_items_add_controller"
+  "compiled/components/canvas_module_component"
+  "compiled/components/canvas_module_item_publish_component"
+  "compiled/components/canvas_available_at_component"
+  "compiled/components/canvas_due_at_component"
+  "compiled/components/canvas_pts_component"
   "compiled/templates"
-  "compiled/#{bundle}/config/routes"
+  "compiled/config/routes"
   # 'vendor/jquery.subscribeAjax/jquery.subscribeAjax'
 ], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasAvailableAtComponent, CanvasDueAtComponent, CanvasPtsComponent, templates) ->
   Ember.TEMPLATES = templates
