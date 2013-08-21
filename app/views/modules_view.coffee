@@ -2,15 +2,20 @@ define [
   'Ember',
   'jquery'
   'underscore',
+  '../models/module',
   'vendor/jqueryui/sortable',
-], (Ember,$,_) ->
+], (Ember,$,_,Module) ->
   fixHelper = (e, ui) ->
     ui.children().each ->
       $(this).width $(this).width()
     ui
 
-  IndexView = Ember.View.extend(
+  IndexView = Ember.View.extend
     didInsertElement: ->
+      $(window).scroll =>
+        if $(window).scrollTop() + $(window).height() >= $(document).height()
+          @get('controller.model').nextPage()
+
       # Set up sorting for modules
       @sortableModules = @$(".sortable-modules").sortable(
         axis: "y"
@@ -78,10 +83,10 @@ define [
       @sortableInitialized = true
 
     observeAllTheThings: _.throttle(->
+      return
       return  if @state isnt "inDOM"
       console.time "refresh"
       @sortableModules.sortable "refresh"
       @sortableModuleItems.sortable "refresh"
       console.timeEnd "refresh"
     , 150).observes("controller.@each.items.@each")
-  )
