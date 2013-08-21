@@ -32,21 +32,21 @@ requirejs.config
 
 require [
   'ember'
-  "compiled/ember/#{bundle}/config/app"
-  "compiled/ember/#{bundle}/routes/modules_route"
-  "compiled/ember/#{bundle}/models/module"
-  "compiled/ember/#{bundle}/models/module_item"
-  "compiled/ember/#{bundle}/views/modules_view"
-  "compiled/ember/#{bundle}/controllers/modules_controller"
-  "compiled/ember/#{bundle}/controllers/module_controller"
-  "compiled/ember/#{bundle}/controllers/module_items_add_controller"
-  "compiled/ember/#{bundle}/components/canvas_module_component"
-  "compiled/ember/#{bundle}/components/canvas_module_item_publish_component"
-  "compiled/ember/#{bundle}/components/canvas_available_at_component"
-  "compiled/ember/#{bundle}/components/canvas_due_at_component"
-  "compiled/ember/#{bundle}/components/canvas_pts_component"
+  "compiled/#{bundle}/config/app"
+  "compiled/#{bundle}/routes/modules_route"
+  "compiled/#{bundle}/models/module"
+  "compiled/#{bundle}/models/module_item"
+  "compiled/#{bundle}/views/modules_view"
+  "compiled/#{bundle}/controllers/modules_controller"
+  "compiled/#{bundle}/controllers/module_controller"
+  "compiled/#{bundle}/controllers/module_items_add_controller"
+  "compiled/#{bundle}/components/canvas_module_component"
+  "compiled/#{bundle}/components/canvas_module_item_publish_component"
+  "compiled/#{bundle}/components/canvas_available_at_component"
+  "compiled/#{bundle}/components/canvas_due_at_component"
+  "compiled/#{bundle}/components/canvas_pts_component"
   "compiled/templates"
-  "compiled/ember/#{bundle}/config/routes"
+  "compiled/#{bundle}/config/routes"
   # 'vendor/jquery.subscribeAjax/jquery.subscribeAjax'
 ], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasAvailableAtComponent, CanvasDueAtComponent, CanvasPtsComponent, templates) ->
   Ember.TEMPLATES = templates
