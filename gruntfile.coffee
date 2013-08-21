@@ -34,6 +34,8 @@ module.exports = (grunt) ->
         files: [
           'app/*.coffee'
           'app/{,*/}*.coffee'
+          'tests/*.coffee'
+          'tests/{,*/}*.coffee'
         ]
         tasks: ['coffee']
         options:
@@ -69,8 +71,8 @@ module.exports = (grunt) ->
         ]
     concurrent:
       target1: [
-        'coffee',
-        'ember_handlebars',
+        'coffee'
+        'ember_handlebars'
         'sass'
       ]
 
@@ -85,11 +87,13 @@ module.exports = (grunt) ->
           sourceMap: true
         expand: true
         src: [
-          '*.coffee',
+          '*.coffee'
           '{,*/}*.coffee'
+          '../tests/*.coffee'
+          '../tests/{,*/}*.coffee'
         ]
         cwd: 'app/'
-        dest: 'compiled/ember/' + bundle + '/'
+        dest: 'compiled/' + bundle + '/'
         ext: '.js'
 
     sass:

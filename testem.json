@@ -1,12 +1,10 @@
 {
   "framework": "qunit",
-  "src_files": [
-    "tests/**/*Spec.js"
-  ],
   "launch_in_ci": [
   	"Firefox",
   	"PhantomJS"
   ],
+  "test_page": "tests/test.html",
   "launch_in_dev": [
   	"Firefox",
   	"Chrome",
