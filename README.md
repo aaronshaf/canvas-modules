@@ -33,17 +33,8 @@ sudo npm install -g grunt-cli
 
 ```
 git clone https://github.com/aaronshaf/canvas-modules.git
-```
-
-```
 cd canvas-modules
-```
-
-```
 npm install
-```
-
-```
 cp config.example.json config.json
 ```
 
