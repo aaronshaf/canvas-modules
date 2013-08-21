@@ -21,4 +21,5 @@ define [
           module.set 'expanded', true
           ModuleItem.findAll course_id, module
           module
+  'vendor/ember/ember-model'
       records
