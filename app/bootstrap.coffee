@@ -1,5 +1,5 @@
 window.ENV = {}
-window.ENV.COURSE_ID = 62
+window.ENV.COURSE_ID = 1
 
 bundle = 'context_modules2'
 
@@ -83,7 +83,6 @@ require [
         this.set 'published', true
 
   App.CanvasModulePublishComponent = Ember.Component.extend App.CanvasPublishComponent
-
   App.CanvasModuleComponent = CanvasModuleComponent
   App.CanvasModuleItemPublishComponent = CanvasModuleItemPublishComponent
   App.CanvasAvailableAtComponent = CanvasAvailableAtComponent

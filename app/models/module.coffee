@@ -7,10 +7,10 @@ https://gist.github.com/rpflorence/6274317
 ###
 
 define [
-  'Ember',
-  'jquery',
-  'underscore',
-  './module_item',
+  'Ember'
+  'jquery'
+  'underscore'
+  './module_item'
   'vendor/ember/ember-model'
 ], (Ember,$,_,ModuleItem) ->
   attr = Ember.attr
@@ -46,16 +46,7 @@ define [
 
   Module.url = '/api/v1/courses/' + course_id + '/modules'
 
-  Ember.InstructureRESTAdapter = Ember.RESTAdapter.extend
-    findQuery: (klass, records, params) ->
-      url = this.buildURL(klass)
-      # self = this
-
-      @ajax(url, params).then (data) ->
-        self.didFindQuery(klass, records, params, data);
-        records
-
-  Module.adapter = Ember.RESTAdapter.create()
+  Module.adapter = Ember.InstructureAdapter.create()
   Module
 
   # success: (results, textStatus, jqXHR) =>
