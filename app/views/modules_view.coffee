@@ -13,7 +13,7 @@ define [
   IndexView = Ember.View.extend
     didInsertElement: ->
       $(window).scroll =>
-        if $(window).scrollTop() + $(window).height() >= $(document).height()
+        if $(window).scrollTop() + $(window).height() >= $(document).height() - 300
           @get('controller.model').nextPage()
 
       # Set up sorting for modules

@@ -1,5 +1,6 @@
 {
   "bundle": "context_modules2",
+  "use_mock_api": true,
   "api": {
   	"host": "localhost",
   	"port": 3000,

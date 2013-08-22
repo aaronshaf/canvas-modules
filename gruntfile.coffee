@@ -1,11 +1,21 @@
 server = require './server'
 fs = require 'fs'
+path = require('path')
 
-if !fs.existsSync './config.json'
-  console.log 'config.json not found. See config.example.json'
-  process.exit()
+# if !fs.existsSync './config.json'
+#   console.log 'config.json not found. See config.example.json'
+#   process.exit()
 
-settings = JSON.parse(fs.readFileSync('./config.json'))
+if fs.existsSync './config.json'
+  settingsJSON = fs.readFileSync './config.json', encoding: 'utf8'
+  if settingsJSON.length
+    settings = JSON.parse settingsJSON
+
+if not settings
+  defaultSettings = fs.readFileSync './config.example.json', encoding: 'utf8'
+  console.log defaultSettings
+  fs.writeFileSync './config.json', defaultSettings, encoding: 'utf8'
+  settings = JSON.parse defaultSettings
 
 module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
