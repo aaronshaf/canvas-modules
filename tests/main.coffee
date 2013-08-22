@@ -1,2 +1,1 @@
-require ['models/ModuleSpec']
-
+require ['compiled/tests/models/ModuleSpec']
