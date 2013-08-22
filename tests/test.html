@@ -7,8 +7,14 @@
     <script src="/server.js"></script>
     <script src="/vendor/sinon/sinon-1.7.3.js"></script>
     <script src="/vendor/sinon/sinon-qunit-1.0.0.js"></script>
-    <script data-main="/compiled/tests/main" src="/vendor/require.js"></script>
+    <script src="/vendor/require.js"></script>
+    <script>
+      requirejs.config({
+        baseUrl: '../'  
+      });
+    </script>
     <script src="/compiled/app/config.js"></script>
+    <script src="/compiled/tests/main.js"></script>
     <link rel="stylesheet" href="/testem/qunit.css"/>
   </head>
   <body>
