@@ -97,12 +97,11 @@ module.exports = (grunt) ->
           sourceMap: true
         expand: true
         src: [
-          '*.coffee'
-          '{,*/}*.coffee'
-          '../tests/*.coffee'
-          '../tests/{,*/}*.coffee'
+          'app/*.coffee'
+          'app/{,*/}*.coffee'
+          'tests/*.coffee'
+          'tests/{,*/}*.coffee'
         ]
-        cwd: 'app/'
         dest: 'compiled/'
         ext: '.js'
 
