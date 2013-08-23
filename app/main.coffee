@@ -1,65 +1,22 @@
-# This file will be rendered obselete by an auto-generator
+# this is auto-generated
+define ["Ember", "compiled/ember/context_modules2/config/app", "compiled/ember/context_modules2/config/routes", "compiled/ember/context_modules2/components/canvas_available_at_component", "compiled/ember/context_modules2/components/canvas_due_at_component", "compiled/ember/context_modules2/components/canvas_module_component", "compiled/ember/context_modules2/components/canvas_module_item_publish_component", "compiled/ember/context_modules2/components/canvas_pts_component", "compiled/ember/context_modules2/controllers/module_controller", "compiled/ember/context_modules2/controllers/module_items_add_controller", "compiled/ember/context_modules2/controllers/modules_controller", "compiled/ember/context_modules2/models/module", "compiled/ember/context_modules2/models/module_item", "compiled/ember/context_modules2/routes/application_route", "compiled/ember/context_modules2/routes/modules_route", "compiled/ember/context_modules2/views/modules_view", "compiled/ember/context_modules2/templates/components/canvas-available-at", "compiled/ember/context_modules2/templates/components/canvas-due-at", "compiled/ember/context_modules2/templates/components/canvas-modal", "compiled/ember/context_modules2/templates/components/canvas-module-item-assignment-type", "compiled/ember/context_modules2/templates/components/canvas-module-item-cog", "compiled/ember/context_modules2/templates/components/canvas-module-item-publish", "compiled/ember/context_modules2/templates/components/canvas-module-item", "compiled/ember/context_modules2/templates/components/canvas-module-publish", "compiled/ember/context_modules2/templates/components/canvas-module", "compiled/ember/context_modules2/templates/components/canvas-pts", "compiled/ember/context_modules2/templates/module_items/add", "compiled/ember/context_modules2/templates/modules/add", "compiled/ember/context_modules2/templates/modules/index", "compiled/ember/context_modules2/templates/modules/search", "compiled/ember/context_modules2/templates/modules"], (Ember, App, routes, CanvasAvailableAtComponent, CanvasDueAtComponent, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasPtsComponent, ModuleController, ModuleItemsAddController, ModulesController, Module, ModuleItem, ApplicationRoute, ModulesRoute, ModulesView) ->
 
-window.ENV = {}
-window.ENV.COURSE_ID = 1
+  App.initializer
+    name: 'routes'
+    initialize: (container, application) ->
+      application.Router.map(routes)
 
-require [
-  'ember'
-  "compiled/app/config/app"
-  "compiled/app/routes/modules_route"
-  "compiled/app/models/module"
-  "compiled/app/models/module_item"
-  "compiled/app/views/modules_view"
-  "compiled/app/controllers/modules_controller"
-  "compiled/app/controllers/module_controller"
-  "compiled/app/controllers/module_items_add_controller"
-  "compiled/app/components/canvas_module_component"
-  "compiled/app/components/canvas_module_item_publish_component"
-  "compiled/app/components/canvas_available_at_component"
-  "compiled/app/components/canvas_due_at_component"
-  "compiled/app/components/canvas_pts_component"
-  "compiled/templates"
-  "compiled/app/config/routes"
-  # 'vendor/jquery.subscribeAjax/jquery.subscribeAjax'
-], (Ember, App, ModulesRoute, Module, ModuleItem, ModulesView, ModulesController, ModuleController, ModuleItemsAddController, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasAvailableAtComponent, CanvasDueAtComponent, CanvasPtsComponent, templates) ->
-  Ember.TEMPLATES = templates
-  App.CanvasModuleComponent  = CanvasModuleComponent
-  App.ModulesRoute = ModulesRoute
-  App.ModulesView = ModulesView
-  App.ModuleItemsAddController = ModuleItemsAddController
-
-  # Ember.testing = true
-  Ember.LOG_BINDING = true
-  Ember.ENV.RAISE_ON_DEPRECATION = true
-
-  App.Module = Module
-  App.ModuleItem = ModuleItem
-  App.ModuleController = ModuleController
-  App.ModulesController = ModulesController
-
-  App.CanvasDropdownComponent = Ember.Mixin.create
-    open: ->
-      this.$('ul.canvas-dropdown').show()
-      document.body.addEventListener 'click', @close.bind(this), true
-    close: ->
-      # alert 'close'
-      document.body.removeEventListener 'click',@close,true
-      this.$('ul.canvas-dropdown').hide()
-
-  App.CanvasModuleItemCogComponent = Ember.Component.extend App.CanvasDropdownComponent
-
-  App.CanvasPublishComponent = Ember.Mixin.create
-    togglePublish: ->
-      if this.get 'published'
-        this.set 'published', false
-      else
-        this.set 'published', true
-
-  App.CanvasModulePublishComponent = Ember.Component.extend App.CanvasPublishComponent
-  App.CanvasModuleComponent = CanvasModuleComponent
-  App.CanvasModuleItemPublishComponent = CanvasModuleItemPublishComponent
-  App.CanvasAvailableAtComponent = CanvasAvailableAtComponent
-  App.CanvasDueAtComponent = CanvasDueAtComponent
-  App.CanvasPtsComponent = CanvasPtsComponent
-
-  window.App = App
+  App.reopen
+    CanvasAvailableAtComponent: CanvasAvailableAtComponent
+    CanvasDueAtComponent: CanvasDueAtComponent
+    CanvasModuleComponent: CanvasModuleComponent
+    CanvasModuleItemPublishComponent: CanvasModuleItemPublishComponent
+    CanvasPtsComponent: CanvasPtsComponent
+    ModuleController: ModuleController
+    ModuleItemsAddController: ModuleItemsAddController
+    ModulesController: ModulesController
+    Module: Module
+    ModuleItem: ModuleItem
+    ApplicationRoute: ApplicationRoute
+    ModulesRoute: ModulesRoute
+    ModulesView: ModulesView
