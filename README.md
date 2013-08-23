@@ -2,6 +2,15 @@
 
 ## Getting started
 
+For those who already have recent versions of node, npm, and grunt-cli, this will be enough to get started:
+
+```
+git clone https://github.com/aaronshaf/canvas-modules.git
+cd canvas-modules
+npm install
+npm start
+```
+
 ### Get the latest node & npm
 
 If you don't already have node & npm, get it [here](http://nodejs.org/) or use [brew](http://brew.sh/):
@@ -26,21 +35,6 @@ brew upgrade node
 
 ```
 sudo npm install -g grunt-cli
-```
-
-### Set up the repository
-
-```
-git clone https://github.com/aaronshaf/canvas-modules.git
-cd canvas-modules
-npm install
-cp config.example.json config.json
-```
-
-### Start it up
-
-```
-npm start
 ```
 
 ## Mock API, and proxy API
