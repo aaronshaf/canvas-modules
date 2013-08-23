@@ -36,7 +36,3 @@ brew upgrade node
 ```
 sudo npm install -g grunt-cli
 ```
-
-## Mock API, and proxy API
-
-By default a mock API is used. If you would like to test against a running instance of Canvas, uncomment the [api line in gruntfile.coffee](https://github.com/aaronshaf/canvas-modules/blob/master/gruntfile.coffee#L17).
