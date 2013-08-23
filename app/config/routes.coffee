@@ -1,6 +1,5 @@
 define [
-  './app'
-], (App) ->
+], () ->
 
   # App.ModuleAddRoute = Ember.Route.extend
   #   renderTemplate: ->
@@ -20,12 +19,12 @@ define [
   #     console.log 'params', params
   #     []
 
-  App.ModuleSearchRoute = Ember.Route.extend
-    model: (params) ->
-      console.log 'params', params
-      []
+  # App.ModuleSearchRoute = Ember.Route.extend
+  #   model: (params) ->
+  #     console.log 'params', params
+  #     []
 
-  App.Router.map ->
+  routes = ->
     @resource 'modules', path: '/' , ->
       @route 'add'
       @resource 'module_items',
