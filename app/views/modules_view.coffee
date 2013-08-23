@@ -3,7 +3,7 @@ define [
   'jquery'
   'underscore'
   '../models/module'
-  'vendor/jqueryui/sortable'
+  # 'vendor/jqueryui/sortable'
 ], (Ember,$,_,Module) ->
   fixHelper = (e, ui) ->
     ui.children().each ->
