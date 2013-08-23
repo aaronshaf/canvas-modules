@@ -4,7 +4,7 @@ rm -r app/controllers
 rm -r app/lib
 rm -r app/models
 rm -r app/routes
-rm -r app/remplates
+rm -r app/templates
 rm -r app/views
 
 cp -R ../canvas-lms/app/coffeescripts/ember/context_modules2/components app/
