@@ -2,7 +2,7 @@
 
 ## Getting started
 
-For those who already have recent versions of node, npm, and grunt-cli, this will be enough to get started:
+For those who already have recent versions of node, npm, and grunt-cli, this should be enough to get started:
 
 ```
 git clone https://github.com/aaronshaf/canvas-modules.git
