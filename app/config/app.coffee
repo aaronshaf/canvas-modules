@@ -18,8 +18,7 @@ define [
   Ember.LOG_STACKTRACE_ON_DEPRECATION = true
 
   # Ember.InstructureAdapter = Ember.Adapter.extend
-
-  Ember.Application.create
+  Ember.Application.extend
     rootElement: '#content'
     LOG_TRANSITIONS: true
     LOG_TRANSITIONS_INTERNAL: true
