@@ -2,8 +2,9 @@
 
 define [
   'Ember'
+  './parse_page_links'
   'vendor/ember/ember-model'
-], (Ember) ->
+], (Ember,parsePageLinks) ->
   get = Ember.get
   Ember.Adapter.extend
     find: (record, id) ->
@@ -39,9 +40,11 @@ define [
 
     didFindQuery: (klass, records, params, data, jqXHR) ->
       collectionKey = get(klass, 'collectionKey')
-      records.set 'links', _parsePageLinks jqXHR
+      console.log {jqXHR}
+      records.set 'links', parsePageLinks jqXHR
       dataToLoad = (if collectionKey then data[collectionKey] else data)
       records.load klass, dataToLoad
+      records
 
     findNextPage: (klass, records, params) ->
       url = records.get 'links.next'
@@ -53,7 +56,7 @@ define [
         records
 
     didFindNextPage: (klass, records, params, data, jqXHR) ->
-      records.set 'links', _parsePageLinks jqXHR
+      records.set 'links', parsePageLinks jqXHR
       records.pushObjects data
       records
 
@@ -115,32 +118,16 @@ define [
           if method is 'GET'
             settings.data = params
           else
-            settings.contentType = 'application/json; charset=utf-8'
+            # settings.contentType = 'application/json; charset=utf-8'
             settings.data = JSON.stringify(params)
         settings.success = (data, textStatus, jqXHR) ->
-          Ember.run null, resolve, {data, textStatus, jqXHR}
+          resolve {data, textStatus, jqXHR}
+          # Ember.run null, resolve, {data, textStatus, jqXHR}
 
         settings.error = (jqXHR, textStatus, errorThrown) ->
-          
+          console.log 'Error when fetching records', {jqXHR, textStatus, errorThrown}
           # https://github.com/ebryn/ember-model/issues/202
-          jqXHR.then = null if jqXHR
-          Ember.run null, reject, jqXHR
-
+          # jqXHR.then = null if jqXHR
+          # Ember.run null, reject, jqXHR
         Ember.$.ajax settings
       )
-
-# Source: https://github.com/instructure/canvas-lms/blob/stable/app/coffeescripts/collections/PaginatedCollection.coffee
-_parsePageLinks = (xhr) ->
-  nameRegex = /rel="([a-z]+)/
-  linkRegex = /^<([^>]+)/ # Matches the full link, e.g. "/api/v1/accounts/1/users?page=1&per_page=15"
-  pageRegex = /\Wpage=(\d+)/
-  perPageRegex = /\per_page=(\d+)/
-
-  linkHeader = xhr.getResponseHeader('link')?.split(',')
-  linkHeader ?= []
-  _.reduce linkHeader, reduceFn = (links, link) ->
-    key = link.match(nameRegex)[1]
-    val = link.match(linkRegex)[1]
-    links[key] = val
-    links
-  , {}
