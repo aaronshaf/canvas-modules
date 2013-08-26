@@ -1,0 +1,24 @@
+{
+  "framework": "qunit",
+  "launch_in_ci": [
+    "Firefox",
+    "PhantomJS"
+  ],
+  "launch_in_dev": [
+    "Chrome"
+  ],
+  "src_files": [
+    "app/components/*.coffee",
+    "app/config/*.coffee",
+    "app/controllers/*.coffee",
+    "app/lib/*",
+    "app/models/*.coffee",
+    "app/routes/*.coffee",
+    "app/templates/*.coffee",
+    "app/views/*.coffee"
+  ],
+  "serve_files": [
+    "vendor/requirejs/requirejs-2.1.8.js",
+    "compiled/app/dev.js"
+  ]
+}

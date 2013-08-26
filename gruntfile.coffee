@@ -6,15 +6,15 @@ path = require('path')
 #   console.log 'config.json not found. See config.example.json'
 #   process.exit()
 
-if fs.existsSync './config.json'
-  settingsJSON = fs.readFileSync './config.json', encoding: 'utf8'
+if fs.existsSync 'dev/config.json'
+  settingsJSON = fs.readFileSync 'dev/config.json', encoding: 'utf8'
   if settingsJSON.length
     settings = JSON.parse settingsJSON
 
 if not settings
-  defaultSettings = fs.readFileSync './config.example.json', encoding: 'utf8'
+  defaultSettings = fs.readFileSync 'dev/config.example.json', encoding: 'utf8'
   console.log defaultSettings
-  fs.writeFileSync './config.json', defaultSettings, encoding: 'utf8'
+  fs.writeFileSync 'dev/config.json', defaultSettings, encoding: 'utf8'
   settings = JSON.parse defaultSettings
 
 module.exports = (grunt) ->
@@ -25,7 +25,7 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
-    api: grunt.file.readJSON('config.json').api
+    api: grunt.file.readJSON('dev/config.json').api
 
     clean: [
       'compiled/'
@@ -33,19 +33,17 @@ module.exports = (grunt) ->
     ]
           
     watch:
-      server:
-        files: [
-          'node_modules/canvas-mock-api/*.js',
-          'node_modules/canvas-mock-api/**/*.js'
-        ]
-        tasks: ['server']
+      # server:
+      #   files: [
+      #     'node_modules/canvas-mock-api/*.js',
+      #     'node_modules/canvas-mock-api/**/*.js'
+      #   ]
+      #   tasks: ['server']
 
       scripts:
         files: [
-          'app/*.coffee'
-          'app/{,*/}*.coffee'
-          'tests/*.coffee'
-          'tests/{,*/}*.coffee'
+          '*.coffee'
+          '{,*/}*.coffee'
         ]
         tasks: ['coffee']
         options:
@@ -54,8 +52,8 @@ module.exports = (grunt) ->
 
       templates:
         files: [
-          'app/templates/*.hbs'
-          'app/templates/{,*/}*.hbs'
+          'templates/*.hbs'
+          'templates/{,*/}*.hbs'
         ]
         tasks: ['ember_handlebars']
         options:
@@ -69,16 +67,16 @@ module.exports = (grunt) ->
         #   spawn: false
           interrupt: true
 
-      livereload:
-        options:
-          livereload: true
-        files: [
-          'compiled/*.css',
-          # 'compiled/*.js',
-          # 'compiled/**/*.js',
-          # 'vendor/**/*.js',
-          # '**/*.png'
-        ]
+      # livereload:
+      #   options:
+      #     livereload: true
+      #   files: [
+      #     'compiled/stylesheets/*.css',
+      #     # 'compiled/*.js',
+      #     # 'compiled/**/*.js',
+      #     # 'vendor/**/*.js',
+      #     # '**/*.png'
+      #   ]
     concurrent:
       target1: [
         'coffee'
@@ -97,10 +95,8 @@ module.exports = (grunt) ->
           sourceMap: true
         expand: true
         src: [
-          'app/*.coffee'
-          'app/{,*/}*.coffee'
-          'tests/*.coffee'
-          'tests/{,*/}*.coffee'
+          '*.coffee'
+          '{,*/}*.coffee'
         ]
         dest: 'compiled/'
         ext: '.js'
@@ -108,7 +104,7 @@ module.exports = (grunt) ->
     sass:
       dist:
         files:
-          'compiled/context_modules2.css': 'stylesheets/context_modules2.scss'
+          'compiled/stylesheets/context_modules2.css': 'stylesheets/context_modules2.scss'
         options:
           sourceMap: true
 
@@ -117,15 +113,15 @@ module.exports = (grunt) ->
         amd: true
         processName: (filename) ->
           # filename.replace /^.*\/|\.[^.]*$/g, ''
-          filename = filename.replace 'app/templates/', ''
+          filename = filename.replace 'templates/', ''
           filename = filename.replace '.handlebars', ''
           filename.replace '.hbs', ''
 
       compile:
         files:
           'compiled/templates.js': [
-            'app/templates/*.hbs',
-            'app/templates/{,*/}*.hbs'
+            'templates/*.hbs',
+            'templates/{,*/}*.hbs'
           ]
 
   server(grunt)

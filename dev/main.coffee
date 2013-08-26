@@ -23,4 +23,11 @@ requirejs.config
     underscore:
       exports: '_'
 
-  urlArgs:"bust=" + (new Date()).getTime()
+  urlArgs: 'bust=' + (new Date()).getTime()
+
+require [
+  'jquery'
+  'compiled/main'
+  'compiled/templates.js'
+], ($,App) ->
+  app = App.create()
