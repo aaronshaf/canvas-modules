@@ -1,5 +1,5 @@
 define([
-  'vendor/jquery/jquery-2.0.3'
+  'vendor/jquery/jquery'
 ], function() {
   var $ = jQuery.noConflict(true);
 
