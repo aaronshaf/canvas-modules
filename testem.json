@@ -19,6 +19,10 @@
   ],
   "serve_files": [
     "vendor/requirejs/require.js",
+    "vendor/sinon/lib/sinon.js",
+    "vendor/sinon/lib/sinon/assert.js",
+    "vendor/sinon/lib/sinon/util/fake_server.js",
+    "vendor/sinon-qunit/lib/sinon-qunit.js",
     "compiled/dev/main.js"
   ]
 }
