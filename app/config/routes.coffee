@@ -34,4 +34,4 @@ define [
           path: '/add'
       @route 'search',
         path: 'search/:query'
-    # @resource 'modules'
+    @route 'missing', path: '*:'
