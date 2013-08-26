@@ -3,7 +3,7 @@ requirejs.config
     'ember': 'vendor/ember/ember',
     'vendor/ember/ember-model': 'vendor/ember-model/ember-model-0.0.8'
     'handlebars': 'vendor/handlebars/handlebars-1.0.0-rc4'
-    'underscore': 'vendor/underscore/underscore-1.4.4'
+    'underscore': 'vendor/underscore/underscore'
 
   map:
     '*':
