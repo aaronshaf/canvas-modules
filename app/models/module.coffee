@@ -48,8 +48,8 @@ define [
       records = PaginatedRecordArray.create(modelClass: this)
       this.adapter.findQuery(this, records, params)
       records
-
-  Module.url = '/api/v1/courses/' + course_id + '/modules'
+  
+  Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules'
 
   Module.adapter = InstructureAdapter.create()
   Module
