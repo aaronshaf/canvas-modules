@@ -25,9 +25,12 @@ requirejs.config
 
   urlArgs: 'bust=' + (new Date()).getTime()
 
-require [
-  'jquery'
-  'compiled/main'
-  'compiled/templates.js'
-], ($,App) ->
-  app = App.create()
+require ['jquery'],($) ->
+  $.getJSON 'dev/config.json', (data) ->
+    window.ENV = data?.ENV
+    require [
+      'compiled/tests/fake_server'
+      'compiled/main'
+      'compiled/templates'
+    ], (FakeServer,App) ->
+      app = App.create()
