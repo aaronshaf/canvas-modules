@@ -1,5 +1,5 @@
 define [
-  'Ember'
+  'ember'
 ], (Ember) ->
   Ember.Component.extend
     mouseEnter: ->

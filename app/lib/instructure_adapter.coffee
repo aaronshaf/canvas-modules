@@ -1,7 +1,7 @@
 # Based on https://raw.github.com/ebryn/ember-model/master/packages/ember-model/lib/rest_adapter.js
 
 define [
-  'Ember'
+  'ember'
   './parse_page_links'
   'vendor/ember/ember-model'
 ], (Ember,parsePageLinks) ->
@@ -40,7 +40,6 @@ define [
 
     didFindQuery: (klass, records, params, data, jqXHR) ->
       collectionKey = get(klass, 'collectionKey')
-      console.log {jqXHR}
       records.set 'links', parsePageLinks jqXHR
       dataToLoad = (if collectionKey then data[collectionKey] else data)
       records.load klass, dataToLoad

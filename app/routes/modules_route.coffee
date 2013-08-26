@@ -1,5 +1,5 @@
 define [
-  'Ember'
+  'ember'
   '../models/module'
   '../models/module_item'
 ], (Ember, Module, ModuleItem) ->

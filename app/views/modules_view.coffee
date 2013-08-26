@@ -1,5 +1,5 @@
 define [
-  'Ember'
+  'ember'
   'jquery'
   'underscore'
   '../models/module'

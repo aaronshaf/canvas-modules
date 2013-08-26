@@ -1,5 +1,5 @@
 define [
-  'Ember'
+  'ember'
   'jquery'
   './module'
   'vendor/ember/ember-model'

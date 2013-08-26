@@ -1,5 +1,5 @@
 define [
-  'Ember'
+  'ember'
   'jquery'
   'vendor/ember/ember-model'
 ], (Ember,$) ->

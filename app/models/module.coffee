@@ -7,7 +7,7 @@ https://gist.github.com/rpflorence/6274317
 ###
 
 define [
-  'Ember'
+  'ember'
   'jquery'
   'underscore'
   './module_item'

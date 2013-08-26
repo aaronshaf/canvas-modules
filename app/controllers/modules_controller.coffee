@@ -1,5 +1,5 @@
 define [
-  'Ember'
+  'ember'
 ], (Ember) ->
   Ember.Controller.extend
     editable: true
