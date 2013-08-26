@@ -26,6 +26,9 @@ requirejs.config
       exports: 'Handlebars'
     'underscore':
       exports: '_'
+    'sinon':
+      deps: ['sinon']
+      exports: 'sinon'
     'sinon-qunit':
       deps: ['sinon']
 
