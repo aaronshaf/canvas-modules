@@ -1,4 +1,4 @@
-define ->
+define ['sinon-qunit'], () ->
   -> 
     # TODO: use a class
     server = sinon.fakeServer.create()
