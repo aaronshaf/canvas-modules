@@ -39,8 +39,9 @@ define [
       @_super this.materializeData(this.get('modelClass'), data)
       this.notifyLoaded();
     nextPage: ->
-      modelClass = this.get('modelClass')
-      modelClass.adapter.findNextPage(modelClass, this)
+      return unless this.get 'links.next'
+      modelClass = this.get 'modelClass'
+      modelClass.adapter.findNextPage modelClass, this
 
   Module.reopenClass
     findPage: findPage = (params = {}) ->
