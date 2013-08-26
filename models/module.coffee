@@ -16,7 +16,6 @@ define [
 ], (Ember,$,_,ModuleItem,InstructureAdapter) ->
   attr = Ember.attr
   hasMany = Ember.hasMany
-  course_id = window?.ENV?.COURSE_ID
 
   ModuleInterface =
     id: attr(),
