@@ -16,14 +16,15 @@ define [
         if $(window).scrollTop() + $(window).height() >= $(document).height() - 300
           @get('controller.model').nextPage()
 
-      # Set up sorting for modules
-      @sortableModules = @$(".sortable-modules").sortable(
-        axis: "y"
-        connectWith: ".sortable-modules"
-        items: "> div.module"
-        helper: fixHelper
-      ).disableSelection()
-      oldParentId = undefined
+      # Set up sorting for modules. Temporarily disabled
+      if false
+        @sortableModules = @$(".sortable-modules").sortable(
+          axis: "y"
+          connectWith: ".sortable-modules"
+          items: "> div.module"
+          helper: fixHelper
+        ).disableSelection()
+        oldParentId = undefined
       
       # Set up sorting for module items (within modules and across modules)
       
@@ -43,50 +44,52 @@ define [
       
       # Ack! TODO: Use model
       # from 0-based to 1-based index
-      @sortableModuleItems = @$(".sortable-module-items > tbody").sortable(
-        axis: "y"
-        connectWith: ".sortable-module-items > tbody"
-        items: "> tr"
-        helper: fixHelper
-        change: (event, ui) ->
-          return  unless ui.sender
-          if $(ui.sender).find(".module-item[data-module-item-id]").length > 1
-            $(ui.sender).removeClass "empty"
-          else
-            $(ui.sender).addClass "empty"
+      if false
+        @sortableModuleItems = @$(".sortable-module-items > tbody").sortable(
+          axis: "y"
+          connectWith: ".sortable-module-items > tbody"
+          items: "> tr"
+          helper: fixHelper
+          change: (event, ui) ->
+            return  unless ui.sender
+            if $(ui.sender).find(".module-item[data-module-item-id]").length > 1
+              $(ui.sender).removeClass "empty"
+            else
+              $(ui.sender).addClass "empty"
 
-        deactivate: (event, ui) ->
-          if $(event.target).find(".module-item[data-module-item-id]").length
-            $(event.target).removeClass "empty"
-          else
-            $(event.target).addClass "empty"
+          deactivate: (event, ui) ->
+            if $(event.target).find(".module-item[data-module-item-id]").length
+              $(event.target).removeClass "empty"
+            else
+              $(event.target).addClass "empty"
 
-        start: (event, ui) =>
-          oldParentId = ui.item.parents(".module").data("module-id")
+          start: (event, ui) =>
+            oldParentId = ui.item.parents(".module").data("module-id")
 
-        update: (event, ui) ->
-          return  if this isnt ui.item.parent()[0]
-          module_id = ui.item.parents(".module").data("module-id")
-          module_item_id = ui.item.data("module-item-id")
-          index = ui.item.parent().find("> tr").index(ui.item)
-          url = "/api/v1/courses/" + window.ENV.COURSE_ID + "/modules/" + module_id + "/items/" + module_item_id
-          $.ajax
-            url: url
-            type: "PUT"
-            data:
-              module_item:
-                position: index + 1
+          update: (event, ui) ->
+            return  if this isnt ui.item.parent()[0]
+            module_id = ui.item.parents(".module").data("module-id")
+            module_item_id = ui.item.data("module-item-id")
+            index = ui.item.parent().find("> tr").index(ui.item)
+            url = "/api/v1/courses/" + window.ENV.COURSE_ID + "/modules/" + module_id + "/items/" + module_item_id
+            $.ajax
+              url: url
+              type: "PUT"
+              data:
+                module_item:
+                  position: index + 1
 
-            success: (result) ->
+              success: (result) ->
 
-      ).disableSelection()
-      @sortableInitialized = true
+        ).disableSelection()
+        @sortableInitialized = true
 
     observeAllTheThings: _.throttle(->
       return
       return  if @state isnt "inDOM"
       console.time "refresh"
-      @sortableModules.sortable "refresh"
-      @sortableModuleItems.sortable "refresh"
+      if false
+        @sortableModules.sortable "refresh"
+        @sortableModuleItems.sortable "refresh"
       console.timeEnd "refresh"
     , 150).observes("controller.@each.items.@each")
