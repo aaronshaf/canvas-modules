@@ -1,14 +1,14 @@
 {
   "framework": "qunit",
   "launch_in_ci": [
-  	"Firefox",
-  	"PhantomJS"
+    "Firefox",
+    "PhantomJS"
   ],
   "test_page": "tests/test.html",
   "launch_in_dev": [
-  	"Firefox",
-  	"Chrome",
-  	"Safari",
-  	"PhantomJS"
+    "Firefox",
+    "Chrome",
+    "Safari",
+    "PhantomJS"
   ]
 }
