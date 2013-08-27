@@ -55,7 +55,7 @@ module.exports = (grunt) ->
           'templates/*.hbs'
           'templates/{,*/}*.hbs'
         ]
-        tasks: ['ember_handlebars']
+        tasks: ['emberTemplates']
         options:
           spawn: false
           interrupt: true
@@ -80,7 +80,7 @@ module.exports = (grunt) ->
     concurrent:
       target1: [
         'coffee'
-        'ember_handlebars'
+        'emberTemplates'
         'sass'
       ]
 
@@ -108,16 +108,11 @@ module.exports = (grunt) ->
         options:
           sourceMap: true
 
-    ember_handlebars:
-      options:
-        amd: true
-        processName: (filename) ->
-          # filename.replace /^.*\/|\.[^.]*$/g, ''
-          filename = filename.replace 'templates/', ''
-          filename = filename.replace '.handlebars', ''
-          filename.replace '.hbs', ''
-
+    emberTemplates:
       compile:
+        options:
+          amd: true
+          templateBasePath: 'templates/'
         files:
           'compiled/templates.js': [
             'templates/*.hbs',
