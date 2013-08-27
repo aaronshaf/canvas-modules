@@ -6,6 +6,20 @@ define [
   'vendor/ember/ember-model'
 ], (Ember,parsePageLinks) ->
   get = Ember.get
+
+  Ember.RecordArray.reopen
+    nextPage: ->
+      return unless this.get 'links.next'
+      model = this.get 'model'
+      model.adapter.findNextPage model, this
+    pushObjects: (data) ->
+      @_super this.materializeData(this.get('model'), data)
+      this.notifyLoaded();
+    findFirstPage: (url) ->
+      alert 'findFirstPage'
+    firstNextPage: () ->
+      alert 'findNextPage'
+
   Ember.Adapter.extend
     find: (record, id) ->
       url = @buildURL(record.constructor, id)
@@ -57,6 +71,7 @@ define [
     didFindNextPage: (klass, records, params, data, jqXHR) ->
       records.set 'links', parsePageLinks jqXHR
       records.pushObjects data
+      records.trigger 'didAddPage'
       records
 
     createRecord: (record) ->

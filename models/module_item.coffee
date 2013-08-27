@@ -2,15 +2,15 @@ define [
   'ember'
   'jquery'
   './module'
+  '../lib/instructure_adapter'
   'vendor/ember/ember-model'
-], (Ember,$,Module) ->
-  return
+], (Ember,$,Module,InstructureAdapter) ->
   attr = Ember.attr
-  belongsTo = Ember.belongsTo
 
   ModuleItem = Ember.Model.extend
     # module: Ember.belongsTo('Module', {key: 'module_id'}),
     id: attr()
+    module_id: attr()
     position: attr(Number)
     title: attr()
     indent: attr(Number)
@@ -23,8 +23,14 @@ define [
     new_tab: attr(Boolean)
     completion_requirement: attr(Object)
 
-  ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id
-  Module.adapter = InstructureAdapter.create()
+  # ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id
+  ModuleItem.adapter = InstructureAdapter.create()
+
+  ModuleItem.reopenClass
+    findFirstPage: findFirstPage = (params = {}) ->
+      records = PaginatedRecordArray.create(modelClass: this)
+      this.adapter.findQuery(this, records, params)
+      records
 
   ModuleItem
 

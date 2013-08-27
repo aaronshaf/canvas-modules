@@ -27,27 +27,30 @@ define [
     prerequisite_module_ids: attr(Array)
     items_count: attr(Number)
     items_url: attr()
-    # items: hasMany(ModuleItem, {key: 'items', embedded: true})
+    items: hasMany(ModuleItem, {key: 'items', embedded: true})
     state: attr()
     completed_at: attr() # Use Date?
     # didCreateRecord: ->
     #   console.log "yess!!!"
-  
+    loadItems: ->
+      console.log 'loadItems'
+
   Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules?include%5B%5D=items&page=1&per_page=10'
 
-  PaginatedRecordArray = Ember.RecordArray.extend
-    pushObjects: (data) ->
-      @_super this.materializeData(this.get('modelClass'), data)
-      this.notifyLoaded();
-    nextPage: ->
-      return unless this.get 'links.next'
-      modelClass = this.get 'modelClass'
-      modelClass.adapter.findNextPage modelClass, this
+  # PaginatedRecordArray = Ember.RecordArray.extend
+  #   loadItems: ->
+  #     this.content.forEach (module) ->
+  #       module.on 'didLoad', ->
+  #         console.log '21312312312'
+  #     # alert 'something'
 
   Module.reopenClass
-    findFirstPage: findFirstPage = (params = {}) ->
-      records = PaginatedRecordArray.create(modelClass: this)
+    findFirstPage: (params = {}) ->
+      records = Ember.RecordArray.create(model: this)
       this.adapter.findQuery(this, records, params)
+      records.on 'didLoad', ->
+        records.forEach (record) ->
+          console.log (record.get 'items_count') > (record.get 'items.length')
       records
 
   Module.adapter = InstructureAdapter.create()
