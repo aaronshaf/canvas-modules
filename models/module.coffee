@@ -43,7 +43,7 @@ define [
       modelClass.adapter.findNextPage modelClass, this
 
   Module.reopenClass
-    findPage: findPage = (params = {}) ->
+    findFirstPage: findFirstPage = (params = {}) ->
       records = PaginatedRecordArray.create(modelClass: this)
       this.adapter.findQuery(this, records, params)
       records
