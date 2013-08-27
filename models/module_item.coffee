@@ -11,17 +11,17 @@ define [
 
   ModuleItem = Ember.Model.extend
     # module: Ember.belongsTo('Module', {key: 'module_id'}),
-    id: attr(),
-    position: attr(Number),
-    title: attr(),
-    indent: attr(Number),
-    type: attr(),
-    content_id: attr(Number),
-    html_url: attr(),
-    url: attr(),
-    page_url: attr(),
-    external_url: attr(),
-    new_tab: attr(Boolean),
+    id: attr()
+    position: attr(Number)
+    title: attr()
+    indent: attr(Number)
+    type: attr()
+    content_id: attr(Number)
+    html_url: attr()
+    url: attr()
+    page_url: attr()
+    external_url: attr()
+    new_tab: attr(Boolean)
     completion_requirement: attr(Object)
 
   ModuleItem.url = '/api/v1/courses/' + course_id + '/modules/' + module_id

@@ -17,18 +17,18 @@ define [
   attr = Ember.attr
   hasMany = Ember.hasMany
 
-  ModuleInterface =
-    id: attr(),
-    workflow_state: attr(),
-    position: attr(Number),
-    name: attr(),
-    unlock_at: attr(), # Use Date?
-    require_sequential_process: attr(Boolean),
-    prerequisite_module_ids: attr(Array),
-    items_count: attr(Number),
-    items_url: attr(),
-    # items: hasMany('ModelItem'),
-    state: attr(),
+  Module = Ember.Model.extend 
+    id: attr()
+    workflow_state: attr()
+    position: attr(Number)
+    name: attr()
+    unlock_at: attr() # Use Date?
+    require_sequential_process: attr(Boolean)
+    prerequisite_module_ids: attr(Array)
+    items_count: attr(Number)
+    items_url: attr()
+    items: hasMany('ModelItem')
+    state: attr()
     completed_at: attr() # Use Date?
 
   Module = Ember.Model.extend ModuleInterface
