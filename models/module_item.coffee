@@ -7,7 +7,6 @@ define [
   return
   attr = Ember.attr
   hasMany = Ember.hasMany
-  course_id = window.ENV.COURSE_ID
 
   ModuleItem = Ember.Model.extend
     # module: Ember.belongsTo('Module', {key: 'module_id'}),
@@ -24,7 +23,7 @@ define [
     new_tab: attr(Boolean)
     completion_requirement: attr(Object)
 
-  ModuleItem.url = '/api/v1/courses/' + course_id + '/modules/' + module_id
+  ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id
 
   ModuleItem
 
