@@ -47,7 +47,7 @@ module.exports = (grunt) ->
         ]
         tasks: ['coffee']
         options:
-          # spawn: false
+          spawn: false
           interrupt: true
 
       templates:
@@ -89,7 +89,7 @@ module.exports = (grunt) ->
         path: 'http://localhost:8000'
 
     coffee:
-      compile:
+      all:
         options:
           join: false
           sourceMap: true
@@ -125,6 +125,9 @@ module.exports = (grunt) ->
           ]
 
   server(grunt)
+
+  grunt.event.on 'watch', (action,filepath) ->
+    grunt.config ['coffee', 'all'], filepath
 
   grunt.registerTask 'default', [
     'clean',
