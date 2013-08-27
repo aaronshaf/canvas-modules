@@ -101,9 +101,9 @@ define [
       urlRoot = get(klass, 'url')
       throw new Error('Ember.RESTAdapter requires a `url` property to be specified')  unless urlRoot
       unless Ember.isEmpty(id)
-        urlRoot + '/' + id + '.json'
+        urlRoot + '/' + id
       else
-        urlRoot + '.json'
+        urlRoot
 
     ajaxSettings: (url, method) ->
       url: url

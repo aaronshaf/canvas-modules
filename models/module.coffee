@@ -27,11 +27,13 @@ define [
     prerequisite_module_ids: attr(Array)
     items_count: attr(Number)
     items_url: attr()
-    items: hasMany('ModelItem')
+    # items: hasMany(ModuleItem, {key: 'items', embedded: true})
     state: attr()
     completed_at: attr() # Use Date?
-
-  Module = Ember.Model.extend ModuleInterface
+    # didCreateRecord: ->
+    #   console.log "yess!!!"
+  
+  Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules?include%5B%5D=items&page=1&per_page=10'
 
   PaginatedRecordArray = Ember.RecordArray.extend
     pushObjects: (data) ->
@@ -47,8 +49,6 @@ define [
       records = PaginatedRecordArray.create(modelClass: this)
       this.adapter.findQuery(this, records, params)
       records
-  
-  Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules'
 
   Module.adapter = InstructureAdapter.create()
   Module

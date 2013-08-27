@@ -6,7 +6,7 @@ define [
 ], (Ember,$,Module) ->
   return
   attr = Ember.attr
-  hasMany = Ember.hasMany
+  belongsTo = Ember.belongsTo
 
   ModuleItem = Ember.Model.extend
     # module: Ember.belongsTo('Module', {key: 'module_id'}),
@@ -24,6 +24,7 @@ define [
     completion_requirement: attr(Object)
 
   ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id
+  Module.adapter = InstructureAdapter.create()
 
   ModuleItem
 
