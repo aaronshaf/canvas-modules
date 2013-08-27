@@ -1,4 +1,6 @@
-define ['sinon-qunit'], () ->
+define [
+  'vendor/sinon/lib/sinon/util/fake_server'
+], (sinon) ->
   -> 
     # TODO: use a class
     server = sinon.fakeServer.create()

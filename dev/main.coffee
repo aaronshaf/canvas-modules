@@ -27,10 +27,18 @@ requirejs.config
     'underscore':
       exports: '_'
     'sinon':
-      deps: ['sinon']
       exports: 'sinon'
     'sinon-qunit':
       deps: ['sinon']
+    'vendor/sinon/lib/sinon/assert':
+      deps: ['sinon']
+      exports: 'sinon'
+    'vendor/sinon/lib/sinon/util/fake_server':
+      deps: ['sinon','vendor/sinon/lib/sinon/util/fake_xml_http_request']
+      exports: 'sinon'
+    'vendor/sinon/lib/sinon/util/fake_xml_http_request':
+      deps: ['sinon']
+      exports: 'sinon'
 
   urlArgs: 'bust=' + (new Date()).getTime()
 
@@ -38,16 +46,15 @@ require ['jquery'],($) ->
   $.getJSON 'dev/config.json', (config) ->
     window.ENV = config?.ENV
     require [
+      'compiled/tests/fake_server'
       'compiled/main'
       'compiled/templates'
-      'compiled/tests/fake_server'
     ], (FakeServer,App) ->
       if config.use_fake_server or QUnit?
         fake_server = FakeServer()
 
       if QUnit?
-        App.reopen
+        app = App.create
           rootElement: '#qunit-fixture'
-
-      app = App.create()
-
+      else
+        app = App.create()        
