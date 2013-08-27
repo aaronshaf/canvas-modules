@@ -127,7 +127,7 @@ module.exports = (grunt) ->
   server(grunt)
 
   grunt.event.on 'watch', (action,filepath) ->
-    grunt.config ['coffee', 'all'], filepath
+    grunt.config ['coffee','all','src'], filepath
 
   grunt.registerTask 'default', [
     'clean',
