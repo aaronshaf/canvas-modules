@@ -1,4 +1,4 @@
-<tr {{bindAttr data-module-item-id="item.id" class=":module-item item.visible:visible:hidden"}}>
+<tr {{bindAttr data-module-item-id="item.id" class=":module-item item.visible:visible:hidden2"}}>
   <td class="long">
     {{#if editable}}
       <img class="drag-handler" src="img/item-handle.png" style="height: 12px;padding-bottom: 4px;" />
@@ -10,7 +10,6 @@
       </span>
 
       <a class="module-item-title" {{bindAttr href=item.url}}>{{item.title}}</a>
-      ({{item.visible}})
     </div>
   </td>
 

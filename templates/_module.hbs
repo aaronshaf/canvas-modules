@@ -17,6 +17,7 @@
               </a>
             {{/if}}
             {{module.name}}
+            {{module.id}}
           </h3>
         </th>
         <th style="width: 140px;"></th>
@@ -38,12 +39,13 @@
         </th>
       </tr>
     </thead>
-    {{#if module.expanded}}
-      <tbody {{bindAttr class=":sortable empty"}}>
-        {{#each item in module.items}}
-          {{canvas-module-item item=item editable=editable}}
-        {{/each}}
-      <tbody>
-    {{/if}}
+    <tbody {{bindAttr class=":sortable empty"}}>
+      {{#each item in module.items}}
+        {{partial "module_item"}}
+      {{/each}}
+    <tbody>
   </table>
+  <div style="margin: 4px;text-align: center;">
+    <a href="" class="btn btn-mini">MOARRR</a>
+  </div>
 </div>
