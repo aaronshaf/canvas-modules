@@ -25,17 +25,6 @@ define [
     completion_requirement: attr(Object)
 
   ModuleItem.url = '/api/v1/courses/' + course_id + '/modules/' + module_id
-  ModuleItem.adapter = Ember.RESTAdapter.extend(
-    # buildURL: (klass, id) ->
-      # urlRoot = get(klass, 'url');
-      # if (!urlRoot) { throw new Error('Ember.RESTAdapter requires a `url` property to be specified'); }
-
-      # if (!Ember.isEmpty(id)) {
-      #   return urlRoot + "/" + id + ".json";
-      # } else {
-      #   return urlRoot + ".json";
-      # }
-  ).create()
 
   ModuleItem
 
