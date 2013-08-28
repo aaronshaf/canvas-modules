@@ -17,7 +17,6 @@
               </a>
             {{/if}}
             {{module.name}}
-            {{module.id}}
           </h3>
         </th>
         <th style="width: 140px;"></th>
@@ -41,11 +40,13 @@
     </thead>
     <tbody {{bindAttr class=":sortable empty"}}>
       {{#each item in module.items}}
-        {{partial "module_item"}}
+        {{render "module_item" item}}
       {{/each}}
     <tbody>
   </table>
-  <div style="margin: 4px;text-align: center;">
-    <a href="" class="btn btn-mini">MOARRR</a>
-  </div>
+  {{#if module.items.links.next}}
+    <div style="margin: 4px;text-align: center;">
+      <a {{action 'loadNextPage'}} class="btn btn-mini">MOARRR</a>
+    </div>
+  {{/if}}
 </div>
