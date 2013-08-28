@@ -45,16 +45,23 @@ requirejs.config
 require ['jquery'],($) ->
   $.getJSON 'dev/config.json', (config) ->
     window.ENV = config?.ENV
-    require [
-      'compiled/tests/fake_server'
-      'compiled/main'
-      'compiled/templates'
-    ], (FakeServer,App) ->
-      if config.use_fake_server or QUnit?
+
+    if config.use_fake_server or QUnit?
+      require [
+        'compiled/tests/fake_server'
+        'compiled/main'
+        'compiled/templates'
+      ], (FakeServer,App) ->
         fake_server = FakeServer()
 
-      if QUnit?
-        app = App.create
-          rootElement: '#qunit-fixture'
-      else
-        app = App.create()        
+        if QUnit?
+          app = App.create
+            rootElement: '#qunit-fixture'
+        else
+          app = App.create()        
+    else
+      require [
+        'compiled/main'
+        'compiled/templates'
+      ], (App) ->
+        app = App.create()
