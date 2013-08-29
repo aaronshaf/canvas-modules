@@ -45,8 +45,13 @@
     <tbody>
   </table>
   {{#if module.items.links.next}}
+    {{#unless module.items.loading}}
     <div style="margin: 4px;text-align: center;">
       <a {{action 'loadNextPage'}} class="btn btn-mini">MOARRR</a>
     </div>
+    {{/unless}}
+  {{/if}}
+  {{#if module.items.loading}}
+    {{instructure-spinner}}
   {{/if}}
 </div>
