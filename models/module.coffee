@@ -33,4 +33,14 @@ define [
         error: (jqXHR, textStatus, errorThrown) ->
           console.log 'Error when fetching records', {jqXHR, textStatus, errorThrown}
       Module.records
+    loadNextPage: ->
+      url = Module.records.get('links.next')
+      return unless url
+      Module.records.set 'loading', true
+      Module.records.set 'links.next', null
+      Ember.$.getJSON url, (data, textStatus, jqXHR) =>
+        records = data.map (record) -> record = Module.create record
+        Module.records.pushObjects records
+        Module.records.set 'loading', false
+        Module.records.set 'links', parsePageLinks jqXHR
   Module

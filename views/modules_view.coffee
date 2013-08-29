@@ -14,7 +14,7 @@ define [
     didInsertElement: ->
       $(window).scroll =>
         if $(window).scrollTop() + $(window).height() >= $(document).height() - 300
-          @get('controller.model').nextPage()
+          Module.loadNextPage()
 
       # Set up sorting for modules. Temporarily disabled
       if false

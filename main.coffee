@@ -3,14 +3,12 @@ define [
   "ember",
   "./config/app",
   "./config/routes",
-  "./components/canvas_available_at_component",
-  "./components/canvas_due_at_component",
-  "./components/canvas_module_component",
   "./components/canvas_module_item_publish_component",
-  "./components/canvas_pts_component",
+  "./components/instructure_spinner_component",
   "./controllers/module_controller",
   "./controllers/module_items_add_controller",
   "./controllers/modules_controller",
+  "./controllers/module_item_controller",
   "./models/module",
   "./models/module_item",
   "./routes/application_route",
@@ -32,21 +30,19 @@ define [
   # "./templates/modules/index",
   # "./templates/modules/search",
   # "./templates/modules"
-], (Ember, App, routes, CanvasAvailableAtComponent, CanvasDueAtComponent, CanvasModuleComponent, CanvasModuleItemPublishComponent, CanvasPtsComponent, ModuleController, ModuleItemsAddController, ModulesController, Module, ModuleItem, ApplicationRoute, MissingRoute, ModulesRoute, ModulesView) ->
+], (Ember, App, routes, CanvasModuleItemPublishComponent, InstructureSpinnerComponent, ModuleController, ModuleItemsAddController, ModulesController, ModuleItemController, Module, ModuleItem, ApplicationRoute, MissingRoute, ModulesRoute, ModulesView) ->
   App.initializer
     name: 'routes'
     initialize: (container, application) ->
       application.Router.map(routes)
 
   App.reopen
-    CanvasAvailableAtComponent: CanvasAvailableAtComponent
-    CanvasDueAtComponent: CanvasDueAtComponent
-    CanvasModuleComponent: CanvasModuleComponent
     CanvasModuleItemPublishComponent: CanvasModuleItemPublishComponent
-    CanvasPtsComponent: CanvasPtsComponent
+    InstructureSpinnerComponent: InstructureSpinnerComponent
     ModuleController: ModuleController
     ModuleItemsAddController: ModuleItemsAddController
     ModulesController: ModulesController
+    ModuleItemController: ModuleItemController
     Module: Module
     ModuleItem: ModuleItem
     ApplicationRoute: ApplicationRoute

@@ -2,28 +2,13 @@ define [
   'ember'
   'jquery'
   './module'
-  '../lib/instructure_adapter'
-], (Ember,$,Module,InstructureAdapter) ->
+], (Ember,$,Module) ->
   attr = Ember.attr
 
-  ModuleItem = Ember.Model.extend
-    # module: Ember.belongsTo('Module', {key: 'module_id'}),
-    id: attr()
-    module_id: attr()
-    position: attr(Number)
-    title: attr()
-    indent: attr(Number)
-    type: attr()
-    content_id: attr(Number)
-    html_url: attr()
-    url: attr()
-    page_url: attr()
-    external_url: attr()
-    new_tab: attr(Boolean)
-    completion_requirement: attr(Object)
+  ModuleItem = Ember.Object.extend()
 
   # ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id
-  ModuleItem.adapter = InstructureAdapter.create()
+  # ModuleItem.adapter = InstructureAdapter.create()
 
   ModuleItem.reopenClass
     findFirstPage: findFirstPage = (params = {}) ->

@@ -6,10 +6,9 @@
 
     <div style="display: inline-block;" {{bindAttr class=item.indentClass}}>
       <span class="type_icon" {{bindAttr title=item.type}}>
-        <i {{bindAttr class=item.iconClass}} aria-label="Item type: Assignment"></i>
+        <i {{bindAttr class="icon_class"}} aria-label="Item type: Assignment"></i>
       </span>
-
-      <a class="module-item-title" {{bindAttr href=item.url}}>{{item.title}}</a>
+      <a class="module-item-title" {{bindAttr href=item.url target="item.new_tab:_blank"}} "">{{item.title}}</a>
     </div>
   </td>
 
