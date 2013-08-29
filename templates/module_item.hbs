@@ -13,9 +13,21 @@
     </div>
   </td>
 
-  {{canvas-available-at date="Sep 4, 2055"}}
-  {{canvas-due-at date="Sep 4, 2155"}}
-  {{canvas-pts points=5 possiblePoints=10}}
+  <td>
+    {{#if item.content_details.unlock_at}}
+      Available until {{item.content_details.unlock_at}}
+    {{/if}}
+  </td>
+  <td>
+    {{#if item.content_details.due_at}}
+      Available until {{item.content_details.due_at}}
+    {{/if}}
+  </td>
+  <td>
+    {{#if content_details.points_possible}}
+      - / {{content_details.points_possible}} pts
+    {{/if}}
+  </td>
 
   <td class="align-right">
     {{canvas-module-item-publish published=item.published}}
