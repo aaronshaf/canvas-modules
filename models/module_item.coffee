@@ -3,7 +3,6 @@ define [
   'jquery'
   './module'
   '../lib/instructure_adapter'
-  'vendor/ember/ember-model'
 ], (Ember,$,Module,InstructureAdapter) ->
   attr = Ember.attr
 

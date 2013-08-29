@@ -3,7 +3,6 @@
 define [
   'ember'
   './parse_page_links'
-  'vendor/ember/ember-model'
 ], (Ember,parsePageLinks) ->
   get = Ember.get
 

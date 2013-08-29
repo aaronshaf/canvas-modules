@@ -1,7 +1,6 @@
 define [
   'ember'
   'jquery'
-  'vendor/ember/ember-model'
 ], (Ember,$) ->
   $(document.body).addClass 'context_modules2'
 

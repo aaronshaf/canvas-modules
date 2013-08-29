@@ -1,7 +1,6 @@
 requirejs.config
   paths:
     'ember': 'vendor/ember/ember',
-    'vendor/ember/ember-model': 'vendor/ember-model/ember-model-0.0.8'
     'handlebars': 'vendor/handlebars/handlebars-1.0.0'
     'underscore': 'vendor/underscore/underscore'
     'sinon': 'vendor/sinon/lib/sinon'
