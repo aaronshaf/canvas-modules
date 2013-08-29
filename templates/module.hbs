@@ -47,7 +47,10 @@
   {{#if module.items.links.next}}
     {{#unless module.items.loading}}
     <div style="margin: 4px;text-align: center;">
-      <a {{action 'loadNextPage'}} class="btn btn-mini">MOARRR</a>
+      <a {{action 'loadNextPage'}} class="btn btn-mini">
+        More
+        <i class="icon-mini-arrow-down"></i>
+      </a>
     </div>
     {{/unless}}
   {{/if}}
