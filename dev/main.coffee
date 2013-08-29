@@ -5,6 +5,7 @@ requirejs.config
     'underscore': 'vendor/underscore/underscore'
     'sinon': 'vendor/sinon/lib/sinon'
     'sinon-qunit': 'vendor/sinon-qunit/lib/sinon-qunit'
+    'spin': 'vendor/spinjs/spin-1.3.2'
 
   map:
     '*':
