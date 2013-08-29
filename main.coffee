@@ -15,6 +15,7 @@ define [
   "./routes/missing_route",
   "./routes/modules_route",
   "./views/modules_view",
+  './helpers/module_icon'
   # "./templates/components/canvas-available-at",
   # "./templates/components/canvas-due-at",
   # "./templates/components/canvas-modal",
