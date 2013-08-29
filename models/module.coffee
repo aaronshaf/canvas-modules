@@ -5,33 +5,36 @@ define [
   # ModuleItem = Ember.Object.extend()
 
   Module = Ember.Object.extend()
-  Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules?include%5B%5D=items&page=1&per_page=50'
+  Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules?include%5B%5D=items&include%5B%5D=content_details&page=1&per_page=50'
 
   Module.reopen
+    loadNextPage: ->
+      if @items.get('links').next
+        @items.set 'loading', true
+        Ember.$.getJSON @items.get('links').next, (data, textStatus, jqXHR) =>
+          @items.set 'loading', false
+          @items.pushObjects data
+          @items.set 'links', parsePageLinks jqXHR
     items: (->
       items = []
       if not @items?.length and @items_count and @items_url?
-        Ember.$.getJSON @get('items_url'), (data, textStatus, jqXHR) =>
-          items.addObjects data
+        # @items.set 'loading', true
+        Ember.$.getJSON @get('items_url') + '?include%5B%5D=content_details', (data, textStatus, jqXHR) =>
+          items.pushObjects data
           items.set 'links', parsePageLinks jqXHR
-      items
+          # @items.set 'loading', false
+      @items = items
     ).property()
 
   Module.reopenClass
     records: Ember.ArrayProxy.create content: []
     findAll: ->
-      Ember.$.ajax
-        url: @url
-        dataType: 'json'
-        contentType: 'application/json; charset=utf-8'
-        success: (data, textStatus, jqXHR) =>
-          records = data.map (record, index, arr) ->
-            record = Module.create record
-          Module.records.pushObjects records
-          window.records = Module.records
-          # Module.records.set 'links', parsePageLinks jqXHR
-        error: (jqXHR, textStatus, errorThrown) ->
-          console.log 'Error when fetching records', {jqXHR, textStatus, errorThrown}
+      Module.records.set 'loading', true
+      Ember.$.getJSON @url, (data, textStatus, jqXHR) =>
+        records = data.map (record) -> record = Module.create record
+        Module.records.pushObjects records
+        Module.records.set 'loading', false
+        Module.records.set 'links', parsePageLinks jqXHR
       Module.records
     loadNextPage: ->
       url = Module.records.get('links.next')
