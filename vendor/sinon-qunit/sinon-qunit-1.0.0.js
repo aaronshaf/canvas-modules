@@ -1,5 +1,5 @@
 /**
- * sinon-qunit 1.0.0, 2010/12/08
+ * sinon-qunit 1.0.0, 2010/12/09
  *
  * @author Christian Johansen (christian@cjohansen.no)
  *
