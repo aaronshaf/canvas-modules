@@ -1,8 +1,8 @@
 define [
-  'vendor/sinon/lib/sinon/util/fake_server'
+  'sinon'
+  'sinon-qunit'
 ], (sinon) ->
-  -> 
-    # TODO: use a class
+  ->
     server = sinon.fakeServer.create()
     server.autoRespond = true
     # server.autoRespondAfter = 0
