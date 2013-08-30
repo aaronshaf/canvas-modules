@@ -1,6 +1,6 @@
 server = require './server'
 fs = require 'fs'
-path = require('path')
+path = require 'path'
 
 # if !fs.existsSync './config.json'
 #   console.log 'config.json not found. See config.example.json'
