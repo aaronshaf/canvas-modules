@@ -10,6 +10,7 @@ requirejs.config
   map:
     '*':
       'Handlebars': 'handlebars'
+      'Ember': 'ember'
       'jquery': 'vendor/instructure/jquery.instructure-1.1'
       'vendor/jqueryui/sortable': 'vendor/jqueryui/sortable-1.10.3'
     'vendor/instructure/jquery.instructure-1.1':
