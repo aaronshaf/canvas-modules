@@ -13,7 +13,7 @@ requirejs.config
       'jquery': 'vendor/instructure/jquery.instructure-1.1'
       'vendor/jqueryui/sortable': 'vendor/jqueryui/sortable-1.10.3'
     'vendor/instructure/jquery.instructure-1.1':
-      'jquery': 'vendor/jquery/jquery'
+      'jquery': 'vendor/jquery/jquery-1.10.2.js'
 
   shim:
     'ember':
@@ -28,5 +28,8 @@ requirejs.config
       exports: 'sinon'
     'sinon-qunit':
       deps: ['sinon']
+    'jquery':
+      exports: 'jQuery'
+      exports: '$'
 
   urlArgs: 'bust=' + (new Date()).getTime()
