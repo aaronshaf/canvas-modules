@@ -20,7 +20,6 @@
   "serve_files": [
     "vendor/requirejs/require.js",
     "vendor/sinon/sinon-1.7.3.js",
-    "vendor/sinon-qunit/sinon-qunit-1.0.0.js",
     "compiled/dev/config.js",
     "compiled/tests/modules_spec.js"
   ]
