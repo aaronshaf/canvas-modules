@@ -1,6 +1,6 @@
 requirejs.config
   paths:
-    'ember': 'vendor/ember/ember',
+    'ember': 'vendor/ember/ember-1.0.0-rc8',
     'handlebars': 'vendor/handlebars/handlebars-1.0.0'
     'underscore': 'vendor/underscore/underscore'
     'sinon': 'vendor/sinon/sinon-1.7.3'
@@ -10,8 +10,6 @@ requirejs.config
   map:
     '*':
       'Handlebars': 'handlebars'
-      'ember': 'vendor/ember/ember-1.0.0-rc7'
-      'Ember': 'vendor/ember/ember-1.0.0-rc7'
       'jquery': 'vendor/instructure/jquery.instructure-1.1'
       'vendor/jqueryui/sortable': 'vendor/jqueryui/sortable-1.10.3'
     'vendor/instructure/jquery.instructure-1.1':
