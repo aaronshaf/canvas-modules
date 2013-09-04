@@ -8,6 +8,7 @@ cp -R components ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R config ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R controllers ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R lib ../canvas-lms/app/coffeescripts/ember/context_modules2/
+cp -R helpers ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R models ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R routes ../canvas-lms/app/coffeescripts/ember/context_modules2/
 cp -R templates ../canvas-lms/app/coffeescripts/ember/context_modules2/
