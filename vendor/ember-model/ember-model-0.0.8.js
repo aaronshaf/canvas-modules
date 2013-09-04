@@ -1,4 +1,4 @@
-define(['Ember'], function(Ember) {
+define(['ember'], function(Ember) {
 
 (function() {
 
