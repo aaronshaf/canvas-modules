@@ -5,3 +5,4 @@ libpeerconnection.log
 .sublime-project
 .DS_Store
 config.json
+*.log
