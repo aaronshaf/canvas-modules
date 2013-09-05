@@ -1,4 +1,4 @@
-server = require './server'
+server = require './server.coffee'
 fs = require 'fs'
 path = require 'path'
 
