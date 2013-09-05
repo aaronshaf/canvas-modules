@@ -22,7 +22,6 @@
     "grunt-testem": "~0.3.6",
     "express": "~3.3.4",
     "http-proxy": "~0.10.3",
-    "canvas-mock-api": "git://github.com/aaronshaf/canvas-mock-api.git",
     "grunt-connect-proxy": "~0.1.5",
     "matchdep": "~0.1.2",
     "grunt-open": "~0.2.1",
