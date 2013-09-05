@@ -29,11 +29,11 @@ require [
       @container.appendTo $('#qunit-fixture')
       @server = FakeServer()
     teardown: ->
-      @server.restore()
+      # @server.restore()
       @container.remove()
       # To do: reset app
 
-  asyncTest 'More modules loaded when scrolled near bottom of document', 2, ->
+  asyncTest 'Pagination', 4, ->
     Module.url = '/api/v1/courses/1/modules'
 
     app = App.create
@@ -41,10 +41,15 @@ require [
       ready: =>
         # To do: Use Ember.run.later
         setTimeout (=>
-          equal $('.module',@container).length,10
+          equal $('.module',@container).length,50
           window.scrollTo 0, 5000
           setTimeout (=>
-            equal $('.module',@container).length,20
-            QUnit.start()
-          ), 100
+            equal $('.module',@container).length,100
+            equal $('.module-item',@container).length,11
+            $('.next-module-item-page-button').click()
+            setTimeout (=>
+              equal $('.module-item',@container).length,21
+              QUnit.start()
+            ), 200
+          ), 200
         ), 100
