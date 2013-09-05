@@ -4,8 +4,8 @@ require [
   'jquery'
   'ember'
   'compiled/tests/fake_server'
-  'compiled/main' # ember/context_modules2/
-  'compiled/models/module' # ember/context_modules2/
+  'compiled/main'
+  'compiled/models/module'
   'compiled/templates'
 ], ($,Ember,FakeServer,App,Module) ->
   # if parseFloat(requirejs.version) < 2.1
@@ -39,8 +39,7 @@ require [
     app = App.create
       rootElement: @container
       ready: =>
-        # console.log @container
-        # debugger
+        # To do: Use Ember.run.later
         setTimeout (=>
           equal $('.module',@container).length,10
           window.scrollTo 0, 5000
