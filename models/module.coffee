@@ -1,7 +1,8 @@
 define [
   'ember'
   '../lib/parse_page_links'
-], (Ember,parsePageLinks) ->
+  'jquery'
+], (Ember,parsePageLinks,$) ->
   # ModuleItem = Ember.Object.extend()
 
   Module = Ember.Object.extend()
@@ -30,11 +31,16 @@ define [
     records: Ember.ArrayProxy.create content: []
     findAll: ->
       Module.records.set 'loading', true
-      Ember.$.getJSON @url, (data, textStatus, jqXHR) =>
-        records = data.map (record) -> record = Module.create record
-        Module.records.pushObjects records
-        Module.records.set 'loading', false
-        Module.records.set 'links', parsePageLinks jqXHR
+      Ember.$.ajax
+        dataType: 'json'
+        url: @url,
+        success: (data, textStatus, jqXHR) =>
+          records = data.map (record) -> record = Module.create record
+          Module.records.pushObjects records
+          Module.records.set 'loading', false
+          Module.records.set 'links', parsePageLinks jqXHR
+        error: (error) ->
+          console.log 'error: ', error
       Module.records
     loadNextPage: ->
       url = Module.records.get('links.next')
