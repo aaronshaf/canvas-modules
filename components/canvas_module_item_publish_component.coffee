@@ -3,7 +3,7 @@ define [
 ], (Ember) ->
   Ember.Component.extend
     mouseEnter: ->
-      @set 'hover', true
+      @set 'hover', true 
 
     mouseLeave: ->
       @set 'hover', false

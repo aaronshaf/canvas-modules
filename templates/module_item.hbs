@@ -4,22 +4,22 @@
       <img class="drag-handler" src="img/item-handle.png" style="height: 12px;padding-bottom: 4px;" />
     {{/if}}
 
-    <div style="display: inline-block;" {{bindAttr class=item.indentClass}}>
-      <span class="type_icon" {{bindAttr title=item.type}}>
+    <div style="display: inline-block;" {{bindAttr class="item.indentClass"}}>
+      <span {{bindAttr title="item.type" class=":type_icon item.published"}}>
         {{moduleIcon item.type}}
       </span>
-      <a class="module-item-title" {{bindAttr href=item.url target="item.new_tab:_blank"}} "">{{item.title}}</a>
+      <a {{bindAttr href="item.url" target="item.new_tab:_blank" class=":module-item-title item.published"}} "">{{item.title}}</a>
     </div>
   </td>
 
   <td>
     {{#if item.content_details.unlock_at}}
-      Available until {{item.content_details.unlock_at}}
+      <b>Available until</b> {{formatDate item.content_details.unlock_at}}
     {{/if}}
   </td>
   <td>
     {{#if item.content_details.due_at}}
-      Available until {{item.content_details.due_at}}
+      <b>Available until</b> {{formatDate item.content_details.due_at}}
     {{/if}}
   </td>
   <td>
