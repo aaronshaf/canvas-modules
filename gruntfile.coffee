@@ -21,8 +21,6 @@ module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
   bundle = 'context_modules2'
 
-  proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
-
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
     api: grunt.file.readJSON('dev/config.json').api
