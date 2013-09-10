@@ -6,7 +6,7 @@ define [
   # ModuleItem = Ember.Object.extend()
 
   Module = Ember.Object.extend()
-  Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules?include%5B%5D=items&include%5B%5D=content_details&page=1&per_page=50'
+  Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules?include[]=items&include[]=content_details&page=1&per_page=50'
 
   Module.reopen
     loadNextPage: ->
@@ -20,7 +20,7 @@ define [
       items = []
       if not @items?.length and @items_count and @items_url?
         # @items.set 'loading', true
-        Ember.$.getJSON @get('items_url') + '?include%5B%5D=content_details', (data, textStatus, jqXHR) =>
+        Ember.$.getJSON @get('items_url') + '?include[]=content_details', (data, textStatus, jqXHR) =>
           items.pushObjects data
           items.set 'links', parsePageLinks jqXHR
           # @items.set 'loading', false
