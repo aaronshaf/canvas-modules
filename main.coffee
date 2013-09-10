@@ -6,6 +6,7 @@ define [
   "./components/canvas_module_item_publish_component",
   "./components/instructure_prereq_component",
   "./components/instructure_spinner_component",
+  "./components/ic_popover_component",
   "./controllers/module_controller",
   "./controllers/module_item_controller",
   "./controllers/module_items_add_controller",
@@ -42,6 +43,7 @@ define [
   CanvasModuleItemPublishComponent,
   InstructurePrereqComponent,
   InstructureSpinnerComponent,
+  IcPopoverComponent,
   ModuleController,
   ModuleItemController,
   ModuleItemsAddController,
@@ -62,6 +64,7 @@ define [
     CanvasModuleItemPublishComponent: CanvasModuleItemPublishComponent
     InstructurePrereqComponent: InstructurePrereqComponent
     InstructureSpinnerComponent: InstructureSpinnerComponent
+    IcPopoverComponent: IcPopoverComponent
     ModuleController: ModuleController
     ModuleItemController: ModuleItemController
     ModuleItemsAddController: ModuleItemsAddController

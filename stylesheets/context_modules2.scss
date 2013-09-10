@@ -259,3 +259,14 @@ tbody.sortable.empty2 {
   display: block;
   width: 100%;
 }
+
+// To do: move this to the component-specific stylesheet
+
+.ic-popover {
+  position: absolute;
+  display: none;
+}
+ 
+.ic-popover-open {
+  display: block;
+}
