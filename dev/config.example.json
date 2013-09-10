@@ -1,12 +1,12 @@
 {
   "bundle": "context_modules2",
   "use_mock_api": true,
+  "environment": "localhost",
   "api": {
-  	"host": "localhost",
-  	"port": 3000,
-  	"access_token": ""
-  },
-  "ENV": {
-    "COURSE_ID": 1
+    "location": "http://localhost:3000",
+  	"access_token": "",
+    "ENV": {
+      "COURSE_ID": 1
+    }
   }
 }

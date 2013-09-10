@@ -20,10 +20,11 @@ if not settings
 module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
   bundle = 'context_modules2'
+  config = grunt.file.readJSON('dev/config.json')
 
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
-    api: grunt.file.readJSON('dev/config.json').api
+    api: config[config.environment]
 
     clean: [
       'compiled/'
@@ -109,9 +110,10 @@ module.exports = (grunt) ->
     emberTemplates:
       compile:
         options:
+          precompile: false
           amd: true
           templateBasePath: 'templates/'
-        files:
+        files: 
           'compiled/templates.js': [
             'templates/*.hbs',
             'templates/{,*/}*.hbs'

@@ -2,7 +2,7 @@ require [
   'jquery'
 ],($, App) ->
   $.getJSON 'dev/config.json', (config) ->
-    window.ENV = config?.ENV
+    window.ENV = config[config?.environment]?.ENV
 
     require [
       'compiled/main'
