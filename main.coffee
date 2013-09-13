@@ -7,6 +7,9 @@ define [
   "./components/instructure_prereq_component",
   "./components/instructure_spinner_component",
   "./components/ic_popover_component",
+  "./components/ic-popover-close_component",
+  "./components/ic_edit_module_component",
+  "./components/ic-add-module-item",
   "./controllers/module_controller",
   "./controllers/module_item_controller",
   "./controllers/module_items_add_controller",
@@ -17,6 +20,7 @@ define [
    "./routes/missing_route",
    "./routes/modules_route",
    "./views/modules_view",
+   # "./views/module_view",
    # "./templates/components/canvas-available-at"
    # "./templates/components/canvas-available-at",
    # "./templates/components/canvas-due-at",
@@ -44,6 +48,9 @@ define [
   InstructurePrereqComponent,
   InstructureSpinnerComponent,
   IcPopoverComponent,
+  IcPopoverCloseComponent,
+  IcEditModuleComponent,
+  IcAddModuleItemComponent,
   ModuleController,
   ModuleItemController,
   ModuleItemsAddController,
@@ -54,6 +61,7 @@ define [
   MissingRoute,
   ModulesRoute,
   ModulesView
+  # ModuleView
 ) ->
   App.initializer
     name: 'routes'
@@ -65,6 +73,9 @@ define [
     InstructurePrereqComponent: InstructurePrereqComponent
     InstructureSpinnerComponent: InstructureSpinnerComponent
     IcPopoverComponent: IcPopoverComponent
+    IcPopoverCloseComponent: IcPopoverCloseComponent
+    IcEditModuleComponent: IcEditModuleComponent
+    IcAddModuleItemComponent: IcAddModuleItemComponent
     ModuleController: ModuleController
     ModuleItemController: ModuleItemController
     ModuleItemsAddController: ModuleItemsAddController
@@ -75,4 +86,5 @@ define [
     MissingRoute: MissingRoute
     ModulesRoute: ModulesRoute
     ModulesView: ModulesView
+    # ModuleView: ModuleView
   })

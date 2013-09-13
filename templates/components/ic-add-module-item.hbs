@@ -1,0 +1,215 @@
+{{#ic-popover open=open}}
+  <div class="test-modal-overlay-translucent"></div>
+  <div class="test-modal-overlay">
+    <div class="test-modal">
+      <div class="test-modal-titlebar">
+        <div class="test-modal-close">
+          {{#ic-popover-close}}
+            <a class="btn btn-mini test2">
+              <i class="icon-x"></i>
+            </a>
+          {{/ic-popover-close}}
+        </div>
+        Add Item
+      </div>
+
+      <form class="form form-horizontal">
+        <div class="test-modal-content">
+          <div class="control-group">
+            <label class="control-label" for="inputEmail">Type:</label>
+            <div class="controls">
+              {{view Ember.Select contentBinding="types" valueBinding="type" optionValuePath="content.key" optionLabelPath="content.value"}}
+            </div>
+          </div>
+
+          <hr />
+
+          {{#if isAssignment}}
+            {{#if isNewAssignment}}
+              <div class="control-group">
+                <label class="control-label">Name:</label>
+                <div class="controls">
+                  <input type="text" />
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Group:</label>
+                <div class="controls">
+                  <select>
+                    <option></option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  <div class="pull-left">
+                    <div>Due:</div>
+                    [date-selector-component]
+                  </div>
+
+                  <div>
+                    <div>Points:</div>
+                    <input type="text" style="width: 75px;" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  or <a {{action 'toggleProperty' 'isNewAssignment'}}>Select Existing Assignment</a>
+                </div>
+              </div>
+            {{else}}
+              <div class="control-group">
+                <label class="control-label">Assignment:</label>
+                <div class="controls">
+                  <select>
+                    <option></option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  or <a {{action 'toggleProperty' 'isNewAssignment'}}>Add New Assignment</a>
+                </div>
+              </div>
+            {{/if}}
+          {{/if}}
+
+          {{#if isQuiz}}
+            <div class="control-group">
+              <label class="control-label">Quiz:</label>
+              <div class="controls">
+                <select>
+                  <option></option>
+                </select>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if isAttachment}}
+            <div class="control-group">
+              <label class="control-label">File:</label>
+              <div class="controls">
+                <select>
+                  <option></option>
+                </select>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if isWikiPage}}   
+            <div class="control-group">
+              <label class="control-label">Page:</label>
+              <div class="controls">
+                <select>
+                  <option></option>
+                </select>
+              </div>
+            </div>
+
+            {{#if isNewWikiPage}}
+              <div class="control-group">
+                <label class="control-label">Page Name:</label>
+                <div class="controls">
+                  <input type="text" />
+                </div>
+              </div>
+            {{/if}}
+          {{/if}}
+
+          {{#if isDiscussionTopic}}    
+            <div class="control-group">
+              <label class="control-label">Topic:</label>
+              <div class="controls"> 
+                <select>
+                  <option></option>
+                </select>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if isContextModuleSubHeader}}          
+            <div class="control-group">
+              <label class="control-label">Header:</label>
+              <div class="controls">
+                <input type="text" />
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if isExternalUrl}}
+            <div class="control-group">
+              <label class="control-label">URL:</label>
+              <div class="controls">
+                <input type="text" />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Page Name:</label>
+              <div class="controls">
+                <input type="text" />
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if isContextExternalTool}}           
+            <div class="control-group">
+              <label class="control-label">External Tool:</label>
+              <div class="controls">
+                <input type="text" />
+              </div>
+            </div>
+          {{/if}}
+
+          <hr />
+
+          <div class="control-group">
+            <label class="control-label">Indentation:</label>
+            <div class="controls">
+              <div class="btn-group">
+                <button class="btn active">0</button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+              </div>
+            </div>
+          </div>
+
+          <hr />   
+
+          <div><strong>Item requirements for module completion:</strong></div>
+
+          <div>
+            <label><input type="checkbox" /> Submit the assignment</label>
+          </div>
+
+          <div>
+            <label><input type="checkbox" /> View the item</label>
+          </div>
+
+          <div>
+            <label><input type="checkbox" /> Contribute to the page</label>
+          </div>
+
+          <div>
+            <label><input type="checkbox" /> Score at least <input type="text" style="width: 35px" /> out of 10</label>
+          </div>
+        </div>
+        <div class="test-modal-footer">
+          {{#ic-popover-close}}
+            <a class="btn">Cancel</a>
+          {{/ic-popover-close}}
+          <button class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{{/ic-popover}}

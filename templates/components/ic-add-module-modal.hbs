@@ -1,0 +1,34 @@
+{{#ic-popover open=open}}
+  <div class="test-modal-overlay-translucent"></div>
+  <div class="test-modal-overlay">
+    <div class="test-modal">
+      <div class="test-modal-titlebar">
+        <div class="test-modal-close">
+          {{#ic-popover-close}}
+            <a class="btn btn-mini test2">
+              <i class="icon-x"></i>
+            </a>
+          {{/ic-popover-close}}
+        </div>
+        Add Module
+      </div>
+
+      <form class="form form-horizontal">
+        <div class="test-modal-content">
+          <div class="control-group">
+            <label class="control-label">Name:</label>
+            <div class="controls">
+              <input type="text" />
+            </div>
+          </div>
+        </div>
+        <div class="test-modal-footer">
+          {{#ic-popover-close}}
+            <a class="btn">Cancel</a>
+          {{/ic-popover-close}}
+          <button class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{{/ic-popover}}

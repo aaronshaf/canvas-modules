@@ -7,9 +7,10 @@
         Exit preview
       {{/if}}
     </a>
-    {{#linkTo 'modules.add' class="btn btn-primary add-module-button"}}
-      <i class="icon-plus"></i> Module
-    {{/linkTo}}
+    <a {{action 'toggleProperty' 'addModuleModalOpen'}} class="btn btn-primary add-module-button">
+      <i class="icon-plus"></i>
+      <span class="screenreader-only">Add</span>
+    </a>
     <a href="#" class="btn modules-settings-button">
       <i class="icon-settings"></i><i class="icon-mini-arrow-down"></i>
     </a>
@@ -30,3 +31,5 @@
 {{/if}}
 
 {{outlet}}
+
+{{ic-add-module-modal open=addModuleModalOpen}}

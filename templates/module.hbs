@@ -12,16 +12,17 @@
     <span class="pull-left module-header-item h5">{{module.name}}</span>
     <span class="pull-right module-header-item">
       <a href="#" class="btn module-settings-button">
-        <i class="icon-settings"></i><i class="icon-arrow-down"></i>
+        <i class="iconf-settings"></i><i class="icon-arrow-down"></i>
       </a>
     </span>
     <span class="pull-right module-header-item">
-      {{#linkTo 'module_items.add' module class="btn add-item-button"}}
+      <button class="btn add-item-button" {{action 'toggleProperty' 'addModuleItemModalOpen'}}>
         <i class="icon-plus"></i>
-      {{/linkTo}}
+        <span class="screenreader-only">Add</span>
+      </button>
     </span>
     <span class="pull-right module-header-item">{{canvas-module-publish published=module.published}}</span>
-    <span class="pull-right module-header-item">{{instructure-prereq module=module }}</span>
+    <span class="pull-right module-header-item">{{instructure-prereq module=module}}</span>
   </div>
   <table class="table sortable-module-items" style="min-height: 30px;min-width: 900px;">
     <tbody {{bindAttr class=":sortable empty"}}>
@@ -44,3 +45,5 @@
     {{instructure-spinner}}
   {{/if}}
 </div>
+
+{{ic-add-module-item open=addModuleItemModalOpen}}

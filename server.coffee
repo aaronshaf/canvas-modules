@@ -13,11 +13,11 @@ module.exports = (grunt) ->
     if grunt.config("api.location") and grunt.config("api.access_token")
       app.get '/api/*' ,(req, res, next) ->
         # To do: support non-get request methods
+        req.headers.Authorization = "Bearer #{grunt.config("api.access_token")}"
 
         request
           url: unescape grunt.config("api.location") + req.url
-          headers:
-            Authorization: "Bearer #{grunt.config("api.access_token")}"
+          headers: req.headers
         , (error, response, body) ->
           return res.send 500, error if error
           res.type 'application/json'
