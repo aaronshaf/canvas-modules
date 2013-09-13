@@ -24,7 +24,7 @@
     "matchdep": "~0.1.2",
     "grunt-open": "~0.2.1",
     "grunt-concurrent": "~0.3.0",
-    "grunt-ember-templates": "~0.4.12",
+    "grunt-ember-templates": "~0.4.14",
     "request": "~2.27.0"
   },
   "engines": {
