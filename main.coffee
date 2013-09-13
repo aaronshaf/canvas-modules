@@ -10,6 +10,7 @@ define [
   "./components/ic-popover-close_component",
   "./components/ic_edit_module_component",
   "./components/ic-add-module-item",
+  "./components/ic-add-module-modal",
   "./controllers/module_controller",
   "./controllers/module_item_controller",
   "./controllers/module_items_add_controller",
@@ -51,6 +52,7 @@ define [
   IcPopoverCloseComponent,
   IcEditModuleComponent,
   IcAddModuleItemComponent,
+  IcAddModuleModalComponent,
   ModuleController,
   ModuleItemController,
   ModuleItemsAddController,
@@ -76,6 +78,7 @@ define [
     IcPopoverCloseComponent: IcPopoverCloseComponent
     IcEditModuleComponent: IcEditModuleComponent
     IcAddModuleItemComponent: IcAddModuleItemComponent
+    IcAddModuleModalComponent: IcAddModuleModalComponent
     ModuleController: ModuleController
     ModuleItemController: ModuleItemController
     ModuleItemsAddController: ModuleItemsAddController
