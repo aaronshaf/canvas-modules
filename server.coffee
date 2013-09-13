@@ -12,9 +12,7 @@ module.exports = (grunt) ->
     app.use express.static(__dirname)
     if grunt.config("api.location") and grunt.config("api.access_token")
       handle = (req, res, next) ->
-        console.log 'headers', req.headers
-        # To do: support non-get request methods
-        tmp =
+        options =
           method: req.method
           url: unescape grunt.config('api.location') + req.url
           headers:
@@ -23,10 +21,9 @@ module.exports = (grunt) ->
             Referer: req.headers.referer
 
         if req.body and req.method is 'POST'
-          console.log 'body', req.body
-          tmp.form = req.body
+          options.form = req.body
 
-        request tmp, (error, response, body) ->
+        request options, (error, response, body) ->
           return res.send 500, error if error
           res.type 'application/json'
           res.send body
