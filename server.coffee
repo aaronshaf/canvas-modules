@@ -11,16 +11,30 @@ module.exports = (grunt) ->
     # Static resources
     app.use express.static(__dirname)
     if grunt.config("api.location") and grunt.config("api.access_token")
-      app.get '/api/*' ,(req, res, next) ->
+      handle = (req, res, next) ->
+        console.log 'headers', req.headers
         # To do: support non-get request methods
-        req.headers.Authorization = "Bearer #{grunt.config("api.access_token")}"
+        tmp =
+          method: req.method
+          url: unescape grunt.config('api.location') + req.url
+          headers:
+            Authorization: "Bearer #{grunt.config("api.access_token")}"
+            Host: req.headers.host
+            Referer: req.headers.referer
 
-        request
-          url: unescape grunt.config("api.location") + req.url
-          headers: req.headers
-        , (error, response, body) ->
+        if req.body and req.method is 'POST'
+          console.log 'body', req.body
+          tmp.form = req.body
+
+        request tmp, (error, response, body) ->
           return res.send 500, error if error
           res.type 'application/json'
           res.send body
+
+      app.use express.bodyParser()
+      app.get '/api/*', handle
+      app.post '/api/*', handle
+      app.delete '/api/*', handle
+      app.put '/api/*', handle
 
     app.listen 8000
