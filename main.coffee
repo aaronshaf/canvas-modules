@@ -17,6 +17,8 @@ define [
   "./controllers/modules_controller",
   "./models/module",
   "./models/module_item",
+  "./models/assignment",
+  "./models/assignment_group",
   "./routes/application_route",
    "./routes/missing_route",
    "./routes/modules_route",
@@ -59,11 +61,12 @@ define [
   ModulesController,
   Module,
   ModuleItem,
+  Assignment,
+  AssignmentGroup,
   ApplicationRoute,
   MissingRoute,
   ModulesRoute,
   ModulesView
-  # ModuleView
 ) ->
   App.initializer
     name: 'routes'
@@ -89,5 +92,4 @@ define [
     MissingRoute: MissingRoute
     ModulesRoute: ModulesRoute
     ModulesView: ModulesView
-    # ModuleView: ModuleView
   })

@@ -7,7 +7,9 @@ define [
     init: ->
       @_super.apply @, arguments
       @set 'module', {}
+
     reset: -> @set 'module', {}
+
     actions:
       addModule: ->
         Module.addRecord @get 'module'

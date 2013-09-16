@@ -7,7 +7,7 @@ define [
 
   ModuleItem = Ember.Object.extend()
 
-  # ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id
+  # ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id + '/items'
   # ModuleItem.adapter = InstructureAdapter.create()
 
   ModuleItem.reopenClass

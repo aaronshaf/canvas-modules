@@ -3,7 +3,7 @@ define [
   '../lib/parse_page_links'
   'jquery'
   'underscore'
-], (Ember,parsePageLinks,$, _) ->
+], (Ember,parsePageLinks,$,_) ->
   # ModuleItem = Ember.Object.extend()
 
   Module = Ember.Object.extend()
@@ -51,7 +51,7 @@ define [
       items = []
       if not @items?.length and @items_count and @items_url?
         # @items.set 'loading', true
-        Ember.$.getJSON @get('items_url') + '?include%5B%5D=content_details', (data, textStatus, jqXHR) =>
+        Ember.$.getJSON @get('items_url') + '?include[]=content_details', (data, textStatus, jqXHR) =>
           items.pushObjects data
           items.set 'links', parsePageLinks jqXHR
           # @items.set 'loading', false
@@ -65,7 +65,7 @@ define [
       Module.records.set 'loading', true
       Ember.$.ajax
         dataType: 'json'
-        url: @url + '?include%5B%5D=items&include%5B%5D=content_details&page=1&per_page=50',
+        url: @url + '?include[]=items&include[]=content_details&page=1&per_page=50',
         success: (data, textStatus, jqXHR) =>
           records = data.map (record) -> record = Module.create record
           Module.records.pushObjects records
