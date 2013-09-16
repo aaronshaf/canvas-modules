@@ -23,6 +23,7 @@ module.exports = (grunt) ->
             Referer: req.headers.referer
             'User-Agent': req.headers['user-agent']
             'X-Requested-With': req.headers['x-requested-with']
+            'Cache-Control': 'no-cache'
 
         # console.log headers: options.headers
 
