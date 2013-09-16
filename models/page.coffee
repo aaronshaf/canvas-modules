@@ -7,3 +7,4 @@ define [
 
   Page.reopenClass
     records: Ember.ArrayProxy.create content: []
+    container: 'wiki_page'

@@ -49,30 +49,32 @@ define [
     isExternalUrl: (-> @get('type') is 'external_url').property('type')
     isContextExternalTool: (-> @get('type') is 'context_external_tool').property('type')
 
-    assignment_groups: (-> AssignmentGroup.findAll() ).property()
-    assignments: (-> Assignment.findAll() ).property()
-    # quizzes: (-> Quiz.findAll() ).property()
-    # files: (-> File.findAll() ).property()
-    # pages: (-> Page.findAll() ).property()
-    # discussion_topics: (-> DiscussionTopic.findAll() ).property()
-    # quizzes: (-> Quiz.findAll() ).property()
-    # headers: (-> Header.findAll() ).property()
-    # external_urls: (-> ExternalURL.findAll() ).property()
-    # external_tools: (-> ExternalTool.findAll() ).property()
+    assignment_groups: (-> AssignmentGroup.findFirstPage() ).property()
+    assignments: (-> Assignment.findFirstPage() ).property()
+    quizzes: (-> Quiz.findFirstPage() ).property()
+    files: (-> File.findFirstPage() ).property()
+    pages: (-> Page.findFirstPage() ).property()
+    discussion_topics: (-> DiscussionTopic.findFirstPage() ).property()
+    quizzes: (-> Quiz.findFirstPage() ).property()
+    headers: (-> Header.findFirstPage() ).property()
+    external_urls: (-> ExternalURL.findFirstPage() ).property()
+    external_tools: (-> ExternalTool.findFirstPage() ).property()
 
     reset: ->
       @set 'module_item', {}
-      # @set 'new_assignment', {}
+      @set 'new_assignment', {}
 
     actions:
       toggleProperty: Ember.Controller.prototype.toggleProperty #@toggleProperty
       save: ->
-        if @get('new_assignment.name')
-          Assignment.addRecord(@get('new_assignment'))
+        if @get('isNewAssignment') and @get('new_assignment.name')
+          Assignment.addRecord(@get('new_assignment')).then (assignment) =>
+            @set 'isNewAssignment', false
+            @set 'module_item.assignment_id', assignment.id
 
         # this
         # debugger
         # alert 'save'
         # Module.addRecord @get 'module'
-        @close()
+        # @close()
         # @reset()

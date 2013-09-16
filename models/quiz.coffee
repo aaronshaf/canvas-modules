@@ -7,3 +7,4 @@ define [
 
   Quiz.reopenClass
     records: Ember.ArrayProxy.create content: []
+    container: 'quiz'

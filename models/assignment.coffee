@@ -7,3 +7,4 @@ define [
 
   Assignment.reopenClass
     records: Ember.ArrayProxy.create content: []
+    container: 'assignment'
