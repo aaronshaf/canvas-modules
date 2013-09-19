@@ -194,31 +194,17 @@
 
         <div><strong>Item requirements for module completion:</strong></div>
 
-        <div>
-          <label>
-            {{view Ember.Checkbox checkedBinding="view.disabled"}}
-            Submit the assignment
-          </label>
-        </div>
+        {{view Ember.Select
+          contentBinding="requirement_types"
+          valueBinding="module_item.completion_requirement.type"
+          optionValuePath="content.key"
+          optionLabelPath="content.value"
+          multiple=true}}
 
         <div>
           <label>
-            {{view Ember.Checkbox checkedBinding="view.disabled"}}
-            <input type="checkbox" /> View the item
+            <input type="checkbox" /> Score at least {{input type="text" value=module_item.completion_requirement.min_score}} out of 10
           </label>
-        </div>
-
-        <div>
-          <label>
-            {{view Ember.Checkbox checkedBinding="view.disabled"}}
-            <input type="checkbox" /> Contribute to the page
-          </label>
-        </div>
-
-        <div>
-          <label><input type="checkbox" /> Score at least {{input type="text" value=module_item.completion_requirement.min_score}}
-
-          <input type="text" style="width: 35px" /> out of 10</label>
         </div>
       </div>
       <div class="test-modal-footer">

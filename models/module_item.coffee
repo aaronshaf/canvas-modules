@@ -11,8 +11,9 @@ define [
     # Default values
     type: 'Assignment'
     indent: 0
-    completion_requirement:
-      type: []
+    completion_requirement: Ember.Object.create
+      type: Ember.ArrayProxy.create(content: [])
+      # min_score: 
 
     setUrl: ->
       @set '_url', "/api/v1/courses/#{window?.ENV?.COURSE_ID}/modules/#{@get('module.id')}/items"
@@ -37,9 +38,9 @@ define [
       url: String
       external_url: String
       new_tab: Boolean
-      completion_requirement:
-        type: String
-        min_score: Number
+      # completion_requirement: # to do: figure out nested to JSON
+      #   type: Array
+      #   min_score: Number
       published: Boolean
       module_id: String
 
@@ -56,6 +57,11 @@ define [
     SubHeader: 'Text Header'
     ExternalUrl: 'External URL'
     ExternalTool: 'External Tool'
+
+  ModuleItem.requirements =
+    must_submit: 'Submit the assignment'
+    must_view: 'View the item'
+    must_contribute: 'Contribute to the page'
 
   ModuleItem
 
