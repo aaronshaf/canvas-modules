@@ -5,11 +5,13 @@ define [
 ], (Ember,$,BaseModel) ->
   ModuleItem = BaseModel.extend
     init: ->
+      @setUrl()
       if not @get('module') then throw 'ModuleItem cannot be instantiated without Module'
+
+    setUrl: ->
       @set '_url', "/api/v1/courses/#{window?.ENV?.COURSE_ID}/modules/#{@get('module.id')}/items"
       if @get('id')
         @set '_url', @get('_url') + '/' + @get('id')
-
 
     save: ->
       @_super.apply(@,arguments).then =>

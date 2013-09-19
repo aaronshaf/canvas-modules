@@ -32,6 +32,7 @@ define [
           dataType: 'json'
           success: (data) =>
             @setProperties data
+            @setUrl()
             resolve @
           fail: (error) =>
             reject error
