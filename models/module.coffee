@@ -3,10 +3,22 @@ define [
   '../lib/parse_page_links'
   'jquery'
   'underscore'
-], (Ember,parsePageLinks,$,_) ->
+  './base'
+  './module_item'
+], (Ember,parsePageLinks,$,_,BaseModel,ModuleItem) ->
   # ModuleItem = Ember.Object.extend()
+  Module = Ember.Object.extend
+    init: ->
+      # @_super.apply(@, arguments)
+      # @get('item').map 
+      # records = data.map (record) => record = @create record
+      if @get('items.length')
+        items = @get('items').map((item) =>
+          item.module = @
+          item = ModuleItem.create(item)
+        )
+        @set('items',items)
 
-  Module = Ember.Object.extend()
   Module.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules'
 
   Module.reopen
@@ -40,6 +52,17 @@ define [
       names.join(", ")
     ).property()
 
+    addItem: (module_item) ->
+      @items.pushObject module_item
+
+    # addItem: (module_item) ->
+    #   # To do: move this to module item module
+    #   url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + @id + '/items'
+    #   Ember.$.post url, module_item, success = (data, textStatus, jqXHR) =>
+    #     console.log '123', data
+
+      # @items.pushObject module_item
+
     loadNextPage: ->
       if @items.get('links').next
         @items.set 'loading', true
@@ -47,15 +70,17 @@ define [
           @items.set 'loading', false
           @items.pushObjects data
           @items.set 'links', parsePageLinks jqXHR
+
     items: (->
-      items = []
+      items = Ember.ArrayProxy.create content: []
       if not @items?.length and @items_count and @items_url?
         # @items.set 'loading', true
         Ember.$.getJSON @get('items_url') + '?include[]=content_details', (data, textStatus, jqXHR) =>
           items.pushObjects data
           items.set 'links', parsePageLinks jqXHR
           # @items.set 'loading', false
-      @items = items
+        @items = items
+      @items
     ).property()
 
   Module.reopenClass

@@ -2,4 +2,8 @@ define [
   'ember'
 ], (Ember) ->
   Ember.ObjectController.extend
-  	test: 'test1'
+    actions:
+      delete: (item) ->
+        debugger
+        item.destroy()
+        # item.delete()

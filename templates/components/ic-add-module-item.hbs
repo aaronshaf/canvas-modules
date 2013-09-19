@@ -17,7 +17,7 @@
         <div class="control-group">
           <label class="control-label" for="inputEmail">Type:</label>
           <div class="controls">
-            {{view Ember.Select contentBinding="types" valueBinding="type" optionValuePath="content.key" optionLabelPath="content.value"}}
+            {{view Ember.Select contentBinding="types" valueBinding="module_item.type" optionValuePath="content.key" optionLabelPath="content.value"}}
           </div>
         </div>
 
@@ -64,7 +64,12 @@
             <div class="control-group">
               <label class="control-label">Assignment:</label>
               <div class="controls">
-                {{view Ember.Select contentBinding="assignments" valueBinding="module_item.assignment_id" optionValuePath="content.id" optionLabelPath="content.name"}}
+                {{view Ember.Select
+                  contentBinding="assignments"
+                  valueBinding="module_item.content_id"
+                  optionValuePath="content.id"
+                  optionLabelPath="content.name"
+                  prompt="Select an Assignment"}}
               </div>
             </div>
 
@@ -99,7 +104,7 @@
           </div>
         {{/if}}
 
-        {{#if isWikiPage}}   
+        {{#if isContentPage}}   
           <div class="control-group">
             <label class="control-label">Page:</label>
             <div class="controls">
@@ -119,7 +124,7 @@
           {{/if}}
         {{/if}}
 
-        {{#if isDiscussionTopic}}    
+        {{#if isDiscussion}}  
           <div class="control-group">
             <label class="control-label">Topic:</label>
             <div class="controls"> 
@@ -130,7 +135,7 @@
           </div>
         {{/if}}
 
-        {{#if isContextModuleSubHeader}}          
+        {{#if isSubHeader}}
           <div class="control-group">
             <label class="control-label">Header:</label>
             <div class="controls">
@@ -155,7 +160,7 @@
           </div>
         {{/if}}
 
-        {{#if isContextExternalTool}}           
+        {{#if isExternalTool}}  
           <div class="control-group">
             <label class="control-label">External Tool:</label>
             <div class="controls">
@@ -166,15 +171,18 @@
 
         <hr />
 
+        {{indent}}
+
         <div class="control-group">
           <label class="control-label">Indentation:</label>
           <div class="controls">
-            <div class="btn-group">
+            {{view Ember.TextField valueBinding="module_item.indent" min="0" step="1" max="4" type="number"}}
+            <!-- div class="btn-group">
               <button class="btn active">0</button>
               <button class="btn">1</button>
               <button class="btn">2</button>
               <button class="btn">3</button>
-            </div>
+            </div -->
           </div>
         </div>
 
@@ -183,19 +191,30 @@
         <div><strong>Item requirements for module completion:</strong></div>
 
         <div>
-          <label><input type="checkbox" /> Submit the assignment</label>
+          <label>
+            {{view Ember.Checkbox checkedBinding="view.disabled"}}
+            Submit the assignment
+          </label>
         </div>
 
         <div>
-          <label><input type="checkbox" /> View the item</label>
+          <label>
+            {{view Ember.Checkbox checkedBinding="view.disabled"}}
+            <input type="checkbox" /> View the item
+          </label>
         </div>
 
         <div>
-          <label><input type="checkbox" /> Contribute to the page</label>
+          <label>
+            {{view Ember.Checkbox checkedBinding="view.disabled"}}
+            <input type="checkbox" /> Contribute to the page
+          </label>
         </div>
 
         <div>
-          <label><input type="checkbox" /> Score at least <input type="text" style="width: 35px" /> out of 10</label>
+          <label><input type="checkbox" /> Score at least {{input type="text" value=module_item.completion_requirement.min_score}}
+
+          <input type="text" style="width: 35px" /> out of 10</label>
         </div>
       </div>
       <div class="test-modal-footer">

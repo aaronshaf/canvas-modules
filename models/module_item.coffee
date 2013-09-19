@@ -1,14 +1,47 @@
 define [
   'ember'
   'jquery'
-  './module'
-], (Ember,$,Module) ->
-  attr = Ember.attr
+  './base'
+], (Ember,$,BaseModel) ->
+  ModuleItem = BaseModel.extend
+    api_container: 'module_item'
+    init: ->
+      if not @get('module') then throw 'ModuleItem cannot be instantiated without Module'
+      @set '_url', "/api/v1/courses/#{window?.ENV?.COURSE_ID}/modules/#{@get('module.id')}/items"
+      if @get('id')
+        @set '_url', @get('_url') + '/' + @get('id')
 
-  ModuleItem = Ember.Object.extend()
 
-  # ModuleItem.url = '/api/v1/courses/' + window?.ENV?.COURSE_ID + '/modules/' + module_id + '/items'
-  # ModuleItem.adapter = InstructureAdapter.create()
+    save: -> @_super().then =>
+      @get('module').addItem @
+
+  ModuleItem.reopenClass
+
+  ModuleItem.types =
+    Assignment: 'Assignment'
+    Quiz: 'Quiz'
+    ContentPage: 'Page'
+    Discussion: 'Discussion'
+    SubHeader: 'Text Header'
+    ExternalUrl: 'External URL'
+    ExternalTool: 'External Tool'
+
+  ModuleItem.attributes =
+    module_id: Number
+    title: String
+    type: String
+    content_id: String
+    position: Number
+    indent: Number
+    page_url: String
+    url: String
+    external_url: String
+    new_tab: Boolean
+    completion_requirement:
+      type: String
+      min_score: Number
+    published: Boolean
+    module_id: String
 
   ModuleItem.reopenClass
     findFirstPage: findFirstPage = (params = {}) ->

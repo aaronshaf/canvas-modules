@@ -4,10 +4,43 @@ define [
   'jquery'
   'underscore'
 ], (Ember,parsePageLinks,$,_) ->
-  BaseModel = Ember.Object.extend()
+  BaseModel = Ember.Object.extend
+    delete: ->
+      new Ember.RSVP.Promise (resolve, reject) =>
+        Ember.$.ajax
+          type: 'delete'
+          url: @get('_url')
+          dataType: 'json'
+          success: (data) =>
+            @destroy()
+            resolve()
+          fail : (error) =>
+            reject error
+
+    save: ->
+      new Ember.RSVP.Promise (resolve, reject) =>
+        data = data
+        if @get 'api_container'
+          data = {}
+          data[@get('api_container')] = data
+
+        this
+        test = 'abc'
+        alert '?'
+        debugger
+        Ember.$.ajax
+          type: if @get('id') then 'put' else 'post'
+          url: @get('_url')
+          data: data
+          dataType: 'json'
+          success: (data) =>
+            @setProperties data
+            resolve @
+          fail : (error) =>
+            # console.log {error}
+            reject error
+
   BaseModel.reopenClass
-    # records: Ember.ArrayProxy.create content: []
-    
     addRecord: (record) ->
       new Ember.RSVP.Promise (resolve, reject) =>
         data = {}
