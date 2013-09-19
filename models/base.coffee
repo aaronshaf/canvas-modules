@@ -19,15 +19,12 @@ define [
 
     save: ->
       new Ember.RSVP.Promise (resolve, reject) =>
-        data = data
-        if @get 'api_container'
+        if @constructor.container
           data = {}
-          data[@get('api_container')] = data
+          data[@constructor.container] = @getProperties Object.keys(@constructor.attributes)
+        else
+          data = @getProperties Object.keys(@constructor.attributes)
 
-        this
-        test = 'abc'
-        alert '?'
-        debugger
         Ember.$.ajax
           type: if @get('id') then 'put' else 'post'
           url: @get('_url')
@@ -36,8 +33,7 @@ define [
           success: (data) =>
             @setProperties data
             resolve @
-          fail : (error) =>
-            # console.log {error}
+          fail: (error) =>
             reject error
 
   BaseModel.reopenClass

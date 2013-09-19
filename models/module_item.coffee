@@ -4,7 +4,6 @@ define [
   './base'
 ], (Ember,$,BaseModel) ->
   ModuleItem = BaseModel.extend
-    api_container: 'module_item'
     init: ->
       if not @get('module') then throw 'ModuleItem cannot be instantiated without Module'
       @set '_url', "/api/v1/courses/#{window?.ENV?.COURSE_ID}/modules/#{@get('module.id')}/items"
@@ -12,10 +11,34 @@ define [
         @set '_url', @get('_url') + '/' + @get('id')
 
 
-    save: -> @_super().then =>
-      @get('module').addItem @
+    save: ->
+      @_super.apply(@,arguments).then =>
+        @get('module').addItem @
 
   ModuleItem.reopenClass
+    container: 'module_item'
+
+    attributes:
+      module_id: Number
+      title: String
+      type: String
+      content_id: String
+      position: Number
+      indent: Number
+      page_url: String
+      url: String
+      external_url: String
+      new_tab: Boolean
+      completion_requirement:
+        type: String
+        min_score: Number
+      published: Boolean
+      module_id: String
+
+    findFirstPage: findFirstPage = (params = {}) ->
+      records = PaginatedRecordArray.create(modelClass: this)
+      this.adapter.findQuery(this, records, params)
+      records
 
   ModuleItem.types =
     Assignment: 'Assignment'
@@ -25,29 +48,6 @@ define [
     SubHeader: 'Text Header'
     ExternalUrl: 'External URL'
     ExternalTool: 'External Tool'
-
-  ModuleItem.attributes =
-    module_id: Number
-    title: String
-    type: String
-    content_id: String
-    position: Number
-    indent: Number
-    page_url: String
-    url: String
-    external_url: String
-    new_tab: Boolean
-    completion_requirement:
-      type: String
-      min_score: Number
-    published: Boolean
-    module_id: String
-
-  ModuleItem.reopenClass
-    findFirstPage: findFirstPage = (params = {}) ->
-      records = PaginatedRecordArray.create(modelClass: this)
-      this.adapter.findQuery(this, records, params)
-      records
 
   ModuleItem
 
