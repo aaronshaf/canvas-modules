@@ -46,4 +46,6 @@
   {{/if}}
 </div>
 
-{{ic-add-module-item open=addModuleItemModalOpen module=module}}
+{{#if addModuleItemModalOpen}}
+  {{ic-add-module-item open=addModuleItemModalOpen module=module}}
+{{/if}}
