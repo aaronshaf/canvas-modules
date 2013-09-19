@@ -4,6 +4,7 @@ define [
   Ember.ObjectController.extend
     actions:
       delete: (item) ->
-        debugger
-        item.destroy()
-        # item.delete()
+        item.delete().then =>
+          item.get('module.items').removeObject(item)
+          item.destroy()
+        
