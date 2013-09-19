@@ -25,29 +25,20 @@ define [
   Quiz
   _
 ) ->
-  # isAssignment, isQuiz, etc.
-  identifiers = {}
-  _.each ModuleItem.types, (value, key) ->
-    identifiers["is#{key}"] = (-> @get('module_item.type') is key).property('module_item.type')
-
-  AddModuleItemComponent = PopoverComponent.extend()
-  AddModuleItemComponent.reopen identifiers
-  AddModuleItemComponent.reopen
+  AddModuleItemComponent = PopoverComponent.extend
     init: ->
       @_super.apply @, arguments
-      @reset()
 
-    reset: ->
-      @set 'module_item', ModuleItem.create
+    new_assignment: {}
+
+    module_item: (->
+      ModuleItem.create
         module: @get('module')
-        type: 'assignment'
-        completion_requirement:
-          type: [] # "must_view"|"must_contribute"|"must_submit"
-          # min_score: ''
-      @set 'new_assignment', {}
+    ).property()
 
-    type: 'Assignment'
+    type: 'assignment'
     types: _.map ModuleItem.types, (value, key) -> return {key, value}
+    requirement_types: _.map ModuleItem.requirements, (value, key) -> return {key, value}
     is: identifiers
 
     assignment_groups: (-> AssignmentGroup.findFirstPage() ).property()
@@ -75,4 +66,11 @@ define [
             @set 'module_item.content_id', assignment.id
             @save()
         else
-          @save()
+          if @get('module_item.content_id')
+            @save()
+
+# isAssignment, isQuiz, etc.          
+  identifiers = {}
+  _.each ModuleItem.types, (value, key) ->
+    identifiers["is#{key}"] = (-> @get('module_item.type') is key).property('module_item.type')
+  AddModuleItemComponent.reopen identifiers
