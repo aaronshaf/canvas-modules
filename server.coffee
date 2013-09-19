@@ -36,7 +36,7 @@ module.exports = (grunt) ->
             return res.json 500, error
           res.type 'application/json'
           # console.log response
-          res.send body
+          res.send response.statusCode, body
 
       app.use express.bodyParser()
       app.get '/api/*', handle
