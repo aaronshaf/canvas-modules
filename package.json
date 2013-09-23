@@ -25,7 +25,8 @@
     "grunt-open": "~0.2.1",
     "grunt-concurrent": "~0.3.0",
     "grunt-ember-templates": "~0.4.14",
-    "request": "~2.27.0"
+    "request": "~2.27.0",
+    "grunt-coffeelint": "0.0.7"
   },
   "engines": {
     "node": ">=0.10.15"
