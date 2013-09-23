@@ -35,7 +35,15 @@
             <div class="control-group">
               <label class="control-label">Group:</label>
               <div class="controls">
-                {{view Ember.Select contentBinding="assignment_groups" valueBinding="new_assignment.assignment_group" optionValuePath="content.id" optionLabelPath="content.name"}}
+                {{#unless assignment_groups.loading}}
+                  {{view Ember.Select
+                      contentBinding="assignment_groups"
+                      valueBinding="new_assignment.assignment_group"
+                      optionValuePath="content.id"
+                      optionLabelPath="content.name"}}
+                {{else}}
+                  {{instructure-spinner}}
+                {{/unless}}
               </div>
             </div>
 
@@ -90,9 +98,16 @@
           <div class="control-group">
             <label class="control-label">Quiz:</label>
             <div class="controls">
-              <select>
-                <option></option>
-              </select>
+                {{#unless quizzes.loading}}
+                  {{view Ember.Select
+                        contentBinding="quizzes"
+                        valueBinding="module_item.content_id"
+                        optionValuePath="content.id"
+                        optionLabelPath="content.title"
+                        prompt="Select a Quiz"}}
+                {{else}}
+                  {{instructure-spinner}}
+                {{/unless}}
             </div>
           </div>
         {{/if}}
@@ -108,13 +123,20 @@
           </div>
         {{/if}}
 
-        {{#if isContentPage}}   
+        {{#if isContentPage}} 
           <div class="control-group">
             <label class="control-label">Page:</label>
             <div class="controls">
-              <select>
-                <option></option>
-              </select>
+              {{#unless pages.loading}}
+                {{view Ember.Select
+                      contentBinding="pages"
+                      valueBinding="module_item.content_id"
+                      optionValuePath="content.id"
+                      optionLabelPath="content.title"
+                      prompt="Select a Page"}}
+              {{else}}
+                {{instructure-spinner}}
+              {{/unless}}
             </div>
           </div>
 
@@ -132,9 +154,16 @@
           <div class="control-group">
             <label class="control-label">Topic:</label>
             <div class="controls"> 
-              <select>
-                <option></option>
-              </select>
+                {{#unless discussion_topics.loading}}
+                  {{view Ember.Select
+                        contentBinding="discussion_topics"
+                        valueBinding="module_item.content_id"
+                        optionValuePath="content.id"
+                        optionLabelPath="content.title"
+                        prompt="Select a Discussion Topic"}}
+                {{else}}
+                  {{instructure-spinner}}
+                {{/unless}}
             </div>
           </div>
         {{/if}}
@@ -168,7 +197,16 @@
           <div class="control-group">
             <label class="control-label">External Tool:</label>
             <div class="controls">
-              <input type="text" />
+              {{#unless external_tools.loading}}
+                {{view Ember.Select
+                      contentBinding="external_tools"
+                      valueBinding="module_item.content_id"
+                      optionValuePath="content.id"
+                      optionLabelPath="content.name"
+                      prompt="Select an External Tool"}}
+              {{else}}
+                {{instructure-spinner}}
+              {{/unless}}
             </div>
           </div>
         {{/if}}
