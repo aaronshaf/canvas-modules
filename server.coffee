@@ -19,11 +19,13 @@ module.exports = (grunt) ->
           url: unescape grunt.config('api.location') + req.url
           headers:
             Authorization: "Bearer #{grunt.config("api.access_token")}"
-            Host: req.headers.host
             Referer: req.headers.referer
             'User-Agent': req.headers['user-agent']
             'X-Requested-With': req.headers['x-requested-with']
             'Cache-Control': 'no-cache'
+
+        if options.url.indexOf('https://') is -1
+          options.headers.Host = req.headers.host
 
         # console.log headers: options.headers
 
