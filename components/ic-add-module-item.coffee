@@ -69,7 +69,7 @@ define [
           if @get('module_item.content_id')
             @save()
 
-# isAssignment, isQuiz, etc.          
+  # isAssignment, isQuiz, etc. 
   identifiers = {}
   _.each ModuleItem.types, (value, key) ->
     identifiers["is#{key}"] = (-> @get('module_item.type') is key).property('module_item.type')
