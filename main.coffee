@@ -42,7 +42,8 @@ define [
    # "./templates/modules/search",
    # "./templates/modules",
    "./helpers/format_date",
-   "./helpers/module_icon"
+   "./helpers/module_icon",
+   "./mixins/text_support"
 ], (
   Ember,
   App,
