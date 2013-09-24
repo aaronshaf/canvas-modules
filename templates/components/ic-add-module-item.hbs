@@ -66,12 +66,14 @@
               </div>
             </div>
 
-            <div class="control-group">
-              <label class="control-label"></label>
-              <div class="controls">
-                or <a {{action 'toggleProperty' 'isNewAssignment'}}>Select Existing Assignment</a>
+            {{#if assignments.length}}
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  or <a {{action 'toggleProperty' 'isNewAssignment'}}>Select Existing Assignment</a>
+                </div>
               </div>
-            </div>
+            {{/if}}
           {{else}}
             <div class="control-group">
               <label class="control-label">Assignment:</label>
@@ -121,6 +123,15 @@
                 {{/if}}
               </div>
             </div>
+
+            {{#if quizzes.length}}
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  or <a {{action 'toggleProperty' 'isNewQuiz'}}>Select Existing Quiz</a>
+                </div>
+              </div>
+            {{/if}}
           {{else}}
             <div class="control-group">
               <label class="control-label">Quiz:</label>
@@ -148,14 +159,25 @@
         {{/if}}
 
         {{#if isAttachment}}
-          <div class="control-group">
-            <label class="control-label">File:</label>
-            <div class="controls">
-              <select>
-                <option></option>
-              </select>
+          {{#if isNewAttachment}}
+            [Folder, file]
+
+            {{#if files.length}}
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  or <a {{action 'toggleProperty' 'isNewAttachment'}}>Select Existing File</a>
+                </div>
+              </div>
+            {{/if}}
+          {{else}}
+            <div class="control-group">
+              <label class="control-label"></label>
+              <div class="controls">
+                or <a {{action 'toggleProperty' 'isNewAttachment'}}>Add New File</a>
+              </div>
             </div>
-          </div>
+          {{/if}}
         {{/if}}
 
         {{#if isContentPage}} 
@@ -167,12 +189,14 @@
               </div>
             </div>
 
-            <div class="control-group">
-              <label class="control-label"></label>
-              <div class="controls">
-                or <a {{action 'toggleProperty' 'isNewContentPage'}}>Use Existing Page</a>
+            {{#if pages.length}}
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  or <a {{action 'toggleProperty' 'isNewContentPage'}}>Use Existing Page</a>
+                </div>
               </div>
-            </div>
+            {{/if}}
           {{else}}
             <div class="control-group">
               <label class="control-label">Page:</label>
@@ -210,21 +234,47 @@
         {{/if}}
 
         {{#if isDiscussion}}  
-          <div class="control-group">
-            <label class="control-label">Topic:</label>
-            <div class="controls"> 
-                {{view Ember.Select
-                      contentBinding="discussion_topics"
-                      valueBinding="module_item.content_id"
-                      optionValuePath="content.id"
-                      optionLabelPath="content.title"
-                      prompt="Select a Discussion Topic"
-                    disabledBinding="discussion_topics.loading"}}
-                {{#if discussion_topics.loading}}
-                  {{instructure-spinner}}
-                {{/if}}
+          {{#if isNewDiscussion}}
+            <div class="control-group">
+              <label class="control-label">Topic:</label>
+              <div class="controls">
+                {{input type="text" value=new_discussion.title}}
+              </div>
             </div>
-          </div>
+
+            {{#if discussion_topics.length}}
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                  or <a {{action 'toggleProperty' 'isNewDiscussion'}}>Use Existing Discussion Topic</a>
+                </div>
+              </div>
+            {{/if}}
+          {{else}}
+            <div class="control-group">
+              <label class="control-label">Topic:</label>
+              <div class="controls"> 
+                  {{view Ember.Select
+                        contentBinding="discussion_topics"
+                        valueBinding="module_item.content_id"
+                        optionValuePath="content.id"
+                        optionLabelPath="content.title"
+                        prompt="Select a Discussion Topic"
+                      disabledBinding="discussion_topics.loading"}}
+                  {{#if discussion_topics.loading}}
+                    {{instructure-spinner}}
+                  {{/if}}
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label"></label>
+              <div class="controls">
+                or <a {{action 'toggleProperty' 'isNewDiscussion'}}>Add New Discussion Topic</a>
+              </div>
+            </div>
+          {{/if}}
+
         {{/if}}
 
         {{#if isSubHeader}}
