@@ -52,6 +52,7 @@ define [
   ModuleItem.types =
     Assignment: 'Assignment'
     Quiz: 'Quiz'
+    Attachment: 'File'
     ContentPage: 'Page'
     Discussion: 'Discussion'
     SubHeader: 'Text Header'

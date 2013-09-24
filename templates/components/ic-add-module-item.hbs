@@ -17,7 +17,11 @@
         <div class="control-group">
           <label class="control-label" for="inputEmail">Type:</label>
           <div class="controls">
-            {{view Ember.Select contentBinding="types" valueBinding="module_item.type" optionValuePath="content.key" optionLabelPath="content.value"}}
+            {{view Ember.Select
+                contentBinding="types"
+                valueBinding="module_item.type"
+                optionValuePath="content.key"
+                optionLabelPath="content.value"}}
           </div>
         </div>
 
@@ -35,15 +39,15 @@
             <div class="control-group">
               <label class="control-label">Group:</label>
               <div class="controls">
-                {{#unless assignment_groups.loading}}
-                  {{view Ember.Select
-                      contentBinding="assignment_groups"
-                      valueBinding="new_assignment.assignment_group"
-                      optionValuePath="content.id"
-                      optionLabelPath="content.name"}}
-                {{else}}
+                {{view Ember.Select
+                    contentBinding="assignment_groups"
+                    valueBinding="new_assignment.assignment_group"
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    disabledBinding="assignment_groups.loading"}}
+                {{#if assignment_groups.loading}}
                   {{instructure-spinner}}
-                {{/unless}}
+                {{/if}}
               </div>
             </div>
 
@@ -72,16 +76,16 @@
             <div class="control-group">
               <label class="control-label">Assignment:</label>
               <div class="controls">
-                {{#unless assignments.loading}}
-                  {{view Ember.Select
-                    contentBinding="assignments"
-                    valueBinding="module_item.content_id"
-                    optionValuePath="content.id"
-                    optionLabelPath="content.name"
-                    prompt="Select an Assignment"}}
-                {{else}}
+                {{view Ember.Select
+                  contentBinding="assignments"
+                  valueBinding="module_item.content_id"
+                  optionValuePath="content.id"
+                  optionLabelPath="content.name"
+                  prompt="Select an Assignment"
+                  disabledBinding="assignments.loading"}}
+                {{#if assignments.loading}}
                   {{instructure-spinner}}
-                {{/unless}}
+                {{/if}}
               </div>
             </div>
 
@@ -95,21 +99,52 @@
         {{/if}}
 
         {{#if isQuiz}}
-          <div class="control-group">
-            <label class="control-label">Quiz:</label>
-            <div class="controls">
-                {{#unless quizzes.loading}}
-                  {{view Ember.Select
-                        contentBinding="quizzes"
-                        valueBinding="module_item.content_id"
-                        optionValuePath="content.id"
-                        optionLabelPath="content.title"
-                        prompt="Select a Quiz"}}
-                {{else}}
-                  {{instructure-spinner}}
-                {{/unless}}
+          {{#if isNewQuiz}}
+            <div class="control-group">
+              <label class="control-label">Title:</label>
+              <div class="controls">
+                {{input type="text" value=new_quiz.title}}
+              </div>
             </div>
-          </div>
+
+            <div class="control-group">
+              <label class="control-label">Group:</label>
+              <div class="controls">
+                {{view Ember.Select
+                    contentBinding="assignment_groups"
+                    valueBinding="new_quiz.assignment_group_id"
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    disabledBinding="assignment_groups.loading"}}
+                {{#if assignment_groups.loading}}
+                  {{instructure-spinner}}
+                {{/if}}
+              </div>
+            </div>
+          {{else}}
+            <div class="control-group">
+              <label class="control-label">Quiz:</label>
+              <div class="controls">
+                  {{view Ember.Select
+                      contentBinding="quizzes"
+                      valueBinding="module_item.content_id"
+                      optionValuePath="content.id"
+                      optionLabelPath="content.title"
+                      prompt="Select a Quiz"
+                      disabledBinding="quizzes.loading"}}
+                  {{#if quizzes.loading}}
+                    {{instructure-spinner}}
+                  {{/if}}
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label"></label>
+              <div class="controls">
+                or <a {{action 'toggleProperty' 'isNewQuiz'}}>Add New Quiz</a>
+              </div>
+            </div>
+          {{/if}}
         {{/if}}
 
         {{#if isAttachment}}
@@ -124,21 +159,45 @@
         {{/if}}
 
         {{#if isContentPage}} 
-          <div class="control-group">
-            <label class="control-label">Page:</label>
-            <div class="controls">
-              {{#unless pages.loading}}
+          {{#if isNewContentPage}}
+            <div class="control-group">
+              <label class="control-label">Title:</label>
+              <div class="controls">
+                {{input type="text" value=new_page.title}}
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label"></label>
+              <div class="controls">
+                or <a {{action 'toggleProperty' 'isNewContentPage'}}>Use Existing Page</a>
+              </div>
+            </div>
+          {{else}}
+            <div class="control-group">
+              <label class="control-label">Page:</label>
+              <div class="controls">
                 {{view Ember.Select
                       contentBinding="pages"
-                      valueBinding="module_item.content_id"
-                      optionValuePath="content.id"
+                      valueBinding="module_item.page_url"
+                      optionValuePath="content.url"
                       optionLabelPath="content.title"
-                      prompt="Select a Page"}}
-              {{else}}
-                {{instructure-spinner}}
-              {{/unless}}
+                      prompt="Select a Page"
+                      disabledBinding="pages.loading"}}
+                {{#if pages.loading}}
+                  {{instructure-spinner}}
+                {{/if}}
+              </div>
             </div>
-          </div>
+
+            <div class="control-group">
+              <label class="control-label"></label>
+              <div class="controls">
+                or <a {{action 'toggleProperty' 'isNewContentPage'}}>Add New Page</a>
+              </div>
+            </div>
+          {{/if}}
+
 
           {{#if isNewWikiPage}}
             <div class="control-group">
@@ -154,16 +213,16 @@
           <div class="control-group">
             <label class="control-label">Topic:</label>
             <div class="controls"> 
-                {{#unless discussion_topics.loading}}
-                  {{view Ember.Select
-                        contentBinding="discussion_topics"
-                        valueBinding="module_item.content_id"
-                        optionValuePath="content.id"
-                        optionLabelPath="content.title"
-                        prompt="Select a Discussion Topic"}}
-                {{else}}
+                {{view Ember.Select
+                      contentBinding="discussion_topics"
+                      valueBinding="module_item.content_id"
+                      optionValuePath="content.id"
+                      optionLabelPath="content.title"
+                      prompt="Select a Discussion Topic"
+                    disabledBinding="discussion_topics.loading"}}
+                {{#if discussion_topics.loading}}
                   {{instructure-spinner}}
-                {{/unless}}
+                {{/if}}
             </div>
           </div>
         {{/if}}
@@ -172,7 +231,7 @@
           <div class="control-group">
             <label class="control-label">Header:</label>
             <div class="controls">
-              <input type="text" />
+              {{input type="text" value=module_item.title}}
             </div>
           </div>
         {{/if}}
@@ -181,32 +240,39 @@
           <div class="control-group">
             <label class="control-label">URL:</label>
             <div class="controls">
-              <input type="text" />
+              {{input type="url" value=module_item.external_url}}
             </div>
           </div>
 
           <div class="control-group">
             <label class="control-label">Page Name:</label>
             <div class="controls">
-              <input type="text" />
+              {{input type="text" value=module_item.title}}
             </div>
           </div>
         {{/if}}
 
         {{#if isExternalTool}}  
           <div class="control-group">
-            <label class="control-label">External Tool:</label>
+            <label class="control-label">URL:</label>
             <div class="controls">
-              {{#unless external_tools.loading}}
-                {{view Ember.Select
-                      contentBinding="external_tools"
-                      valueBinding="module_item.content_id"
-                      optionValuePath="content.id"
-                      optionLabelPath="content.name"
-                      prompt="Select an External Tool"}}
-              {{else}}
-                {{instructure-spinner}}
-              {{/unless}}
+              {{input type="url" value=module_item.external_url}}
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Page Name:</label>
+            <div class="controls">
+              {{input type="text" value=module_item.title}}
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <label>
+                {{input type="checkbox" value=module_item.new_tab}}
+                Load this tool in a new tab
+              <label>
             </div>
           </div>
         {{/if}}

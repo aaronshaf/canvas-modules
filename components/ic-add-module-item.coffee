@@ -26,8 +26,7 @@ define [
   _
 ) ->
   AddModuleItemComponent = PopoverComponent.extend
-    init: ->
-      @_super.apply @, arguments
+    init: -> @_super.apply @, arguments
 
     new_assignment: {}
 
@@ -49,8 +48,8 @@ define [
     discussion_topics: (-> DiscussionTopic.findFirstPage() ).property()
     quizzes: (-> Quiz.findFirstPage() ).property()
     headers: (-> Header.findFirstPage() ).property()
-    external_urls: (-> ExternalURL.findFirstPage() ).property()
-    external_tools: (-> ExternalTool.findFirstPage() ).property()
+    # external_urls: (-> ExternalURL.findFirstPage() ).property()
+    # external_tools: (-> ExternalTool.findFirstPage() ).property()
 
     save: ->
       @get('module_item').save().then =>
@@ -65,9 +64,28 @@ define [
             @set 'isNewAssignment', false
             @set 'module_item.content_id', assignment.id
             @save()
-        else
-          if @get('module_item.content_id')
+        else if @get('isNewQuiz') and @get('new_quiz.title')
+          Quiz.addRecord(@get('new_assignment')).then (quiz) =>
+            @set 'isNewQuiz', false
+            @set 'module_item.content_id', quiz.id
             @save()
+        else
+          switch @get('module_item.type')
+            when 'Assignment', 'Quiz', 'Discussion'
+              if @get('module_item.content_id')
+                @save()
+            when 'ContentPage'
+              if @get('module_item.page_url')
+                @save()
+            when 'SubHeader'
+              if @get('module_item.title')
+                @save()
+            when 'ExternalUrl'
+              if @get('module_item.external_url')
+                @save()
+
+          # if @get('module_item.content_id')
+          #   @save()
 
   # isAssignment, isQuiz, etc. 
   identifiers = {}
