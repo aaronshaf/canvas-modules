@@ -19,7 +19,6 @@ if not settings
 
 module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
-  bundle = 'context_modules2'
   config = grunt.file.readJSON('dev/config.json')
 
   grunt.initConfig
@@ -32,12 +31,11 @@ module.exports = (grunt) ->
     ]
           
     watch:
-      # server:
-      #   files: [
-      #     'node_modules/canvas-mock-api/*.js',
-      #     'node_modules/canvas-mock-api/**/*.js'
-      #   ]
-      #   tasks: ['server']
+      server:
+        files: [
+          'dev/config.json'
+        ]
+        tasks: ['server']
 
       scripts:
         files: [
