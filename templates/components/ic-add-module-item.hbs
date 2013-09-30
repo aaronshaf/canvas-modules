@@ -329,18 +329,20 @@
 
         <hr />
 
-        {{indent}}
-
         <div class="control-group">
           <label class="control-label">Indentation:</label>
           <div class="controls">
             {{view Ember.TextField valueBinding="module_item.indent" min="0" step="1" max="4" type="number"}}
-            <!-- div class="btn-group">
-              <button class="btn active">0</button>
-              <button class="btn">1</button>
+            <div class="btn-group">
+              <button class="btn">0</button>
+              <button class="btn active">1</button>
               <button class="btn">2</button>
               <button class="btn">3</button>
-            </div -->
+            </div>
+
+            {{ic-btn-group }}
+              {{ic-btn}}0{{/ic-btn}}
+            {{/ic-btn-group}}
           </div>
         </div>
 
