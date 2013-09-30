@@ -348,16 +348,16 @@
 
         <div><strong>Item requirements for module completion:</strong></div>
 
-        {{view Ember.Select
-          contentBinding="requirement_types"
-          valueBinding="module_item.completion_requirement.type"
-          optionValuePath="content.key"
-          optionLabelPath="content.value"
-          multiple=true}}
+        {{#each completionRequirements}}
+          <label>
+            {{input type="checkbox" checked=checked}}
+            {{label}}
+          </label>
+        {{/each}}
 
         <div>
           <label>
-            <input type="checkbox" /> Score at least {{input type="text" value=module_item.completion_requirement.min_score}} out of 10
+            Mininum score: {{input type="text" value=module_item.completion_requirement.min_score}} out of 10
           </label>
         </div>
       </div>
