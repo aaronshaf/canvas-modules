@@ -38,9 +38,9 @@ define [
       url: String
       external_url: String
       new_tab: Boolean
-      # completion_requirement: # to do: figure out nested to JSON
-      #   type: Array
-      #   min_score: Number
+      completion_requirement:
+        type: String # ideally: Array
+        min_score: Number
       published: Boolean
       module_id: String
 
@@ -59,10 +59,19 @@ define [
     ExternalUrl: 'External URL'
     ExternalTool: 'External Tool'
 
-  ModuleItem.requirements =
-    must_submit: 'Submit the assignment'
-    must_view: 'View the item'
-    must_contribute: 'Contribute to the page'
+  ModuleItem.completion_requirement_types =
+    must_view: 
+      label: 'View the item'
+      applies_to: '*'
+    must_contribute:
+      label: 'Contribute to the page'
+      applies_to: ['Assignment','Discussion','Page']
+    must_submit:
+      label: 'Submit the assignment'
+      applies_to: ['Assignment','Quiz']
+    min_score:
+      label: 'Achieve a mininum score'
+      applies_to: ['Assignment','Quiz']
 
   ModuleItem
 
