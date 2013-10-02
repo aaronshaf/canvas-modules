@@ -340,29 +340,37 @@
               <button class="btn">3</button>
             </div>
 
-            {{ic-btn-group }}
+            {{!-- ic-btn-group }}
               {{ic-btn}}0{{/ic-btn}}
-            {{/ic-btn-group}}
+            {{/ic-btn-group} --}}
           </div>
         </div>
 
         <hr />   
 
-        <div><strong>Item requirements for module completion:</strong></div>
+        <div><strong>To complete the module, student must:</strong></div>
 
-        {{#each completionRequirements}}
-          <label>
-            {{input type="checkbox" checked=checked}}
-            {{label}}
-          </label>
-        {{/each}}
+        <label>
+          {{input type="radio" name="completion_requirement_type" checked=typeIsMustView}}
+          View the item
+        <lable>
 
-        <div>
-          <label>
-            Mininum score: {{input type="text" value=module_item.completion_requirement.min_score}} out of 10
-          </label>
-        </div>
+        <label>
+          {{input type="radio" name="completion_requirement_type" checked=typeIsMustContribute}}
+          Contribute to the page
+        <lable>
+
+        <label>
+          {{input type="radio" name="completion_requirement_type" checked=typeIsMustSubmit}}
+          Submit the assignment
+        <lable>
+
+        <label>
+          {{input type="radio" name="completion_requirement_type" checked=typeIsMinScore}}
+          Achieve a mininum score
+        <lable>
       </div>
+
       <div class="test-modal-footer">
         {{#ic-popover-close}}
           <a class="btn">Cancel</a>
