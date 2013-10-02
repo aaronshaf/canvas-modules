@@ -37,7 +37,17 @@ define [
 
     type: 'assignment'
     types: _.map ModuleItem.types, (value, key) -> return {key, value}
-    requirement_types: _.map ModuleItem.requirements, (value, key) -> return {key, value}
+
+    completion_requirement_types: (->
+      _.map ModuleItem.completion_requirement_types, ({label,applies_to}, key) =>
+        # possibly for when multiple types are supported
+        # checked = @get('module_item.completion_requirement.type').indexOf(key) > -1
+
+        checked = @get('module_item.completion_requirement.type') is key
+        disabled = false
+        return {key, label, checked, disabled}  
+    ).property('module_item.type') #'module_item.completion_requirement.type.@each'
+
     is: identifiers
 
     assignment_groups: (-> AssignmentGroup.findFirstPage() ).property()
@@ -57,8 +67,13 @@ define [
         @reset()
 
     actions:
-      toggleProperty: Ember.Controller.prototype.toggleProperty #@toggleProperty
+      toggleProperty: Ember.Controller.prototype.toggleProperty
       save: ->
+        # possibly for when multiple types are supported
+        # @set 'module_item.completion_requirement.type', @get('completion_requirements').filterProperty('checked',true).mapProperty('key')
+        type = @get('completion_requirement_types').filterProperty('checked',true).mapProperty('key')
+        @set 'module_item.completion_requirement.type', type 
+
         if @get('isNewAssignment') and @get('new_assignment.name')
           Assignment.addRecord(@get('new_assignment')).then (assignment) =>
             @set 'isNewAssignment', false
@@ -82,7 +97,7 @@ define [
                 @save()
             when 'ExternalUrl'
               if @get('module_item.external_url')
-                @save()
+                @save() 
 
           # if @get('module_item.content_id')
           #   @save()
