@@ -3,14 +3,14 @@ define [
   'jquery'
 ], ({Controller, get, set}, $) ->
   ModulesController = Controller.extend
-    url: "/api/v1/courses/#{ENV.course_id}/modules"
+    url: '/api/v1/courses/#{ENV.course_id}/modules'
 
     actions:
       add: ->
         module = @pushObject Ember.Object.create({id:Math.random()})
         # module = Ember.Object.create({})
         $.ajax
-          url: "/api/v1/courses/#{ENV.course_id}/modules"
+          url: '/api/v1/courses/#{ENV.course_id}/modules'
           type: 'POST'
           dataType: 'json'
           data: 

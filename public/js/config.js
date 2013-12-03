@@ -18,7 +18,7 @@ requirejs.config({
   // },
   shim: {
     'ember': {
-      // deps: ['jquery', 'handlebars'],
+      deps: ['jquery'],
       exports: 'Ember'
     },
     // 'underscore': {
@@ -27,3 +27,4 @@ requirejs.config({
   },
   urlArgs: 'bust=' + (new Date()).getTime()
 });
+

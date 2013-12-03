@@ -4,8 +4,8 @@ module.exports = (grunt) ->
   grunt.initConfig
     watch:
       build:
-        files: ['app/**/*.{js,hbs}']
-        tasks: ['public']
+        files: ['app/**/*.{hbs,coffee}']
+        tasks: ['compile-newer']
 
     emberTemplates:
       compile:
@@ -13,7 +13,7 @@ module.exports = (grunt) ->
           amd: true
           templateBasePath: 'app/templates/'
         files:
-          'public/js/templates.js': ['app/templates/{,*/}*.hbs','app/templates/{,*/}{,*/}*.hbs']
+          'public/js/templates.js': ['app/templates/**/*.hbs','app/templates/**/*.hbs']
 
     coffee:
       compile:
@@ -41,6 +41,7 @@ module.exports = (grunt) ->
     clean:
       public: ['public/js/app/']
 
+  grunt.registerTask 'compile-newer', ['newer:emberTemplates:compile', 'newer:coffee:compile']
   grunt.registerTask 'build', ['clean', 'emberTemplates', 'coffee']
   grunt.registerTask 'default', ['build', 'watch']
   grunt.registerTask 'lint', ['coffeelint']

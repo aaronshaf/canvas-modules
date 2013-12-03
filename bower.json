@@ -1,7 +1,7 @@
 {
   "name": "canvas-modules",
   "homepage": "https://github.com/aaronshaf/canvas-module",
-  "license": "MIT",
+  "license": "AGPLv3",
   "ignore": [
     "**/.*",
     "node_modules",

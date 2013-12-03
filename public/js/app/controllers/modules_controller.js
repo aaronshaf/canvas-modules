@@ -3,7 +3,7 @@
     var Controller, ModulesController, get, set;
     Controller = _arg.Controller, get = _arg.get, set = _arg.set;
     return ModulesController = Controller.extend({
-      url: "/api/v1/courses/" + ENV.course_id + "/modules",
+      url: '/api/v1/courses/#{ENV.course_id}/modules',
       actions: {
         add: function() {
           var module,
@@ -12,7 +12,7 @@
             id: Math.random()
           }));
           $.ajax({
-            url: "/api/v1/courses/" + ENV.course_id + "/modules",
+            url: '/api/v1/courses/#{ENV.course_id}/modules',
             type: 'POST',
             dataType: 'json',
             data: {
