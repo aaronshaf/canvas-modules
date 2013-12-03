@@ -1,0 +1,41 @@
+<style>
+ic-menu-trigger {
+  padding: 6px;
+  border: 1px solid transparent;
+  border-radius: 3px 3px 0 0;
+  border-bottom: none;
+  z-index: 1;
+  position: relative;
+}
+
+ic-menu-trigger i:before {
+  color: #bbb;
+}
+
+ic-menu.is-open ic-menu-trigger {
+  border-color: #aaa;
+  background: #fff;
+  z-index: 3;
+}
+
+ic-menu-trigger:hover i:before,
+ic-menu.is-open ic-menu-trigger i:before {
+  color: #555;
+}
+
+ic-menu-items {
+  font-family: inherit;
+  right: 0;
+  z-index: 2;
+  top: 22px;
+  border-radius: 3px 0px 3px 3px;
+}
+
+ic-menu-item {
+  font: inherit;
+}
+
+ic-menu-item:focus {
+  background: #3A87AD;
+}
+</style>

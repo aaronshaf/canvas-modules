@@ -1,0 +1,32 @@
+{{render 'soon-to-be-global-css' this}}
+
+{{ic-menu-css}}
+
+{{ic-modal-css}}
+
+{{ic-dialog-css}}
+
+{{render 'component-css' this}}
+
+{{render 'modal-css' this}}
+
+{{render 'modules-app-css' this}}
+
+<div class="header-bar">
+  <button class="btn" {{action 'add'}}>Create module</button>
+</div>
+
+<modules-app>
+  {{#ic-lazily-paginated-records href=url data=modules is-loading=isLoadingModules}}
+    <modules>
+    {{#each module in modules itemController="module"}}
+      {{view App.ModuleView}}
+    {{/each}}
+    </modules>
+    {{#if isLoadingModules}}
+      Loading...
+    {{else}}
+      [Add button]
+    {{/if}}
+  {{/ic-lazily-paginated-records}}
+</modules-app>

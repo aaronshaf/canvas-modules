@@ -1,5 +1,7 @@
 {
   "name": "canvas-modules",
+  "homepage": "https://github.com/aaronshaf/canvas-module",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -8,8 +10,12 @@
     "tests"
   ],
   "dependencies": {
-    "requirejs": "~2.1.8",
-    "jquery": "~2.0.3",
-    "underscore": "~1.5.1"
+    "jquery": "git@github.com:components/jquery.git",
+    "ember": "http://builds.emberjs.com/tags/v1.0.0/ember.js",
+    "handlebars": "http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-1.0.0.js",
+    "normalize-css": "https://raw.github.com/necolas/normalize.css/master/normalize.css",
+    "requirejs": "https://raw.github.com/jrburke/requirejs/master/require.js",
+    "underscore": "https://raw.github.com/lodash/lodash/2.4.0/dist/lodash.underscore.min.js",
+    "lodash-amd": "~2.4.0"
   }
 }

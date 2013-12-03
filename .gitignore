@@ -6,3 +6,5 @@ libpeerconnection.log
 .DS_Store
 config.json
 *.log
+TODO
+public/vendor

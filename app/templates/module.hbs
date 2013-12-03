@@ -1,0 +1,71 @@
+<module {{bind-attr contextmenu="contextmenuId"}}>
+  <menu type="context" {{bind-attr id="contextmenuId"}} style="display: none;">
+    <menuitem accesskey="r" label="Add module item" {{action 'addItem'}}></menuitem>
+    <menuitem label="Delete module" {{action 'remove'}}></menuitem>
+  </menu>
+
+  <module-header>
+    <module-title class="flex-4">{{module.name}}</module-title>
+    <prerequisites>
+      <strong>Prereqs:</strong> Week 1 Module    
+    </prerequisites>
+  
+    <publish>
+      {{ic-icon-publish fill-value="red" style="display: block;width: 16px;height: 16px;"}}
+    </publish>
+
+    {{#ic-menu}}
+      {{#ic-menu-trigger tagName="a" href="#"}}
+        {{ic-icon-settings style="display: block;"}}
+      {{/ic-menu-trigger}}
+
+      {{#ic-menu-list}}
+        {{#ic-menu-item on-select="showAddModuleItemModal"}}
+          {{#t "edit"}}Add item{{/t}}
+        {{/ic-menu-item}}
+
+        {{#ic-menu-item on-select="openEditModuleModal"}}
+          {{#t "edit"}}Edit module{{/t}}
+        {{/ic-menu-item}}
+
+        {{#ic-menu-item on-select="remove"}}
+          {{#t "remove"}}Remove module{{/t}}
+        {{/ic-menu-item}}
+
+        {{#ic-menu-item on-select="addModuleAbove"}}
+          {{#t "add_module_above"}}Add module above{{/t}}
+        {{/ic-menu-item}}
+
+        {{#ic-menu-item on-select="addModuleBelow"}}
+          {{#t "add_module_above"}}Add module below{{/t}}
+        {{/ic-menu-item}}
+      {{/ic-menu-list}}
+    {{/ic-menu}}
+  </module-header>
+
+  {{#if items_count}}
+    {{#ic-lazily-paginated-records href=module.items_url data=module.items is-loading=isLoadingModuleItems}}
+      <module-items class="flex flex-column">      
+        {{#each item in module.items itemController="item"}}
+          {{view App.ItemView}}
+        {{/each}}
+      </module-items>
+      {{#if isLoadingModuleItems}}
+        Loading
+      {{else}}
+        <button {{action 'addItemForDevelopment'}}>
+          +
+        </button>
+      {{/if}}
+
+
+    {{/ic-lazily-paginated-records}}
+  {{/if}}
+
+  {{#if addingModuleItem}}
+    {{#ic-modal id=dialogId on-close="hideAddModuleItemModal"}}
+      {{render "add_module_item_modal" item}}
+    {{/ic-modal}}
+  {{/if}}
+
+</module>

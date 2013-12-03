@@ -1,0 +1,88 @@
+<menu type="context" {{bind-attr id="contextmenuId"}} style="display: none;">
+  <menuitem label="Edit module item" {{action 'edit'}}></menuitem>
+  <menuitem accesskey="r" label="Remove module item" {{action 'remove'}}></menuitem>
+  <menuitem label="Add item Above" {{action 'addItemAbove'}}></menuitem>
+  <menuitem label="Add item below" {{action 'addItemBelow'}}></menuitem>
+</menu>
+
+{{!-- {{content-icon type=item.type}} --}}
+
+{{#unless item._editing}}
+  {{#if renaming}}
+    {{#view "renameModuleItem" class="flex-6"}}
+      {{input value=title}}
+      <button {{action 'saveRename'}}>Save</button>
+      <button {{action 'cancelRename'}}>Cancel</button>
+    {{/view}}
+  {{else}}
+    {{#view class="flex-6"}}
+      <a {{bindAttr href="item.html_url"}}>{{item.title}} <!-- (i: {{item.indent}}, p: {{item.position}}) --></a>
+      <div class="rename-button" {{action 'rename'}}><i class="icon-edit"></i></div>
+    {{/view}}
+  {{/if}}
+{{else}}
+  <div class="flex flex-column flex-6">
+    <div>
+      {{input value=title placeholder="Enter title here"}}
+    </div>
+    {{!-- <div>
+      <select>
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </select>
+    </div> --}}
+  </div>
+{{/unless}}
+
+<availability class="flex-2">
+  <strong>Available</strong> Jan 1, 2014
+</availability>
+
+<due-date class="flex-2">
+  <strong>Due</strong> Feb 1, 2014
+</due-date>
+
+<points class="flex-1">
+  10 pts
+</points>
+
+<publish>
+  {{ic-icon-publish fill-value="red" style="display: block;width: 16px;height: 16px;"}}
+</publish>
+
+{{#if editing}}
+  {{#ic-modal
+    id=dialogId
+    on-close="closeEditModal"}}
+    {{render "edit_module_item_modal" item}}
+  {{/ic-modal}}
+{{/if}}
+
+{{#unless item._editing}}
+  {{#ic-menu}}
+    {{#ic-menu-trigger tagName="a" href="#"}}
+      {{ic-icon-settings style="display: block;"}}
+    {{/ic-menu-trigger}}
+
+    {{#ic-menu-list}}
+      {{#ic-menu-item on-select="openEditModal"}}
+        {{#t "edit"}}Edit{{/t}}
+      {{/ic-menu-item}}
+
+      {{#ic-menu-item on-select="remove"}}
+        {{#t "remove"}}Remove{{/t}}
+      {{/ic-menu-item}}
+
+      {{#ic-menu-item on-select="addItemAbove"}}
+        {{#t "add_item_above"}}Add item above{{/t}}
+      {{/ic-menu-item}}
+
+      {{#ic-menu-item on-select="addItemBelow"}}
+        {{#t "add_item_above"}}Add item below{{/t}}
+      {{/ic-menu-item}}
+
+    {{/ic-menu-list}}
+  {{/ic-menu}}
+{{else}}
+  [Sv]
+{{/unless}}

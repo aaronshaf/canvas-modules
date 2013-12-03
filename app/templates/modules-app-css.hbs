@@ -1,0 +1,145 @@
+<style>
+modules,
+module {
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+module-item {
+  padding-left: 12px;
+}
+
+module {
+  padding: 8px;
+}
+
+module-header {
+  height: 40px;
+}
+
+module-item a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.10em;
+}
+
+module-item .rename input[type="text"],
+module-item .rename input[type="text"]:focus,
+module-item .rename input[type="text"]:active {
+  padding: 0;
+  border: 0 none;
+  box-shadow: 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 0 transparent;
+  margin:0;
+  border:0;
+  width: 340px;
+}  
+
+module-items {
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #E4E6E6;
+}
+
+module-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+module-header {
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: row;
+  flex-direction: row;
+
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+module-item {
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: row;
+  flex-direction: row;
+
+  -webkit-align-items: center;
+  align-items: center;
+
+  border-bottom: 1px solid #E4E6E6;
+  min-height: 34px;
+}
+
+prerequisites {
+  display: inline-block;
+  background-color: #E1E5E9;
+  border: 1px solid #BDC1C7;
+  border-radius: 14px;
+  padding: 2px 12px;
+}
+
+ic-menu,
+publish {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+availability,
+due-date,
+points,
+prerequisites {
+  font-size: .9em;
+}
+
+/* ----------- */
+
+ic-icon-settings {
+  width: 16px;
+  height: 16px;
+}
+
+module-item.indent-0 .ig-title {
+  margin-left: 0;
+}
+
+module-item.indent-1 .ig-title {
+  margin-left: 10px;
+}
+
+module-item.indent-2 .ig-title {
+  margin-left: 20px;
+}
+
+module-item.indent-3 .ig-title {
+  margin-left: 30px;
+}
+
+module-item.indent-4 .ig-title {
+  margin-left: 40px;
+}
+
+module-item:hover .rename-button {
+  opacity: 0.2;
+  transition: opacity 0.35s;
+  -webkit-transition: opacity 0.35s;
+  -moz-transition: opacity 0.35s;
+  -ie-transition: opacity 0.35s;
+}
+
+module-item .rename-button {
+  display: inline-block;
+  opacity: 0;
+}
+
+module-item .rename-button:hover {
+  opacity: 1;
+}
+
+module-item .rename {
+  display: inline-block;
+}
+</style>

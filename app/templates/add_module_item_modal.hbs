@@ -1,0 +1,70 @@
+<ic-modal-header>
+  <ic-modal-title>
+    Add Item in <strong>{{title}}</strong>
+  </ic-modal-title>
+  <ic-modal-header-close>
+    {{#ic-trigger action="cancel"}}
+      {{ic-icon-x style="width: 20px;height: 20px;display: block;"}}
+    {{/ic-trigger}}
+  </ic-modal-header-close>
+</ic-modal-header>
+
+<ic-modal-body class="columned">
+  <ic-stacked-tabs>
+    <ic-tab {{bind-attr class="isAssignment:active"}}>Assignments</ic-tab>
+    <ic-tab {{bind-attr class="isPage:active"}}>Pages</ic-tab>
+    <ic-tab {{bind-attr class="isQuiz:active"}}>Quizzes</ic-tab>
+    <ic-tab {{bind-attr class="isFile:active"}}>File</ic-tab>
+    <ic-tab {{bind-attr class="isDiscussion:active"}}>Discussion</ic-tab>
+    <ic-tab {{bind-attr class="isTextHeader:active"}}>Text Header</ic-tab>
+    <ic-tab {{bind-attr class="isExternalUrl:active"}}>External URL</ic-tab>
+    <ic-tab {{bind-attr class="isExternalTool:active"}}>External Tool</ic-tab>
+  </ic-stacked-tabs>
+
+  <div class="padded">
+    {{#if isAssignment}}
+      <label>Title</label>
+      {{input value=newItem.title}}
+    {{/if}}
+
+    {{#if isPage}}
+      {{input value=newItem.title}}
+    {{/if}}
+
+    {{#if isQuiz}}
+      {{input value=newItem.title}}
+    {{/if}}
+
+    {{#if isFile}}
+    
+    {{/if}}
+
+    {{#if isDiscussion}}
+    
+    {{/if}}
+
+    {{#if isTextHeader}}
+      {{input value=title}}
+    {{/if}}
+
+    {{#if isExternalUrl}}
+    
+    {{/if}}
+
+    {{#if isExternalTool}}
+    
+    {{/if}}
+  </div>
+</ic-modal-body>
+
+<ic-modal-footer>
+  <div class="modal-footer-right">
+      {{#ic-trigger action="cancel"}}
+        <ic-button>
+          Cancel
+        </ic-button>
+      {{/ic-trigger}}
+
+    <ic-button class="primary">Add Item</ic-button>
+  </div>
+</ic-modal-footer>
